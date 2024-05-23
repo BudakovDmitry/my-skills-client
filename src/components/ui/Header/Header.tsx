@@ -15,10 +15,10 @@ const Header = () => {
                 <nav>
                     <ul className='flex items-center'>
                         <li className='mx-2 font-semibold text-sky-500 px-4 py-2 rounded-md hover:underline transition ease-out'>
-                            <Link href='#'>Про платформу</Link>
+                            <Link href='/about-platform'>Про платформу</Link>
                         </li>
                         <li className='mx-2 font-semibold text-sky-500 px-4 py-2 rounded-md hover:underline transition ease-out'>
-                            <Link href='#'>Наші технології</Link>
+                            <Link href='/our-technologies'>Наші технології</Link>
                         </li>
                         <li className='mx-2 font-semibold px-4 py-2 text-white bg-sky-500 rounded-md'>
                             <Link href='#'>Анкети</Link>
