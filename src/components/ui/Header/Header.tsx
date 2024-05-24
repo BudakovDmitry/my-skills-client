@@ -21,11 +21,11 @@ const Header = () => {
                             <Link href='/our-technologies'>Наші технології</Link>
                         </li>
                         <li className='mx-2 font-semibold px-4 py-2 text-white bg-sky-500 rounded-md'>
-                            <Link href='#'>Анкети</Link>
+                            <Link href='/profiles'>Анкети</Link>
                         </li>
                     </ul>
                 </nav>
-                <Link className='mx-2 font-medium text-gray-500 border-l-2 px-4' href='#'>Увійти</Link>
+                <Link className='mx-2 font-medium text-gray-500 border-l-2 px-4' href='/login'>Увійти</Link>
             </div>
         </header>
     )

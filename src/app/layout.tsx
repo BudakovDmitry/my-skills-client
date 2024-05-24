@@ -18,10 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
-      <body className={`${montserrat.className} min-h-screen bg-white flex flex-col`}>
-        <Header />
+      <body className={`${montserrat.className} min-h-screen bg-white`}>
         {children}
-        <Footer />
       </body>
     </html>
   );
