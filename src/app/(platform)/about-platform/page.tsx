@@ -13,7 +13,7 @@ const AboutPlatform = () => {
             </div>
             <p className='font-medium text-gray-500 mb-16'>Твоя експертиза та твої навички, то твоя сила! А наші люди тому доказ.</p>
             <p className='text-gray-500 mb-16 text-center w-2/3 leading-8'>"My skills" - це інноваційна платформа, створена для ефективного представлення та просування ваших професійних навичок у цифровому світі. Наші зручні користувацькі профілі призначені допомогти вам виділити свій досвід та експертизу в різних сферах. А допоможуть нам у цьому ваші колеги.</p>
-            <div className='bg-gray-200 px-8 py-6 w-2/3 ml-auto mb-10 rounded flex items-center rounded'>
+            <div className='bg-gray-200 px-8 py-6 w-2/3 ml-auto mb-10 rounded flex items-center'>
                 <Image className='mr-10' src={userIcon} alt='User' />
                 <div>
                     <h5 className='font-medium text-gray-500 mb-4'>Особисті профілі</h5>
