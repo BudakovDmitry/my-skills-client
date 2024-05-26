@@ -4,7 +4,7 @@ import { errorCatch } from "./error";
 import { authService } from "@/services/auth.service";
 
 const options:CreateAxiosDefaults = {
-  baseURL: process.env.BASE_URL_SERVER,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL_SERVER,
   headers: {
     'Content-Type': 'application/json'
   },

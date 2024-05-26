@@ -22,7 +22,7 @@ const Registration = () => {
                     </p>
 
                     <RegistrationForm />
-                    <p className="mt-6 text-sm text-center text-gray-400">Маєте акаунт? <Link href="/login" className="text-blue-500 focus:outline-none focus:underline hover:underline">Увійдіть</Link>.</p>
+                    <p className="mt-6 text-sm text-center text-gray-400">Маєте акаунт? <Link href="/login" className="text-blue-500 focus:outline-none focus:underline hover:underline">Увійдіть</Link></p>
 
                 </div>
             </div>

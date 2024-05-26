@@ -2,11 +2,11 @@ import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Некоректний email')
-    .required('Поле є обов\'язковим'),
+    .required('Поле є обов\'язковим')
+    .email('Некоректний email'),
   password: Yup.string()
-    .min(6, 'Пароль повинен містити мінімум 6 символів')
-    .required('Поле є обов\'язковим'),
+    .required('Поле є обов\'язковим')
+    .min(6, 'Пароль повинен містити мінімум 6 символів'),
 });
 
 export default validationSchema;

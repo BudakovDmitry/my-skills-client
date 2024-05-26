@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from "next/image";
 import Link from "next/link";
 import profilePhoto from '@/../public/profile_photo.jpg'
@@ -7,6 +8,10 @@ import instagram from '@/../public/instagram.png'
 import linkedIn from '@/../public/linkedin.png'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
+
+export const metadata: Metadata = {
+  title: 'Анкети',
+}
 
 const Profiles = () => {
   return (

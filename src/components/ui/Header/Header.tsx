@@ -1,7 +1,12 @@
+'use client'
+
 import Link from "next/link";
 import Image from "next/image";
 
 import logoImage from '@/../public/logo.png'
+import { authService } from "@/services/auth.service";
+
+const logoutHandler = () => authService.logout()
 
 
 const Header = () => {
@@ -26,6 +31,7 @@ const Header = () => {
                     </ul>
                 </nav>
                 <Link className='mx-2 font-medium text-gray-500 border-l-2 px-4' href='/login'>Увійти</Link>
+                <button onClick={logoutHandler} className='mx-2 font-medium text-gray-500 border-l-2 px-4'>Вийти</button>
             </div>
         </header>
     )

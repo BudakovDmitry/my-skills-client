@@ -1,9 +1,13 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Image from "next/image";
 import Link from "next/link";
 import logo from '@/../public/logo.png'
 import LoginForm from "@/components/forms/LoginForm/LoginForm";
+
+
+export const metadata: Metadata = {
+  title: 'Login',
+}
 
 const Login = () => {
   return (
