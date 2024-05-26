@@ -11,6 +11,24 @@ export interface IRegistration {
   passwordRepeat: string
 }
 
+export interface IUserEdit {
+  email: string
+  firstName: string
+  lastName: string
+  work?: string
+  location?: string
+  photo?: string
+  description?: string
+  links?: IUserLinks
+}
+
+export interface IUserLinks {
+  instagram?: string
+  facebook?: string
+  github?: string
+  linkedIn?: string
+}
+
 export interface IUser {
   id: string
   createdAt: Date

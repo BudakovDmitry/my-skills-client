@@ -9,6 +9,8 @@ import { authService } from '@/services/auth.service';
 import { IUser } from '@/types/auth.types';
 import Avatar from '@mui/material/Avatar';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Link from 'next/link';
+import { PAGE } from '@/config/pages-url.config';
 
 function useIsDarkMode() {
   const theme = useTheme();
@@ -21,12 +23,6 @@ type MenuSimplePropsType = {
 
 export default function MenuSimple({ user }: MenuSimplePropsType) {
   const isDarkMode = useIsDarkMode();
-
-  const createHandleMenuClick = (menuItem: string) => {
-    return () => {
-      console.log(`Clicked on ${menuItem}`);
-    };
-  };
 
   const logoutHandler = async () => {
     const response = await authService.logout()
@@ -47,11 +43,15 @@ export default function MenuSimple({ user }: MenuSimplePropsType) {
           </MenuButton>
         </div>
         <Menu>
-          <MenuItem onClick={createHandleMenuClick('Profile')}>Профіль</MenuItem>
-          {/* <MenuItem onClick={createHandleMenuClick('Language settings')}>
-            Налаштування
-          </MenuItem> */}
-          <MenuItem onClick={logoutHandler}>Log out</MenuItem>
+          <Link href={PAGE.PROFILE}>
+            <MenuItem>Профіль</MenuItem>
+          </Link>
+          <Link href={PAGE.PROFILE_EDIT}>
+            <MenuItem>
+              Редагування
+            </MenuItem>
+          </Link>
+          <MenuItem onClick={logoutHandler}>Вийти</MenuItem>
         </Menu>
       </Dropdown>
     </div>
@@ -120,13 +120,13 @@ const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
 const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
   const { className, ...other } = props;
   return (
-    <BaseMenuItem
-      ref={ref}
-      className={clsx(
-        'cursor-pointer list-none p-2 rounded-lg select-none last-of-type:border-b-0 focus:shadow-outline-purple focus:outline-0 focus:bg-slate-100 focus:dark:bg-slate-800 focus:text-slate-900 focus:dark:text-slate-300 disabled:text-slate-400 disabled:dark:text-slate-700 disabled:hover:text-slate-400 disabled:hover:dark:text-slate-700',
-        className,
-      )}
-      {...other}
-    />
+      <BaseMenuItem
+        ref={ref}
+        className={clsx(
+          'cursor-pointer list-none p-2 rounded-lg select-none last-of-type:border-b-0 focus:shadow-outline-purple focus:outline-0 focus:bg-slate-100 focus:dark:bg-slate-800 focus:text-slate-900 focus:dark:text-slate-300 disabled:text-slate-400 disabled:dark:text-slate-700 disabled:hover:text-slate-400 disabled:hover:dark:text-slate-700',
+          className,
+        )}
+        {...other}
+      />
   );
 });

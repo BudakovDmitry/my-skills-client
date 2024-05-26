@@ -4,16 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 import logoImage from '@/../public/logo.png'
-import { authService } from "@/services/auth.service";
 import { useProfile } from "@/hooks/useProfile";
 import MenuSimple from "@/components/ui/dropdown";
 
-const logoutHandler = () => authService.logout()
-
 
 const Header = () => {
-    const { data } = useProfile()
-    console.log('data', data)
+    const { data, isLoading } = useProfile()
 
     return (
         <header className='py-4 px-6 flex items-center justify-between border-b'>
@@ -35,10 +31,7 @@ const Header = () => {
                         </li>
                     </ul>
                 </nav>
-                {data ? <MenuSimple user={data} /> : <Link className='mx-2 font-medium text-gray-500 border-l-2 px-4' href='/login'>Увійти</Link>}
-                
-                
-                {/* <button onClick={logoutHandler} className='mx-2 font-medium text-gray-500 border-l-2 px-4'>Вийти</button> */}
+                {isLoading ? 'Loading...' : data ? <MenuSimple user={data} /> : <Link className='mx-2 font-medium text-gray-500 border-l-2 px-4' href='/login'>Увійти</Link>}
             </div>
         </header>
     )

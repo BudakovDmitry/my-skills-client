@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "@/api/interceptors";
-import { IUser } from "@/types/auth.types";
+import { IUser, IUserEdit } from "@/types/auth.types";
 
 class UserService {
   private BASE_URL = '/user'
@@ -10,7 +10,7 @@ class UserService {
     return response.data
   }
 
-  async updateUser(data: IUser) {
+  async updateUser(data: IUserEdit) {
     const response = await axiosWithAuth.put(this.BASE_URL, data)
 
     return response.data
