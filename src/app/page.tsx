@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logoImage from '@/../public/logo.png'
-import Header from "@/components/ui/Header/Header";
-import Footer from "@/components/ui/Footer/Footer";
+import Header from "@/components/blocks/Header/Header";
+import Footer from "@/components/blocks/Footer/Footer";
 
 const Home = () => {
     return (
