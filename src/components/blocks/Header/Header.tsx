@@ -18,7 +18,7 @@ const Header = () => {
                 My skills
             </Link>
             <div className='flex items-center'>
-                <nav>
+                <nav className="border-r-2 pr-4">
                     <ul className='flex items-center'>
                         <li className='mx-2 font-semibold text-sky-500 px-4 py-2 rounded-md hover:underline transition ease-out'>
                             <Link href='/about-platform'>Про платформу</Link>
@@ -31,7 +31,7 @@ const Header = () => {
                         </li>
                     </ul>
                 </nav>
-                {isLoading ? 'Loading...' : data ? <MenuSimple user={data} /> : <Link className='mx-2 font-medium text-gray-500 border-l-2 px-4' href='/login'>Увійти</Link>}
+                {isLoading ? 'Loading...' : data ? <MenuSimple user={data} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href='/login'>Увійти</Link>}
             </div>
         </header>
     )

@@ -49,18 +49,37 @@ const ProfileCard = ({ user }:ProfileCardPropsType ) => {
         <div className="w-1/3">
           <Image className="rounded-md mb-4" src={profilePhoto} alt="Profile Image" />
           <div className="flex items-center justify-center">
-            <a href="#" target="_blank" className="mx-1 w-6 h-6">
-              <Image className="" src={facebook} alt="Facebook" />
-            </a>
-            <a href="#" target="_blank" className="mx-1 w-6 h-6">
-              <Image className="" src={github} alt="Github" />
-            </a>
-            <a href="#" target="_blank" className="mx-1 w-6 h-6">
-              <Image className="" src={instagram} alt="Instagram" />
-            </a>
-            <a href="#" target="_blank" className="mx-1 w-6 h-6">
-              <Image className="" src={linkedIn} alt="LinkedIn" />
-            </a>
+ 
+            {
+              user?.links?.facebook ? (
+                <a href={user.links.facebook } target="_blank" className="mx-1 w-6 h-6">
+                  <Image className="" src={facebook} alt="Facebook" />
+                </a>
+              ) : null
+            }
+
+            {
+              user?.links?.github ? (
+                <a href={user.links.github} target="_blank" className="mx-1 w-6 h-6">
+                  <Image className="" src={github} alt="Github" />
+                </a>
+              ) : null
+            }
+            {
+              user?.links?.instagram ? (
+                <a href={user.links.instagram} target="_blank" className="mx-1 w-6 h-6">
+                  <Image className="" src={instagram} alt="Instagram" />
+                </a>
+              ) : null
+            }
+
+            {
+              user?.links?.linkedIn ? (
+                <a href={user.links.linkedIn} target="_blank" className="mx-1 w-6 h-6">
+                  <Image className="" src={linkedIn} alt="LinkedIn" />
+                </a>
+              ) : null
+            }
           </div>
         </div>
       </div>

@@ -35,9 +35,9 @@ export default function MenuSimple({ user }: MenuSimplePropsType) {
   return (
     <div className={`${isDarkMode ? 'dark' : ''}`}>
       <Dropdown>
-        <div className='flex items-center ml-4'>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <div className='ml-2'>
           <MenuButton>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className='mr-4' />
             {user.firstName}
             <KeyboardArrowDownIcon />
           </MenuButton>
@@ -108,7 +108,7 @@ const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
       <BaseMenuButton
         ref={ref}
         className={clsx(
-          'cursor-pointer text-md font-semibold px-4 py-2 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 hover:dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 focus-visible:shadow-[0_0_0_4px_#ddd6fe] dark:focus-visible:shadow-[0_0_0_4px_#a78bfa] focus-visible:outline-none active:shadow-none',
+          'cursor-pointer flex items-center  text-md font-semibold px-4 py-2 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 hover:dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 focus-visible:shadow-[0_0_0_4px_#ddd6fe] dark:focus-visible:shadow-[0_0_0_4px_#a78bfa] focus-visible:outline-none active:shadow-none',
           className,
         )}
         {...other}

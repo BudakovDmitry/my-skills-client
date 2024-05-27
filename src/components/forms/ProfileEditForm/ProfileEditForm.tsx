@@ -10,9 +10,24 @@ import { toast } from "sonner";
 import { userService } from "@/services/user.service";
 
 const ProfileEditForm = ({ user }: { user: IUser }) => {
+  const defaultValuesUser = {
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    work: user.work,
+    location: user.location,
+    description: user.description,
+    links: {
+      instagram: user.links?.instagram,
+      facebook: user.links?.facebook,
+      github: user.links?.github,
+      linkedIn: user.links?.linkedIn,
+    }
+  }
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm<IUserEdit>({
     resolver: yupResolver(validationSchema),
-    defaultValues: user,
+    defaultValues: defaultValuesUser,
   });
 
   const { push } = useRouter()
