@@ -19,6 +19,7 @@ const validationSchema = Yup.object().shape({
   location: Yup.string(),
   photo: Yup.string(),
   description: Yup.string(),
+  links: userLinksSchema
 });
 
 export default validationSchema;

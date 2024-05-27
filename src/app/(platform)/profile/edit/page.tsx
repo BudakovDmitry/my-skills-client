@@ -1,4 +1,3 @@
-'use client'
 import ProfileEditForm from "@/components/forms/ProfileEditForm/ProfileEditForm"
 import { useProfile } from "@/hooks/useProfile"
 

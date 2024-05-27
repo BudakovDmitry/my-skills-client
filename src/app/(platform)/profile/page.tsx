@@ -1,5 +1,3 @@
-'use client'
-
 import ProfileCard from '@/components/blocks/ProfileCard/ProfileCard'
 import { useProfile } from '@/hooks/useProfile';
 

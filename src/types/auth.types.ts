@@ -19,7 +19,7 @@ export interface IUserEdit {
   location?: string
   photo?: string
   description?: string
-  links?: IUserLinks
+  links: IUserLinks
 }
 
 export interface IUserLinks {
