@@ -75,3 +75,12 @@ export interface ISocialLinks {
   user: IUser
   userId: string
 }
+
+export interface ICreateTodoForm {
+  name: string
+}
+
+export interface ICreateTodo extends ICreateTodoForm {
+  userId: string
+}
+

@@ -8,13 +8,15 @@ import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 import close from '@/../public/close.png'
 import { ITodo, IUser } from "@/types/auth.types";
+import CreateTodoForm from "@/components/forms/CreateTodoForm/CreateTodoForm";
+import { todoService } from "@/services/todo.service";
+import { toast } from "sonner";
 
 type ProfileCardPropsType = {
   user?: IUser
 }
 
 const ProfileCard = ({ user }:ProfileCardPropsType ) => {
-  console.log('user', user)
   return (
     <>
       <div className="flex justify-center w-2/3">
@@ -38,10 +40,7 @@ const ProfileCard = ({ user }:ProfileCardPropsType ) => {
 
           <p className="text-xs text-gray-500 mb-8 leading-5">{user?.description}</p>
           <h3 className="font-bold text-xl mb-4">Мій todo-лист на цей місяць</h3>
-          <div className="flex min-w-full mb-6">
-            <input type="text" placeholder="Що хочете вивчити?" className="w-4/5 mr-2 border rounded-md pl-2 bg-slate-50" />
-            <button className="bg-red-400 text-white font-bold text-sm rounded-md px-4 py-2 w-1/5">Додати</button>
-          </div>
+          {user?.id ? <CreateTodoForm userId={user.id} /> : null}
           {user?.todos && user?.todos.length ? (
             user.todos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} />)
           ) : 'Ще немає жодного запису'}
@@ -91,12 +90,22 @@ export default ProfileCard
 
 
 const TodoItem = ({ todo }: { todo: ITodo }) => {
+  const handleRemove = () => {
+    todoService.removeTodo(todo.id).then(response => {
+      if (response.status === 200) {
+        toast.success('Todo успішно видалено!')
+      } else {
+        toast.error('При видаленні Todo щось пішло не так!')
+      }
+    })
+  }
+
   return (
     <div className="flex items-center bg-slate-50 rounded-md px-4 py-3 mb-2">
       <input type="checkbox" className="mr-3 cursor-pointer" checked={todo.status} />
       <p className="font-bold mr-auto text-md">{todo.name}</p>
       {todo.sticker ? <span className="text-xs bg-slate-200 text-slate-800 px-3 py-1 rounded-md font-bold">{todo.sticker}</span> : null}
-      <button className="bg-trbg-transparent border-none ml-4">
+      <button onClick={handleRemove} className="bg-trbg-transparent border-none ml-4">
         <Image className="w-4 h-4" src={close} alt="close" />
       </button>
     </div>
