@@ -1,21 +1,31 @@
 'use client'
 
-import { ICreateTodo, ICreateTodoForm } from "@/types/auth.types";
+import { ICreateTodo, ICreateTodoForm, ITodo } from "@/types/auth.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import validationSchema from "./validationSchema";
 import { todoService } from "@/services/todo.service";
+import { Dispatch, SetStateAction } from "react";
 
-const CreateTodoForm = ({ userId }: { userId: string }) => {
+type CreateTodoFromProps = {
+ userId: string, 
+ setUserTodos: Dispatch<SetStateAction<ITodo[]>>
+}
+
+const CreateTodoForm = ({ userId, setUserTodos }: CreateTodoFromProps) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ICreateTodoForm>({
     resolver: yupResolver(validationSchema)
   });
 
   const { mutate } = useMutation({
     mutationKey: ['auth'],
-    mutationFn: (data: ICreateTodo) => todoService.createTodo(data),
+    mutationFn: (data: ICreateTodo) => {
+      const response = todoService.createTodo(data)
+      response.then(res => setUserTodos((prevState: ITodo[]) => [...prevState, res]))
+      return response
+    },
     onSuccess() {
       toast.success('Todo успішно додано!')
       reset()

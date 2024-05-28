@@ -1,11 +1,17 @@
 import { axiosWithAuth } from "@/api/interceptors"
-import { ICreateTodo } from "@/types/auth.types"
+import { ICreateTodo, ITodo } from "@/types/auth.types"
 
 class TodoService {
   private BASE_URL = '/todo'
 
   async createTodo(data: ICreateTodo) {
     const response = await axiosWithAuth.post(this.BASE_URL, data)
+
+    return response.data
+  }
+
+  async updateTodo(id: string, data: ITodo) {
+    const response = await axiosWithAuth.put(`${this.BASE_URL}/${id}`, data)
 
     return response
   }
