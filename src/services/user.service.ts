@@ -10,8 +10,14 @@ class UserService {
     return response.data
   }
 
+  async getAllUsers() {
+    const response = await axiosWithAuth.get<IUser[]>(`${this.BASE_URL}/all`)
+
+    return response
+  }
+
   async updateUser(data: IUserEdit) {
-    const response = await axiosWithAuth.put(this.BASE_URL, data)
+    const response = await axiosWithAuth.put<IUser>(this.BASE_URL, data)
 
     return response.data
   }

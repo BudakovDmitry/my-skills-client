@@ -26,8 +26,8 @@ const Header = () => {
                         <li className='mx-2 font-semibold text-sky-500 px-4 py-2 rounded-md hover:underline transition ease-out'>
                             <Link href='/our-technologies'>Наші технології</Link>
                         </li>
-                        <li className='mx-2 font-semibold px-4 py-2 text-white bg-sky-500 rounded-md'>
-                            <Link href='/profiles'>Анкети</Link>
+                        <li>
+                            <Link href='/profiles' className="mx-2 font-semibold px-4 py-2 text-white bg-sky-500 rounded-md">Анкети</Link>
                         </li>
                     </ul>
                 </nav>

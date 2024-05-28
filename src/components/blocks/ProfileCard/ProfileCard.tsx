@@ -93,7 +93,7 @@ const ProfileCard = ({ user }:ProfileCardPropsType ) => {
             {
               user?.links?.facebook ? (
                 <a href={user.links.facebook } target="_blank" className="mx-1 w-6 h-6">
-                  <Image className="" src={facebook} alt="Facebook" />
+                  <Image src={facebook} alt="Facebook" />
                 </a>
               ) : null
             }
@@ -101,14 +101,14 @@ const ProfileCard = ({ user }:ProfileCardPropsType ) => {
             {
               user?.links?.github ? (
                 <a href={user.links.github} target="_blank" className="mx-1 w-6 h-6">
-                  <Image className="" src={github} alt="Github" />
+                  <Image src={github} alt="Github" />
                 </a>
               ) : null
             }
             {
               user?.links?.instagram ? (
                 <a href={user.links.instagram} target="_blank" className="mx-1 w-6 h-6">
-                  <Image className="" src={instagram} alt="Instagram" />
+                  <Image src={instagram} alt="Instagram" />
                 </a>
               ) : null
             }
@@ -116,7 +116,7 @@ const ProfileCard = ({ user }:ProfileCardPropsType ) => {
             {
               user?.links?.linkedIn ? (
                 <a href={user.links.linkedIn} target="_blank" className="mx-1 w-6 h-6">
-                  <Image className="" src={linkedIn} alt="LinkedIn" />
+                  <Image src={linkedIn} alt="LinkedIn" />
                 </a>
               ) : null
             }
