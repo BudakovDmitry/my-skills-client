@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 import logoImage from '@/../public/logo.png'
-import { useProfile } from "@/hooks/useProfile";
+import { useMyProfile } from "@/hooks/useMyProfile";
 import MenuSimple from "@/components/ui/dropdown";
 
 
 const Header = () => {
-    const { data, isLoading } = useProfile()
+    const { data, isLoading } = useMyProfile()
 
     return (
         <header className='py-4 px-6 flex items-center justify-between border-b'>

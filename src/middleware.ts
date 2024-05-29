@@ -8,7 +8,7 @@ export const middleware = async (request: NextRequest, response: NextResponse) =
 
   const isLoginPage = url.includes('/login')
   const isRegistrationPage = url.includes('/registration')
-  const isProfilePage = url.includes('/profile')
+  const isProfilePage = url.includes('/my-profile')
 
   if ((isLoginPage || isRegistrationPage) && refreshToken) {
     return NextResponse.redirect(new URL('/', url))

@@ -8,6 +8,7 @@ import { ILogin } from "@/types/auth.types";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { PAGE } from "@/config/pages-url.config";
 
 
 const LoginForm = () => {
@@ -23,7 +24,7 @@ const LoginForm = () => {
     onSuccess() {
       toast.success('Авторизація успішна!')
       reset()
-      push('/')
+      push(PAGE.HOME)
     }
   })
 

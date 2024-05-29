@@ -4,10 +4,16 @@ import { IUser, IUserEdit } from "@/types/auth.types";
 class UserService {
   private BASE_URL = '/user'
 
-  async getUser() {
+  async getCurrentUser() {
     const response = await axiosWithAuth.get<IUser>(this.BASE_URL)
 
     return response.data
+  }
+
+  async getUserById(id: string) {
+    const response = await axiosWithAuth.get<IUser>(`${this.BASE_URL}/${id}`)
+
+    return response
   }
 
   async getAllUsers() {

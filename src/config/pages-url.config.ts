@@ -3,8 +3,8 @@ export enum PAGE {
   ABOUT_PLATFORM = '/about-platform',
   OUR_TECHNOLOGIES = '/our-technologies',
   PROFILES = '/profiles',
-  PROFILE = '/profile',
-  PROFILE_EDIT = '/profile/edit',
+  PROFILE = '/my-profile',
+  PROFILE_EDIT = '/my-profile/edit',
   LOGIN = '/login',
   REGISTRATION = '/registration'
 }

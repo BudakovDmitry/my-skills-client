@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { userService } from "@/services/user.service";
 
-export const useProfile = () => {
+export const useUser = (id: string) => {
   const { data, isLoading } = useQuery({
-    queryKey: ['profile'],
-    queryFn: () => userService.getUser()
+    queryKey: ['user'],
+    queryFn: () => userService.getUserById(id)
   })
 
   return { data, isLoading }

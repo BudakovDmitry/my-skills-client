@@ -8,6 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { IUserEdit, IUser } from "@/types/auth.types";
 import { toast } from "sonner";
 import { userService } from "@/services/user.service";
+import { PAGE } from "@/config/pages-url.config";
 
 const ProfileEditForm = ({ user }: { user: IUser }) => {
   const defaultValuesUser = {
@@ -38,7 +39,7 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
     onSuccess() {
       toast.success('Профіль успішно оновлений!')
       reset()
-      push('/profile')
+      push(PAGE.PROFILE)
     }
   })
 

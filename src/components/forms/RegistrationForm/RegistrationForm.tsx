@@ -8,6 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { IRegistration } from "@/types/auth.types";
 import { authService } from "@/services/auth.service";
 import { toast } from "sonner";
+import { PAGE } from "@/config/pages-url.config";
 
 const RegistrationForm = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<IRegistration>({
@@ -22,7 +23,7 @@ const RegistrationForm = () => {
     onSuccess() {
       toast.success('Реєстрація успішна!')
       reset()
-      push('/')
+      push(PAGE.HOME)
     }
   })
 

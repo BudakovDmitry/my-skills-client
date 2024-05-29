@@ -1,10 +1,10 @@
 'use client'
 
 import ProfileEditForm from "@/components/forms/ProfileEditForm/ProfileEditForm"
-import { useProfile } from "@/hooks/useProfile"
+import { useMyProfile } from "@/hooks/useMyProfile"
 
 const ProfileEdit = () => {
-  const { data, isLoading } = useProfile()
+  const { data, isLoading } = useMyProfile()
 
   return (
     <div className="flex-1 flex flex-col items-center">
