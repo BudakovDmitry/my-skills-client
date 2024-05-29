@@ -17,9 +17,10 @@ import { useState } from "react";
 
 type ProfileCardPropsType = {
   user?: IUser
+  isOnlyView?: boolean
 }
 
-const ProfileCard = ({ user }:ProfileCardPropsType ) => {
+const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
   const [userTodos, setUserTodos] = useState(user?.todos || [])
 
   const handleUpdateTodo = (todo: ITodo) => {
@@ -81,9 +82,9 @@ const ProfileCard = ({ user }:ProfileCardPropsType ) => {
 
           <p className="text-xs text-gray-500 mb-8 leading-5">{user?.description}</p>
           <h3 className="font-bold text-xl mb-4">Мій todo-лист на цей місяць</h3>
-          {user?.id ? <CreateTodoForm userId={user.id} setUserTodos={setUserTodos} /> : null}
+          {user?.id && !isOnlyView ? <CreateTodoForm userId={user.id} setUserTodos={setUserTodos} /> : null}
           {userTodos && userTodos.length ? (
-            userTodos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} handleRemoveTodo={handleRemoveTodo} handleUpdateTodo={handleUpdateTodo} />)
+            userTodos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} handleRemoveTodo={handleRemoveTodo} handleUpdateTodo={handleUpdateTodo} isOnlyView={isOnlyView} />)
           ) : <p className="font-medium text-center mt-6">Ще немає жодного запису</p>}
         </div>
         <div className="w-1/3">
@@ -130,14 +131,14 @@ const ProfileCard = ({ user }:ProfileCardPropsType ) => {
 export default ProfileCard
 
 
-const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo }: { todo: ITodo, handleRemoveTodo: (id: string) => void, handleUpdateTodo: (id: ITodo) => void }) => {
+const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false }: { todo: ITodo, handleRemoveTodo: (id: string) => void, handleUpdateTodo: (id: ITodo) => void, isOnlyView?: boolean }) => {
 
   return (
     <div className={`flex items-center rounded-md px-4 py-3 mb-2 ${todo.status ? 'bg-slate-50' : 'bg-slate-200 '}`}>
-      <input type="checkbox" className="mr-3 cursor-pointer" checked={todo.status} onChange={() => handleUpdateTodo(todo)} />
+      <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={todo.status} onChange={() => handleUpdateTodo(todo)} disabled={isOnlyView} />
         <p className={`font-bold mr-auto text-md ${todo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
         {todo.sticker ? <span className="text-xs bg-slate-200 text-slate-800 px-3 py-1 rounded-md font-bold">{todo.sticker}</span> : null}
-        <button onClick={() => handleRemoveTodo(todo.id)} className="bg-trbg-transparent border-none ml-4">
+        <button onClick={isOnlyView ? undefined : () => handleRemoveTodo(todo.id)} className={`bg-trbg-transparent border-none ml-4 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`}>
           <Image className="w-4 h-4" src={close} alt="close" />
         </button>
     </div>

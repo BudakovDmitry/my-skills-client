@@ -11,7 +11,7 @@ class UserService {
   }
 
   async getUserById(id: string) {
-    const response = await axiosWithAuth.get<IUser>(`${this.BASE_URL}/${id}`)
+    const response = await axiosWithAuth.get<IUser>(`${this.BASE_URL}/all/${id}`)
 
     return response
   }
