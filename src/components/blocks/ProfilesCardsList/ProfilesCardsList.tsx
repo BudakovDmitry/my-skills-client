@@ -7,9 +7,6 @@ import { IUser } from "@/types/auth.types"
 const ProfilesCardsList = () => {
   const { data, isLoading } = useAllUsers()
 
-  console.log('data', data)
-  
-
   if (isLoading) {
     return (
       <div>

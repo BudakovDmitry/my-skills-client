@@ -6,10 +6,13 @@ import Image from "next/image";
 import logoImage from '@/../public/logo.png'
 import { useMyProfile } from "@/hooks/useMyProfile";
 import MenuSimple from "@/components/ui/dropdown";
+import { usePageLink } from "@/hooks/usePageLink";
+import { IPageLink } from "@/types/auth.types";
 
 
 const Header = () => {
-    const { data, isLoading } = useMyProfile()
+    const { data: profileData, isLoading: isProfileLoading } = useMyProfile()
+    const { data: pageLinkData, isLoading: isPageLinkLoading } = usePageLink()
 
     return (
         <header className='py-4 px-6 flex items-center justify-between border-b'>
@@ -20,18 +23,14 @@ const Header = () => {
             <div className='flex items-center'>
                 <nav className="border-r-2 pr-4">
                     <ul className='flex items-center'>
-                        <li className='mx-2 font-semibold text-sky-500 px-4 py-2 rounded-md hover:underline transition ease-out'>
-                            <Link href='/about-platform'>Про платформу</Link>
-                        </li>
-                        <li className='mx-2 font-semibold text-sky-500 px-4 py-2 rounded-md hover:underline transition ease-out'>
-                            <Link href='/our-technologies'>Наші технології</Link>
-                        </li>
-                        <li>
-                            <Link href='/profiles' className="mx-2 font-semibold px-4 py-2 text-white bg-sky-500 rounded-md">Анкети</Link>
-                        </li>
+                        {pageLinkData?.data.map((item: IPageLink) => (
+                            <li key={item.id} className={`mx-2 font-semibold px-4 py-2 rounded-md ${item.isButton ? 'text-white bg-sky-500' : 'text-sky-500 hover:underline transition ease-out'}`}>
+                                <Link href={item.link}>{item.name}</Link>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
-                {isLoading ? 'Loading...' : data ? <MenuSimple user={data} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href='/login'>Увійти</Link>}
+                {isProfileLoading ? 'Loading...' : profileData ? <MenuSimple user={profileData} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href='/login'>Увійти</Link>}
             </div>
         </header>
     )

@@ -18,7 +18,7 @@ const RegistrationForm = () => {
   const { push } = useRouter()
 
   const { mutate } = useMutation({
-    mutationKey: ['auth'],
+    mutationKey: ['registration'],
     mutationFn: (data: IRegistration) => authService.main('registration', data),
     onSuccess() {
       toast.success('Реєстрація успішна!')

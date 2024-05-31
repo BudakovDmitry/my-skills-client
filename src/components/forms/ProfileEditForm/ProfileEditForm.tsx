@@ -34,7 +34,7 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
   const { push } = useRouter()
 
   const { mutate } = useMutation({
-    mutationKey: ['edit'],
+    mutationKey: ['profileEdit'],
     mutationFn: (data: IUserEdit) => userService.updateUser(data),
     onSuccess() {
       toast.success('Профіль успішно оновлений!')

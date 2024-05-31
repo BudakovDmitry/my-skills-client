@@ -93,3 +93,13 @@ export interface IPage {
   content: string
 }
 
+export interface IPageLink {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+
+  name: string
+  link: string
+  order: number
+  isButton: boolean
+}

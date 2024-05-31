@@ -19,7 +19,7 @@ const LoginForm = () => {
   const { push } = useRouter()
 
   const { mutate } = useMutation({
-    mutationKey: ['auth'],
+    mutationKey: ['login'],
     mutationFn: (data: ILogin) => authService.main('login', data),
     onSuccess() {
       toast.success('Авторизація успішна!')
