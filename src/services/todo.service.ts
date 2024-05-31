@@ -7,7 +7,7 @@ class TodoService {
   async createTodo(data: ICreateTodo) {
     const response = await axiosWithAuth.post(this.BASE_URL, data)
 
-    return response.data
+    return response
   }
 
   async updateTodo(id: string, data: ITodo) {

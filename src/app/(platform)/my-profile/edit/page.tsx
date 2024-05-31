@@ -8,7 +8,7 @@ const ProfileEdit = () => {
 
   return (
     <div className="flex-1 flex flex-col items-center">
-      {isLoading ? 'Loading...' : data ? <ProfileEditForm user={data} /> : null}
+      {isLoading ? 'Loading...' : data ? <ProfileEditForm user={data?.data} /> : null}
     </div>
   )
 }

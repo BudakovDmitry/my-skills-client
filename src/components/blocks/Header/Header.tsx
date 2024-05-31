@@ -30,7 +30,7 @@ const Header = () => {
                         ))}
                     </ul>
                 </nav>
-                {isProfileLoading ? 'Loading...' : profileData ? <MenuSimple user={profileData} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href='/login'>Увійти</Link>}
+                {isProfileLoading ? 'Loading...' : profileData ? <MenuSimple user={profileData?.data} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href='/login'>Увійти</Link>}
             </div>
         </header>
     )

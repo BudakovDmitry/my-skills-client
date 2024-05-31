@@ -23,7 +23,7 @@ const CreateTodoForm = ({ userId, setUserTodos }: CreateTodoFromProps) => {
     mutationKey: ['crateTodo'],
     mutationFn: (data: ICreateTodo) => {
       const response = todoService.createTodo(data)
-      response.then(res => setUserTodos((prevState: ITodo[]) => [...prevState, res]))
+      response.then(res => setUserTodos((prevState: ITodo[]) => [...prevState, res.data]))
       return response
     },
     onSuccess() {

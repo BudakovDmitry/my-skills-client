@@ -7,7 +7,7 @@ class UserService {
   async getCurrentUser() {
     const response = await axiosWithAuth.get<IUser>(this.BASE_URL)
 
-    return response.data
+    return response
   }
 
   async getUserById(id: string) {
@@ -25,7 +25,7 @@ class UserService {
   async updateUser(data: IUserEdit) {
     const response = await axiosWithAuth.put<IUser>(this.BASE_URL, data)
 
-    return response.data
+    return response
   }
 }
 

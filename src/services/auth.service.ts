@@ -31,11 +31,11 @@ class AuthService {
   async logout() {
     const response = await axiosClassic.post<boolean>(`${this.BASE_URL}/logout`)
 
-    if (response.data) {
+    if (response) {
       removeFromStorage()
     }
 
-    return response.data
+    return response
   }
 }
 
