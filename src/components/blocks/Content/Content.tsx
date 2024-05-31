@@ -6,8 +6,6 @@ const Content = ({ name }: { name: string }) => {
 
   const { data, isLoading } = usePage(name)
 
-  console.log('data', data)
-
   if (isLoading) {
     return (
       <div>

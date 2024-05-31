@@ -2,6 +2,12 @@
 
 import ProfileCard from '@/components/blocks/ProfileCard/ProfileCard'
 import { useMyProfile } from '@/hooks/useMyProfile';
+// import { Metadata } from 'next';
+
+// export const metadata: Metadata = {
+//   title: 'Мій профіль',
+//   description: 'Мій профіль',
+// };
 
 const Profile = () => {
   const { data, isLoading } = useMyProfile()

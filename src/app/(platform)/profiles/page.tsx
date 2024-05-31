@@ -1,9 +1,10 @@
-import type { Metadata } from 'next'
 import ProfilesCardsList from '@/components/blocks/ProfilesCardsList/ProfilesCardsList';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Анкети',
-}
+  description: 'Анкети сайту',
+};
 
 const Profiles = () => {
   return (

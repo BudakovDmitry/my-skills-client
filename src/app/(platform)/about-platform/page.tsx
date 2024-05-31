@@ -1,8 +1,13 @@
 import Image from "next/image";
-
 import logoImage from '@/../public/logo.png'
 import userIcon from '@/../public/user.png'
 import doneIcon from '@/../public/done.png'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Про платформу',
+  description: 'Про платформу',
+};
 
 const AboutPlatform = () => {
     return (

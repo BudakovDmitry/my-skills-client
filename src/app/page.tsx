@@ -5,6 +5,12 @@ import logoImage from '@/../public/logo.png'
 import Header from "@/components/blocks/Header/Header";
 import Footer from "@/components/blocks/Footer/Footer";
 import Content from "@/components/blocks/Content/Content";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Головна',
+};
+
 
 const Home = () => {
     return (

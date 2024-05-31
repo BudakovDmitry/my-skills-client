@@ -6,6 +6,12 @@ import typescriptIcon from '@/../public/typescript.png';
 import nextjsIcon from '@/../public/nextjs.png';
 import reactIcon from '@/../public/react.png';
 import tailwindcssIcon from '@/../public/tailwindcss.png';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Наші технології',
+  description: 'Технології з якими працює компанія',
+};
 
 const technologies = [
     {

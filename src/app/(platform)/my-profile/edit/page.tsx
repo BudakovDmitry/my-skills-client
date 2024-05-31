@@ -1,7 +1,11 @@
-'use client'
-
 import ProfileEditForm from "@/components/forms/ProfileEditForm/ProfileEditForm"
 import { useMyProfile } from "@/hooks/useMyProfile"
+// import { Metadata } from 'next';
+
+// export const metadata: Metadata = {
+//   title: 'Редагування профілю',
+//   description: 'Редагування профілю',
+// };
 
 const ProfileEdit = () => {
   const { data, isLoading } = useMyProfile()

@@ -2,6 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from '@/../public/logo.png'
 import RegistrationForm from "@/components/forms/RegistrationForm/RegistrationForm";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Реєстрація',
+  description: 'Реєстрація',
+};
 
 const Registration = () => {
   return (
