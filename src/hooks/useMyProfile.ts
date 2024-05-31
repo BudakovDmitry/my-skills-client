@@ -4,7 +4,8 @@ import { userService } from "@/services/user.service";
 export const useMyProfile = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['profile'],
-    queryFn: () => userService.getCurrentUser()
+    queryFn: () => userService.getCurrentUser(),
+    retry: 0
   })
 
   return { data, isLoading }

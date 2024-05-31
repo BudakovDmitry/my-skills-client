@@ -84,3 +84,12 @@ export interface ICreateTodo extends ICreateTodoForm {
   userId: string
 }
 
+export interface IPage {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+
+  title: string
+  content: string
+}
+
