@@ -1,6 +1,6 @@
 'use client'
 
-import { ICreateTodo, ICreateTodoForm, ITodo } from "@/types/auth.types";
+import { ICreateTodo, ICreateTodoForm, ITodo } from "@/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";

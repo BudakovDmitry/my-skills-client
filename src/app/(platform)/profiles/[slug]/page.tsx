@@ -1,6 +1,7 @@
 'use client'
 
 import ProfileCard from "@/components/blocks/ProfileCard/ProfileCard";
+import Loader from "@/components/ui/Loader/Loader";
 import { useUser } from "@/hooks/useUser";
 
 const Page = ({ params }: { params: { slug: string } }) => {
@@ -8,9 +9,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
 
 
   if (isLoading) {
-    return (
-      <div>Loading...</div>
-    )
+    return (<Loader />)
   }
 
   return (

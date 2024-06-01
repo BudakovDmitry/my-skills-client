@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "@/api/interceptors"
-import { ICreateTodo, ITodo } from "@/types/auth.types"
+import { ICreateTodo, ITodo } from "@/types/types"
 
 class TodoService {
   private BASE_URL = '/todo'

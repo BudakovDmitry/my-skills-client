@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import validationSchema from "./validationSchema";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { IUserEdit, IUser } from "@/types/auth.types";
+import { IUserEdit, IUser } from "@/types/types";
 import { toast } from "sonner";
 import { userService } from "@/services/user.service";
 import { PAGE } from "@/config/pages-url.config";

@@ -1,5 +1,6 @@
 'use client'
 
+import Loader from "@/components/ui/Loader/Loader"
 import { usePage } from "@/hooks/usePage"
 
 const Content = ({ name }: { name: string }) => {
@@ -7,11 +8,7 @@ const Content = ({ name }: { name: string }) => {
   const { data, isLoading } = usePage(name)
 
   if (isLoading) {
-    return (
-      <div>
-        Loading...
-      </div>
-    )
+    return (<Loader />)
   }
 
   return (

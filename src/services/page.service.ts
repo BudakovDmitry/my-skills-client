@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "@/api/interceptors"
-import { IPage } from "@/types/auth.types"
+import { IPage } from "@/types/types"
 
 class PageService {
   private BASE_URL = '/page'

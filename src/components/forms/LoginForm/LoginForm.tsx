@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import validationSchema from "./validationSchema";
 import { authService } from "@/services/auth.service";
-import { ILogin } from "@/types/auth.types";
+import { ILogin } from "@/types/types";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";

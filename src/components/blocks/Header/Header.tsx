@@ -7,7 +7,8 @@ import logoImage from '@/../public/logo.png'
 import { useMyProfile } from "@/hooks/useMyProfile";
 import MenuSimple from "@/components/ui/dropdown";
 import { usePageLink } from "@/hooks/usePageLink";
-import { IPageLink } from "@/types/auth.types";
+import { IPageLink } from "@/types/types";
+import Loader from "@/components/ui/Loader/Loader";
 
 
 const Header = () => {
@@ -30,7 +31,7 @@ const Header = () => {
                         ))}
                     </ul>
                 </nav>
-                {isProfileLoading ? 'Loading...' : profileData ? <MenuSimple user={profileData?.data} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href='/login'>Увійти</Link>}
+                {isProfileLoading ? <Loader /> : profileData ? <MenuSimple user={profileData?.data} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href='/login'>Увійти</Link>}
             </div>
         </header>
     )

@@ -7,7 +7,7 @@ import instagram from '@/../public/instagram.png'
 import linkedIn from '@/../public/linkedin.png'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
-import { IUser } from "@/types/auth.types";
+import { IUser } from "@/types/types";
 
 const ProfilesCard = ({ user }: { user: IUser }) => {
   return (

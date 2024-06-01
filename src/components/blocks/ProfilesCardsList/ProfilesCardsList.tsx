@@ -2,17 +2,14 @@
 
 import { useAllUsers } from "@/hooks/useAllUsers"
 import ProfilesCard from "../ProfilesCard/ProfilesCard"
-import { IUser } from "@/types/auth.types"
+import { IUser } from "@/types/types"
+import Loader from "@/components/ui/Loader/Loader"
 
 const ProfilesCardsList = () => {
   const { data, isLoading } = useAllUsers()
 
   if (isLoading) {
-    return (
-      <div>
-        Loading...
-      </div>
-    )
+    return (<Loader />)
   }
 
   if (data) {

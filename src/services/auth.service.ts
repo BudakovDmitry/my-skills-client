@@ -1,6 +1,6 @@
 import { axiosClassic } from "@/api/interceptors"
 import { removeFromStorage, saveTokenStorage } from "./authToken.service"
-import { ILogin, IRegistration, IAuthResponse } from "@/types/auth.types"
+import { ILogin, IRegistration, IAuthResponse } from "@/types/types"
 
 class AuthService {
   private BASE_URL = '/auth'

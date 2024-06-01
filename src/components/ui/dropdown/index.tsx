@@ -6,7 +6,7 @@ import { MenuItem as BaseMenuItem, MenuItemProps } from '@mui/base/MenuItem';
 import { Dropdown } from '@mui/base/Dropdown';
 import { useTheme } from '@mui/system';
 import { authService } from '@/services/auth.service';
-import { IUser } from '@/types/auth.types';
+import { IUser } from '@/types/types';
 import Avatar from '@mui/material/Avatar';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';

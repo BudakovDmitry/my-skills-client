@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -29,5 +30,21 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  @keyframes rot55 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-rot55 {
+    animation: rot55 0.7s linear infinite;
+  }
+
+  .shadow-spinner {
+    box-shadow: -10px -10px 10px #59d8f8, 0px -10px 10px 0px #3293e2, 10px -10px 10px #68f3d0, 10px 0 10px #59d8f8, 10px 10px 10px 0px #57fcd8, 0 10px 10px 0px #4edaec, -10px 10px 10px 0px #4696f3;
   }
 }

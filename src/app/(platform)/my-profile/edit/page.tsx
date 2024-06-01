@@ -1,4 +1,5 @@
 import ProfileEditForm from "@/components/forms/ProfileEditForm/ProfileEditForm"
+import Loader from "@/components/ui/Loader/Loader"
 import { useMyProfile } from "@/hooks/useMyProfile"
 // import { Metadata } from 'next';
 
@@ -12,7 +13,7 @@ const ProfileEdit = () => {
 
   return (
     <div className="flex-1 flex flex-col items-center">
-      {isLoading ? 'Loading...' : data ? <ProfileEditForm user={data?.data} /> : null}
+      {isLoading ? <Loader /> : data ? <ProfileEditForm user={data?.data} /> : null}
     </div>
   )
 }

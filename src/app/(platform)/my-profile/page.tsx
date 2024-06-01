@@ -1,6 +1,7 @@
 'use client'
 
 import ProfileCard from '@/components/blocks/ProfileCard/ProfileCard'
+import Loader from '@/components/ui/Loader/Loader';
 import { useMyProfile } from '@/hooks/useMyProfile';
 // import { Metadata } from 'next';
 
@@ -14,7 +15,7 @@ const Profile = () => {
 
   return (
     <div className='flex-1 flex flex-col items-center mt-2 mb-14'>
-      {isLoading ? 'Loading...' : <ProfileCard user={data?.data} isOnlyView={false} />}
+      {isLoading ? <Loader /> : <ProfileCard user={data?.data} isOnlyView={false} />}
     </div>
   )
 }

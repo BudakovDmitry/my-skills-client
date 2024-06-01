@@ -9,7 +9,7 @@ import linkedIn from '@/../public/linkedin.png'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 import close from '@/../public/close.png'
-import { ITodo, IUser } from "@/types/auth.types";
+import { ITodo, IUser } from "@/types/types";
 import CreateTodoForm from "@/components/forms/CreateTodoForm/CreateTodoForm";
 import { todoService } from "@/services/todo.service";
 import { toast } from "sonner";
