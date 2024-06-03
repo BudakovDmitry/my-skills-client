@@ -11,6 +11,7 @@ import { IUser } from "@/types/types";
 import { PAGE } from "@/config/pages-url.config";
 
 const ProfilesCard = ({ user }: { user: IUser }) => {
+  
   return (
       <div className="flex items-center justify-center w-2/3 my-16">
         <div className="p-8 rounded-lg shadow-2xl min-h-full w-2/3">

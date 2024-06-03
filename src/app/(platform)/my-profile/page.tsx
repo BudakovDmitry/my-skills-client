@@ -3,12 +3,6 @@
 import ProfileCard from '@/components/blocks/ProfileCard/ProfileCard'
 import Loader from '@/components/ui/Loader/Loader';
 import { useMyProfile } from '@/hooks/useMyProfile';
-// import { Metadata } from 'next';
-
-// export const metadata: Metadata = {
-//   title: 'Мій профіль',
-//   description: 'Мій профіль',
-// };
 
 const Profile = () => {
   const { data, isLoading } = useMyProfile()

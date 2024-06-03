@@ -1,12 +1,6 @@
 import ProfileEditForm from "@/components/forms/ProfileEditForm/ProfileEditForm"
 import Loader from "@/components/ui/Loader/Loader"
 import { useMyProfile } from "@/hooks/useMyProfile"
-// import { Metadata } from 'next';
-
-// export const metadata: Metadata = {
-//   title: 'Редагування профілю',
-//   description: 'Редагування профілю',
-// };
 
 const ProfileEdit = () => {
   const { data, isLoading } = useMyProfile()
