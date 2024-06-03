@@ -1,3 +1,5 @@
+'use client'
+
 import ProfileEditForm from "@/components/forms/ProfileEditForm/ProfileEditForm"
 import Loader from "@/components/ui/Loader/Loader"
 import { useMyProfile } from "@/hooks/useMyProfile"
