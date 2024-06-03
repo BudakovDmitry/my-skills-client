@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import validationSchema from "./validationSchema";
 import { todoService } from "@/services/todo.service";
 import { Dispatch, SetStateAction } from "react";
+import { QUERY_KEY } from "@/config/query-key.config";
 
 type CreateTodoFromProps = {
  userId: string, 
@@ -20,7 +21,7 @@ const CreateTodoForm = ({ userId, setUserTodos }: CreateTodoFromProps) => {
   });
 
   const { mutate } = useMutation({
-    mutationKey: ['crateTodo'],
+    mutationKey: [QUERY_KEY.CREATE_TODO],
     mutationFn: (data: ICreateTodo) => {
       const response = todoService.createTodo(data)
       response.then(res => setUserTodos((prevState: ITodo[]) => [...prevState, res.data]))

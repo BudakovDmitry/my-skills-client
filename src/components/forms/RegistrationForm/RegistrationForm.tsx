@@ -9,6 +9,7 @@ import { IRegistration } from "@/types/types";
 import { authService } from "@/services/auth.service";
 import { toast } from "sonner";
 import { PAGE } from "@/config/pages-url.config";
+import { QUERY_KEY } from "@/config/query-key.config";
 
 const RegistrationForm = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<IRegistration>({
@@ -18,7 +19,7 @@ const RegistrationForm = () => {
   const { push } = useRouter()
 
   const { mutate } = useMutation({
-    mutationKey: ['registration'],
+    mutationKey: [QUERY_KEY.REGISTRATION],
     mutationFn: (data: IRegistration) => authService.main('registration', data),
     onSuccess() {
       toast.success('Реєстрація успішна!')

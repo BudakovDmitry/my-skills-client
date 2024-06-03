@@ -1,8 +1,9 @@
 import { axiosWithAuth } from "@/api/interceptors";
+import { ENDPOINTS } from "@/config/endpoints.config";
 import { IUser, IUserEdit } from "@/types/types";
 
 class UserService {
-  private BASE_URL = '/user'
+  private BASE_URL = ENDPOINTS.USER
 
   async getCurrentUser() {
     const response = await axiosWithAuth.get<IUser>(this.BASE_URL)

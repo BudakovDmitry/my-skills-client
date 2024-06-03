@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { pageLinkService } from "@/services/pageLink.service";
+import { QUERY_KEY } from "@/config/query-key.config";
 
 export const usePageLink = () => {
   const { data, isLoading } = useQuery({
-    queryKey: ['page-link'],
+    queryKey: [QUERY_KEY.GET_ALL_PAGE_LINK],
     queryFn: () => pageLinkService.getAllLinks(),
     retry: 1
   })

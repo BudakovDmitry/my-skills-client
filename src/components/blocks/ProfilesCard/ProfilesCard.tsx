@@ -8,6 +8,7 @@ import linkedIn from '@/../public/linkedin.png'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 import { IUser } from "@/types/types";
+import { PAGE } from "@/config/pages-url.config";
 
 const ProfilesCard = ({ user }: { user: IUser }) => {
   return (
@@ -24,7 +25,7 @@ const ProfilesCard = ({ user }: { user: IUser }) => {
             <p className="text-sm text-gray-500">Місцезнаходження - {user.location}</p>
           </div>
           <p className="text-xs text-gray-500 mb-8 leading-5">{user.description}</p>
-          <Link href={`/profiles/${user.id}`} className="text-sm bg-red-400 text-white font-bold rounded-full px-4 py-2 mb-8 inline-block">Дивитись анкету</Link>
+          <Link href={`${PAGE.PROFILES}/${user.id}`} className="text-sm bg-red-400 text-white font-bold rounded-full px-4 py-2 mb-8 inline-block">Дивитись анкету</Link>
           <div className="flex items-center">
           {
               user?.links?.facebook ? (

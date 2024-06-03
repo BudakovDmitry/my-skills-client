@@ -9,6 +9,7 @@ import { IUserEdit, IUser } from "@/types/types";
 import { toast } from "sonner";
 import { userService } from "@/services/user.service";
 import { PAGE } from "@/config/pages-url.config";
+import { QUERY_KEY } from "@/config/query-key.config";
 
 const ProfileEditForm = ({ user }: { user: IUser }) => {
   const defaultValuesUser = {
@@ -34,7 +35,7 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
   const { push } = useRouter()
 
   const { mutate } = useMutation({
-    mutationKey: ['profileEdit'],
+    mutationKey: [QUERY_KEY.PROFILE_EDIT],
     mutationFn: (data: IUserEdit) => userService.updateUser(data),
     onSuccess() {
       toast.success('Профіль успішно оновлений!')

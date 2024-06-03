@@ -1,8 +1,9 @@
 import { axiosWithAuth } from "@/api/interceptors"
+import { ENDPOINTS } from "@/config/endpoints.config"
 import { ICreateTodo, ITodo } from "@/types/types"
 
 class TodoService {
-  private BASE_URL = '/todo'
+  private BASE_URL = ENDPOINTS.TODO
 
   async createTodo(data: ICreateTodo) {
     const response = await axiosWithAuth.post(this.BASE_URL, data)

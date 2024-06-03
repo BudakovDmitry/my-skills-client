@@ -9,6 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { PAGE } from "@/config/pages-url.config";
+import { QUERY_KEY } from "@/config/query-key.config";
 
 
 const LoginForm = () => {
@@ -19,7 +20,7 @@ const LoginForm = () => {
   const { push } = useRouter()
 
   const { mutate } = useMutation({
-    mutationKey: ['login'],
+    mutationKey: [QUERY_KEY.LOGIN],
     mutationFn: (data: ILogin) => authService.main('login', data),
     onSuccess() {
       toast.success('Авторизація успішна!')
