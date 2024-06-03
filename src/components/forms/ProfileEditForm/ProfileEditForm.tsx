@@ -10,6 +10,14 @@ import { toast } from "sonner";
 import { userService } from "@/services/user.service";
 import { PAGE } from "@/config/pages-url.config";
 import { QUERY_KEY } from "@/config/query-key.config";
+import { FilePond, registerPlugin } from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+
+registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateSize, FilePondPluginFileValidateType);
 
 const ProfileEditForm = ({ user }: { user: IUser }) => {
   const defaultValuesUser = {
@@ -51,6 +59,21 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-4">
+          <div className="col-span-4 relative">
+            <div className="max-w-28 max-h-28 mx-auto cursor-pointer">
+              <FilePond
+                acceptedFileTypes={['image/*']}
+                maxFileSize="2MB"
+                imagePreviewHeight={170}
+                stylePanelLayout='compact circle'
+                labelIdle='Фото'
+                stylePanelAspectRatio='1:1'
+                className=""
+                onupdatefiles={fileItems => {
+                }}
+              />
+            </div>
+          </div>
           <div className="col-span-2 relative">
               <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Ім'я *</label>
               <input type="text" placeholder="Джон" {...register("firstName", { required: true })} className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
