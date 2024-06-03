@@ -13,7 +13,8 @@ import { ITodo, IUser } from "@/types/types";
 import CreateTodoForm from "@/components/forms/CreateTodoForm/CreateTodoForm";
 import { todoService } from "@/services/todo.service";
 import { toast } from "sonner";
-import { useState } from "react";
+import { QUERY_KEY } from "@/config/query-key.config";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 type ProfileCardPropsType = {
   user?: IUser
@@ -21,7 +22,27 @@ type ProfileCardPropsType = {
 }
 
 const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
-  const [userTodos, setUserTodos] = useState(user?.todos || [])
+  console.log('user', user)
+  const queryClient = useQueryClient()
+
+
+  const { mutate } = useMutation({
+    mutationKey: [QUERY_KEY.UPDATE_TODO],
+    mutationFn: (data: ITodo) => todoService.updateTodo(data.id, data),
+    onSuccess() {
+      toast.success('Todo успішно оновлено!')
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
+    }
+  })
+
+  const { mutate: removeMutate } = useMutation({
+    mutationKey: [QUERY_KEY.REMOVE_TODO],
+    mutationFn: (id: string) => todoService.removeTodo(id),
+    onSuccess() {
+      toast.success('Todo успішно видалено!')
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
+    }
+  })
 
   const handleUpdateTodo = (todo: ITodo) => {
     const newTodo = {
@@ -29,34 +50,11 @@ const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
       status: !todo.status
     }
 
-
-    todoService.updateTodo(todo.id, newTodo).then(response => {
-      if (response.status === 200) {
-        toast.success('Todo успішно оновлено!')
-
-
-        setUserTodos((prevState) => prevState.map((prevTodo) => {
-          return prevTodo.id === todo.id ? newTodo : prevTodo
-        }))
-
-
-      } else {
-        toast.error('При оновлені Todo щось пішло не так!')
-      }
-    })
+    mutate(newTodo)
   }
 
   const handleRemoveTodo = (id: string) => {
-    todoService.removeTodo(id).then(response => {
-      if (response.status === 200) {
-        toast.success('Todo успішно видалено!')
-
-        setUserTodos((prevState) => prevState.filter((todo) => todo.id !== response.data.id))
-
-      } else {
-        toast.error('При видаленні Todo щось пішло не так!')
-      }
-    })
+    removeMutate(id)
   }
 
   return (
@@ -82,9 +80,9 @@ const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
 
           <p className="text-xs text-gray-500 mb-8 leading-5">{user?.description}</p>
           <h3 className="font-bold text-xl mb-4">Мій todo-лист на цей місяць</h3>
-          {user?.id && !isOnlyView ? <CreateTodoForm userId={user.id} setUserTodos={setUserTodos} /> : null}
-          {userTodos && userTodos.length ? (
-            userTodos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} handleRemoveTodo={handleRemoveTodo} handleUpdateTodo={handleUpdateTodo} isOnlyView={isOnlyView} />)
+          {user?.id && !isOnlyView ? <CreateTodoForm userId={user.id} /> : null}
+          {user?.todos && user?.todos.length ? (
+            user.todos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} handleRemoveTodo={handleRemoveTodo} handleUpdateTodo={handleUpdateTodo} isOnlyView={isOnlyView} />)
           ) : <p className="font-medium text-center mt-6">Ще немає жодного запису</p>}
         </div>
         <div className="w-1/3">
