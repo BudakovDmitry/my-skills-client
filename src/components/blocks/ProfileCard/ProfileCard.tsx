@@ -22,7 +22,6 @@ type ProfileCardPropsType = {
 }
 
 const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
-  console.log('user', user)
   const queryClient = useQueryClient()
 
 
@@ -86,7 +85,7 @@ const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
           ) : <p className="font-medium text-center mt-6">Ще немає жодного запису</p>}
         </div>
         <div className="w-1/3">
-          <Image className="rounded-md mb-4" src={profilePhoto} alt="Profile Image" />
+          <Image className="rounded-md mb-4" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
           <div className="flex items-center justify-center">
  
             {

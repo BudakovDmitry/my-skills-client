@@ -52,6 +52,14 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
     }
   })
 
+  const { mutate: mutateUploadPhoto } = useMutation({
+    mutationKey: [QUERY_KEY.UPLOAD_PHOTO],
+    mutationFn: (data: FormData) => userService.uploadPhoto(user.id, data),
+    onSuccess() {
+      toast.success('Фото успішно оновлено!')
+    }
+  })
+
   const onSubmit: SubmitHandler<IUserEdit> = data => {
     mutate(data)
   }
@@ -69,7 +77,12 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
                 labelIdle='Фото'
                 stylePanelAspectRatio='1:1'
                 className=""
-                onupdatefiles={fileItems => {
+                onaddfile={(error, fileItem) => {
+                  if(!error) {
+                    const formData = new FormData()
+                    formData.append('file', fileItem.file);
+                    mutateUploadPhoto(formData)
+                  }
                 }}
               />
             </div>

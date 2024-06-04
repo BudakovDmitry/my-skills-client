@@ -28,6 +28,16 @@ class UserService {
 
     return response
   }
+
+  async uploadPhoto(id: string, data: FormData) {
+    const response = await axiosWithAuth.post<FormData>(`${this.BASE_URL}/upload/${id}`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+
+    return response
+  }
 }
 
 export const userService = new UserService()

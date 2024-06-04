@@ -37,7 +37,7 @@ export default function MenuSimple({ user }: MenuSimplePropsType) {
       <Dropdown>
         <div className='ml-2'>
           <MenuButton>
-            <Avatar alt={user.firstName} src="/static/images/avatar/1.jpg" className='mr-4' />
+            <Avatar alt={user.firstName} src={user.photo} className='mr-4' />
             {user.firstName}
             <KeyboardArrowDownIcon />
           </MenuButton>

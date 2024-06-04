@@ -9,5 +9,6 @@ export enum QUERY_KEY {
   GET_USER_BY_ID = 'getUserById',
   CREATE_TODO = 'createTodo',
   UPDATE_TODO = 'updateTodo',
-  REMOVE_TODO = 'removeTodo'
+  REMOVE_TODO = 'removeTodo',
+  UPLOAD_PHOTO = 'uploadPhoto'
 }

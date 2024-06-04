@@ -61,7 +61,7 @@ const ProfilesCard = ({ user }: { user: IUser }) => {
           </div>
         </div>
         <div className="aspect-square w-1/3 flex items-center justify-center">
-          <Image className="object-cover aspect-square rounded-md" src={profilePhoto} alt="Profile Image" />
+          <Image className="object-cover aspect-square rounded-md" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={600} />
         </div>
     </div>
   )
