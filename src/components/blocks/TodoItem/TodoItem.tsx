@@ -33,7 +33,6 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
   const [priority, setPriority] = useState<string | undefined>(todo.sticker);
   const [todoName, setTodoName] = useState<string>(todo.name);
   const [statusTodo, setStatusTodo] = useState<boolean>(todo.status);
-  console.log(statusTodo)
   
 
   const handleChangePriority = (event: any) => {
