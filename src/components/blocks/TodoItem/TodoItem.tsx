@@ -89,7 +89,7 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
       <div className={`flex items-center`}>
         <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={statusTodo} onChange={isExpanded ? handleChangeStatus : () => handleUpdateTodo(todo)} disabled={isOnlyView} />
           {isExpanded 
-            ? <TextField sx={{ marginRight: 'auto' }} onChange={onChangeNameTodo} size="small" defaultValue={todoName} id="outlined-basic" variant="outlined" /> 
+            ? <TextField sx={{ marginRight: 'auto', display: 'block', height: 24, '& .MuiInputBase-input': { height: '100%', fontWeight: 600, }, '& .MuiInputBase-formControl': { height: '100%' } }} onChange={onChangeNameTodo} defaultValue={todoName} id="outlined-basic" variant="outlined" /> 
             : <p className={`font-bold mr-auto text-md ${todo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
           }
           {todo.sticker ? <span className="text-xs bg-slate-300 text-slate-800 px-3 py-1 rounded-md font-bold">{todo.sticker}</span> : null}
