@@ -61,6 +61,7 @@ export interface ITodo {
   sticker?: string
   user: IUser
   userId: string
+  color: string
 }
 
 export interface ISocialLinks {

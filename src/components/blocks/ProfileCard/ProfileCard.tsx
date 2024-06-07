@@ -8,14 +8,14 @@ import instagram from '@/../public/instagram.png'
 import linkedIn from '@/../public/linkedin.png'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
-import EditIcon from '@mui/icons-material/Edit';
-import CloseIcon from '@mui/icons-material/Close';
+
 import { ITodo, IUser } from "@/types/types";
 import CreateTodoForm from "@/components/forms/CreateTodoForm/CreateTodoForm";
 import { todoService } from "@/services/todo.service";
 import { toast } from "sonner";
 import { QUERY_KEY } from "@/config/query-key.config";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import TodoItem from "../TodoItem/TodoItem";
 
 type ProfileCardPropsType = {
   user?: IUser
@@ -127,21 +127,3 @@ const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
 }
 
 export default ProfileCard
-
-
-const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false }: { todo: ITodo, handleRemoveTodo: (id: string) => void, handleUpdateTodo: (id: ITodo) => void, isOnlyView?: boolean }) => {
-
-  return (
-    <div className={`flex items-center rounded-md px-4 py-3 mb-2 ${todo.status ? 'bg-slate-50' : 'bg-slate-200 '}`}>
-      <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={todo.status} onChange={() => handleUpdateTodo(todo)} disabled={isOnlyView} />
-        <p className={`font-bold mr-auto text-md ${todo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
-        {todo.sticker ? <span className="text-xs bg-slate-200 text-slate-800 px-3 py-1 rounded-md font-bold">{todo.sticker}</span> : null}
-        <button className={`bg-trbg-transparent border-none ml-4 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`}>
-          <EditIcon sx={{ width: 18, height: 18 }} />
-        </button>
-        <button onClick={isOnlyView ? undefined : () => handleRemoveTodo(todo.id)} className={`bg-trbg-transparent border-none ml-4 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`}>
-          <CloseIcon sx={{ width: 18, height: 18 }} />
-        </button>
-    </div>
-  )
-}
