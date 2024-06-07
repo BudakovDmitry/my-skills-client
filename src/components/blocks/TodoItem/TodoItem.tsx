@@ -31,7 +31,9 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [priority, setPriority] = useState<string | undefined>(todo.sticker);
-  const [todoName, setTodoName] = useState<string>(todo.name)
+  const [todoName, setTodoName] = useState<string>(todo.name);
+  const [statusTodo, setStatusTodo] = useState<boolean>(todo.status);
+  console.log(statusTodo)
   
 
   const handleChangePriority = (event: any) => {
@@ -55,6 +57,10 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
     setTodoName(event.target.value);
   }
 
+  const handleChangeStatus = () => {
+    setStatusTodo(prevState => !prevState)
+  }
+
   const { mutate } = useMutation({
     mutationKey: [QUERY_KEY.UPDATE_TODO],
     mutationFn: (data: ITodo) => todoService.updateTodo(data.id, data),
@@ -70,7 +76,8 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
       ...todo,
       name: todoName,
       sticker: priority,
-      color: currentTodoColor
+      color: currentTodoColor,
+      status: statusTodo
     }
 
     handleOpenEdit()
@@ -81,7 +88,7 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
   return (
     <Box className={`rounded-md overflow-hidden mb-2 animation-slideIn px-4 py-3 `} sx={{ backgroundColor: currentTodoColor }}>
       <div className={`flex items-center`}>
-        <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={todo.status} onChange={() => handleUpdateTodo(todo)} disabled={isOnlyView} />
+        <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={statusTodo} onChange={isExpanded ? handleChangeStatus : () => handleUpdateTodo(todo)} disabled={isOnlyView} />
           {isExpanded 
             ? <TextField sx={{ marginRight: 'auto' }} onChange={onChangeNameTodo} size="small" defaultValue={todoName} id="outlined-basic" variant="outlined" /> 
             : <p className={`font-bold mr-auto text-md ${todo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
