@@ -104,3 +104,12 @@ export interface IPageLink {
   order: number
   isButton: boolean
 }
+
+export interface ICreateComment {
+  text: string
+}
+
+export interface IComment extends ICreateComment {
+  authorId: string
+  recipientId: string
+}

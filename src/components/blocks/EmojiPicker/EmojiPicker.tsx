@@ -5,7 +5,11 @@ import Picker from '@emoji-mart/react'
 import { Popover } from '@mui/material';
 import { useState } from 'react';
 
-const EmojiPicker = () => {
+type EmojiPickerProps = {
+  addEmojiToMessage: (emoji: { native: string; }) => void
+}
+
+const EmojiPicker = ({ addEmojiToMessage }: EmojiPickerProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleOpenPopover = (event: any) => {
@@ -19,14 +23,11 @@ const EmojiPicker = () => {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const addEmojiToMessage = (emoji: { native: string; }) => {
-    console.log(emoji)
-  }
-
   return (
     <>
       <button
         aria-describedby={id}
+        type="button"
         onClick={handleOpenPopover}
         className="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600"
       >

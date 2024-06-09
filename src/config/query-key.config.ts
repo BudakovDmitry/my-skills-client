@@ -10,5 +10,6 @@ export enum QUERY_KEY {
   CREATE_TODO = 'createTodo',
   UPDATE_TODO = 'updateTodo',
   REMOVE_TODO = 'removeTodo',
-  UPLOAD_PHOTO = 'uploadPhoto'
+  UPLOAD_PHOTO = 'uploadPhoto',
+  CREATE_COMMENT = 'createComment'
 }
