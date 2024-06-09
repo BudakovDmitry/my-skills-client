@@ -43,6 +43,7 @@ export interface IUser {
   description?: string
   links?: ISocialLinks
   todos?: ITodo[]
+  commentsReceived?: IComment[]
 }
 
 export interface IAuthResponse {
@@ -105,11 +106,25 @@ export interface IPageLink {
   isButton: boolean
 }
 
-export interface ICreateComment {
+export interface ICreateCommentContent {
   text: string
 }
 
-export interface IComment extends ICreateComment {
+export interface ICreateComment extends ICreateCommentContent {
   authorId: string
   recipientId: string
+}
+
+export interface IComment extends ICreateComment {
+  id: string
+  createdAt: string
+  updatedAt: string
+
+  author: IAuthorComment
+}
+
+export interface IAuthorComment {
+  firstName: string
+  lastName: string
+  photo: string
 }

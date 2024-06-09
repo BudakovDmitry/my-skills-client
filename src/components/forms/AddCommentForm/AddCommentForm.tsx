@@ -1,9 +1,9 @@
 'use client'
 
 import { QUERY_KEY } from "@/config/query-key.config";
-import { IComment, ICreateComment } from "@/types/types";
+import { IComment, ICreateComment, ICreateCommentContent } from "@/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import validationSchema from "./validationSchema";
@@ -14,30 +14,35 @@ import { commentService } from "@/services/comment.service";
 import { useState } from "react";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { usePathname } from 'next/navigation';
+import { PAGE } from "@/config/pages-url.config";
 
 const AddCommentForm = () => {
   const [message, setMessage] = useState<string>('');
+  const queryClient = useQueryClient()
   const { data: currentProfile } = useMyProfile()
-  const { register, handleSubmit } = useForm<ICreateComment>({
+  const { register, handleSubmit } = useForm<ICreateCommentContent>({
     resolver: yupResolver(validationSchema)
   });
   const pathname = usePathname();
-  const userId = pathname.substring(pathname.lastIndexOf('/') + 1);
+  const page = pathname.split('/')[1];
+  const userId = pathname.split('/')[2];
+  const currentProfileId = currentProfile ? currentProfile.data.id : ''
 
   const { mutate } = useMutation({
     mutationKey: [QUERY_KEY.CREATE_COMMENT],
-    mutationFn: (data: IComment) => commentService.create(data),
+    mutationFn: (data: ICreateComment) => commentService.create(data),
     onSuccess() {
       toast.success('Коментар успішно додано!')
       setMessage('')
+      queryClient.invalidateQueries({ queryKey: [PAGE.PROFILE.includes(page) ? QUERY_KEY.GET_PROFILE : `${QUERY_KEY.GET_USER_BY_ID}_${userId}`] })
     }
   })
 
-  const onSubmit: SubmitHandler<ICreateComment> = (data) => {
+  const onSubmit: SubmitHandler<ICreateCommentContent> = (data) => {
     const newComment = {
-      ...data,
-      authorId: currentProfile ? currentProfile.data.id : '',
-      recipientId: userId
+      text: message,
+      authorId: currentProfileId,
+      recipientId: userId ? userId : currentProfileId
     }
 
     mutate(newComment)
@@ -62,8 +67,8 @@ const AddCommentForm = () => {
               value={message}
               {...register("text")}
               onChange={handleChangeText}
-              placeholder="Що хочете вивчити?"
-              className="flex w-full border rounded-xl focus:outline-none focus:border-sky-200 pl-4 h-9"
+              placeholder="Додайте коментар..."
+              className="flex w-full border rounded-xl focus:outline-none focus:border-sky-200 pl-4 h-9 pr-10"
             />
             <EmojiPicker addEmojiToMessage={addEmojiToMessage} />
           </div>

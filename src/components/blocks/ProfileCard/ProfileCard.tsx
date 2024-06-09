@@ -23,7 +23,7 @@ type ProfileCardPropsType = {
   isOnlyView?: boolean
 }
 
-const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
+const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
   const queryClient = useQueryClient()
 
 
@@ -58,6 +58,8 @@ const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
     removeMutate(id)
   }
 
+  console.log('user', user)
+
   return (
     <>
       <div className="flex justify-center items-start w-2/3">
@@ -68,11 +70,11 @@ const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
 
             {user?.work ? (
               <div className="flex mb-2">
-              <Image className="mr-2 h-5 w-auto object-cover" src={work} alt="Work" />
-              <p className="font-bold">{user?.work}</p>
-            </div>
+                <Image className="mr-2 h-5 w-auto object-cover" src={work} alt="Work" />
+                <p className="font-bold">{user?.work}</p>
+              </div>
             ) : null}
-        
+
             {user?.location ? (
               <div className="flex mb-6">
                 <Image className="mr-2 h-5 w-auto object-cover" src={world} alt="World" />
@@ -91,16 +93,19 @@ const ProfileCard = ({ user, isOnlyView = false }:ProfileCardPropsType ) => {
 
           <div className="p-8 rounded-lg shadow-lg">
             <h3 className="font-bold text-xl mb-4">Коментарі</h3>
-            <Comments />
+            {user?.commentsReceived ? (
+              <Comments userComments={user.commentsReceived} />
+            ) : null}
+
           </div>
         </div>
         <div className="w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
           <div className="flex items-center justify-center">
- 
+
             {
               user?.links?.facebook ? (
-                <a href={user.links.facebook } target="_blank" className="mx-1 w-6 h-6">
+                <a href={user.links.facebook} target="_blank" className="mx-1 w-6 h-6">
                   <Image src={facebook} alt="Facebook" />
                 </a>
               ) : null
