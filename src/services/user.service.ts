@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "@/api/interceptors";
 import { ENDPOINTS } from "@/config/endpoints.config";
-import { IUser, IUserEdit } from "@/types/types";
+import { IAllUsersResponse, IUser, IUserEdit } from "@/types/types";
 
 class UserService {
   private BASE_URL = ENDPOINTS.USER
@@ -17,8 +17,13 @@ class UserService {
     return response
   }
 
-  async getAllUsers() {
-    const response = await axiosWithAuth.get<IUser[]>(`${this.BASE_URL}/all`)
+  async getAllUsers(pageNumber: number, pageSize: number) {
+    const response = await axiosWithAuth.get<IAllUsersResponse>(`${this.BASE_URL}/all`, {
+      params: {
+        pageNumber,
+        pageSize
+      }
+    })
 
     return response
   }

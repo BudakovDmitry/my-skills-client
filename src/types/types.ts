@@ -128,3 +128,8 @@ export interface IAuthorComment {
   lastName: string
   photo: string
 }
+
+export interface IAllUsersResponse {
+  users: IUser[],
+  totalPages: number
+}

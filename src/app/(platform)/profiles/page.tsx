@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const Profiles = () => {
   return (
-    <div className='flex-1 flex flex-col items-center justify-center'>
+    <div className='flex-1 flex flex-col items-center justify-between'>
       <ProfilesCardsList />
     </div>
   )
