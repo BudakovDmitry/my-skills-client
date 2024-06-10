@@ -58,8 +58,6 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
     removeMutate(id)
   }
 
-  console.log('user', user)
-
   return (
     <>
       <div className="flex justify-center items-start w-2/3">
