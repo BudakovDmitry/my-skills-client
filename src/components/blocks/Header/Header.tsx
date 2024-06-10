@@ -7,13 +7,13 @@ import { useMyProfile } from "@/hooks/useMyProfile";
 import MenuSimple from "@/components/blocks/DropdownMenu";
 import { usePageLink } from "@/hooks/usePageLink";
 import { IPageLink } from "@/types/types";
-import Loader from "@/components/ui/Loader/Loader";
 import { PAGE } from "@/config/pages-url.config";
+import ProfileSkeleton from "../ProfileSkeleton/ProfileSkeleton";
 
 
 const Header = () => {
     const { data: profileData, isLoading: isProfileLoading } = useMyProfile()
-    const { data: pageLinkData, isLoading: isPageLinkLoading } = usePageLink()
+    const { data: pageLinkData } = usePageLink()
 
     return (
         <header className='py-4 px-6 flex items-center justify-between border-b'>
@@ -31,7 +31,12 @@ const Header = () => {
                         ))}
                     </ul>
                 </nav>
-                {isProfileLoading ? <Loader /> : profileData ? <MenuSimple user={profileData?.data} /> : <Link className='mx-2 font-medium text-gray-500 px-4' href={PAGE.LOGIN}>Увійти</Link>}
+                {isProfileLoading ?
+                    <ProfileSkeleton />
+                    : profileData
+                        ? <MenuSimple user={profileData?.data} />
+                        : <Link className='mx-2 font-medium text-gray-500 px-4' href={PAGE.LOGIN}>Увійти</Link>
+                }
             </div>
         </header>
     )
