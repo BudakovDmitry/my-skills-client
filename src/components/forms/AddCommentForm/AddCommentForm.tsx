@@ -15,11 +15,11 @@ import { useEffect, useState } from "react";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { usePathname } from 'next/navigation';
 import { PAGE } from "@/config/pages-url.config";
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
-const socket = io('http://localhost:8000', {
-  transports: ['websocket'],
-});
+// const socket = io('http://localhost:8000', {
+//   transports: ['websocket'],
+// });
 
 const AddCommentForm = () => {
   const [message, setMessage] = useState<string>('');
@@ -33,11 +33,11 @@ const AddCommentForm = () => {
   const userId = pathname.split('/')[2];
   const currentProfileId = currentProfile ? currentProfile.data.id : '';
 
-  useEffect(() => {
-    socket.on('commentCreated', (data) => {
-      queryClient.invalidateQueries({ queryKey: [PAGE.PROFILE.includes(page) ? QUERY_KEY.GET_PROFILE : `${QUERY_KEY.GET_USER_BY_ID}_${userId}`] })
-    });
-  }, [])
+  // useEffect(() => {
+  //   socket.on('commentCreated', (data) => {
+  //     queryClient.invalidateQueries({ queryKey: [PAGE.PROFILE.includes(page) ? QUERY_KEY.GET_PROFILE : `${QUERY_KEY.GET_USER_BY_ID}_${userId}`] })
+  //   });
+  // }, [])
 
   const { mutate } = useMutation({
     mutationKey: [QUERY_KEY.CREATE_COMMENT],
