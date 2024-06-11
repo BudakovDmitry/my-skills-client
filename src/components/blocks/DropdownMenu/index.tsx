@@ -120,13 +120,13 @@ const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
 const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
   const { className, ...other } = props;
   return (
-      <BaseMenuItem
-        ref={ref}
-        className={clsx(
-          'cursor-pointer list-none p-2 rounded-lg select-none last-of-type:border-b-0 focus:shadow-outline-purple focus:outline-0 focus:bg-slate-100 focus:dark:bg-slate-800 focus:text-slate-900 focus:dark:text-slate-300 disabled:text-slate-400 disabled:dark:text-slate-700 disabled:hover:text-slate-400 disabled:hover:dark:text-slate-700',
-          className,
-        )}
-        {...other}
-      />
+    <BaseMenuItem
+      ref={ref}
+      className={clsx(
+        'cursor-pointer list-none p-2 rounded-lg select-none last-of-type:border-b-0 focus:shadow-outline-purple focus:outline-0 focus:bg-slate-100 focus:dark:bg-slate-800 focus:text-slate-900 focus:dark:text-slate-300 disabled:text-slate-400 disabled:dark:text-slate-700 disabled:hover:text-slate-400 disabled:hover:dark:text-slate-700',
+        className,
+      )}
+      {...other}
+    />
   );
 });

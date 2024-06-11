@@ -9,7 +9,8 @@ import { usePageLink } from "@/hooks/usePageLink";
 import { IPageLink } from "@/types/types";
 import { PAGE } from "@/config/pages-url.config";
 import ProfileSkeleton from "../ProfileSkeleton/ProfileSkeleton";
-
+import { IconButton } from "@mui/material";
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const Header = () => {
     const { data: profileData, isLoading: isProfileLoading } = useMyProfile()
@@ -31,6 +32,16 @@ const Header = () => {
                         ))}
                     </ul>
                 </nav>
+                {profileData ? (
+                    <div className="border-r-2 px-2">
+                        <Link href={PAGE.CHATS} >
+                            <IconButton>
+                                <MailOutlineIcon />
+                            </IconButton>
+                        </Link>
+                    </div>
+                ) : null}
+
                 {isProfileLoading ?
                     <ProfileSkeleton />
                     : profileData

@@ -29,7 +29,7 @@ const EmojiPicker = ({ addEmojiToMessage }: EmojiPickerProps) => {
         aria-describedby={id}
         type="button"
         onClick={handleOpenPopover}
-        className="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600"
+        className="flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600"
       >
         <svg
           className="w-6 h-6"
@@ -52,6 +52,10 @@ const EmojiPicker = ({ addEmojiToMessage }: EmojiPickerProps) => {
         anchorEl={anchorEl}
         onClose={handleClosePopover}
         anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}

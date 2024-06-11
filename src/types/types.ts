@@ -133,3 +133,7 @@ export interface IAllUsersResponse {
   users: IUser[],
   totalPages: number
 }
+
+export interface ICreateMessageContent {
+  content: string
+}

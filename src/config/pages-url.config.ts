@@ -6,5 +6,6 @@ export enum PAGE {
   PROFILE = '/my-profile',
   PROFILE_EDIT = '/my-profile/edit',
   LOGIN = '/login',
-  REGISTRATION = '/registration'
+  REGISTRATION = '/registration',
+  CHATS = '/chats'
 }

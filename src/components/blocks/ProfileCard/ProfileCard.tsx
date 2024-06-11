@@ -17,6 +17,7 @@ import { QUERY_KEY } from "@/config/query-key.config";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import TodoItem from "../TodoItem/TodoItem";
 import Comments from "../Comments/Comments";
+import { Button } from "@mui/material";
 
 type ProfileCardPropsType = {
   user?: IUser
@@ -91,14 +92,15 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
 
           <div className="p-8 rounded-lg shadow-lg">
             <h3 className="font-bold text-xl mb-4">Коментарі</h3>
-            {user?.commentsReceived ? (
+            {/* {user?.commentsReceived ? (
               <Comments userComments={user.commentsReceived} />
-            ) : null}
+            ) : null} */}
 
           </div>
         </div>
         <div className="w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
+          <Button variant="contained" sx={{ width: '100%' }}>Написати</Button>
           <div className="flex items-center justify-center">
 
             {
