@@ -8,5 +8,6 @@ export enum ENDPOINTS {
   PAGE_LINK = '/page-link',
   TODO = '/todo',
   USER = '/user',
-  COMMENT = '/comment'
+  COMMENT = '/comment',
+  CHAT = '/chat'
 }

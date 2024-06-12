@@ -1,7 +1,7 @@
 'use client'
 
 import { QUERY_KEY } from "@/config/query-key.config";
-import { ICreateMessageContent, ICreateComment, ICreateCommentContent } from "@/types/types";
+import { ICreateMessageContent, ICreateComment, ICreateCommentContent, ICreateMessage } from "@/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -15,48 +15,48 @@ import { useEffect, useState } from "react";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { usePathname } from 'next/navigation';
 import { PAGE } from "@/config/pages-url.config";
-// import io from 'socket.io-client';
+import { chatService } from "@/services/chat.service";
+import io from 'socket.io-client';
 
-// const socket = io('http://localhost:8000', {
-//   transports: ['websocket'],
-// });
+const socket = io('http://localhost:8000', {
+  transports: ['websocket'],
+});
 
-const AddMessageForm = () => {
-  const [message, setMessage] = useState<string>('');
+type AddMessageFormProps = {
+  chatId: string
+}
+
+const AddMessageForm = ({ chatId }: AddMessageFormProps) => {
   const queryClient = useQueryClient()
   const { data: currentProfile } = useMyProfile()
+  const [message, setMessage] = useState<string>('');
   const { register, handleSubmit } = useForm<ICreateMessageContent>({
     resolver: yupResolver(validationSchema)
   });
-  const pathname = usePathname();
-  const page = pathname.split('/')[1];
-  const userId = pathname.split('/')[2];
-  const currentProfileId = currentProfile ? currentProfile.data.id : '';
 
-  // useEffect(() => {
-  //   socket.on('commentCreated', (data) => {
-  //     queryClient.invalidateQueries({ queryKey: [PAGE.PROFILE.includes(page) ? QUERY_KEY.GET_PROFILE : `${QUERY_KEY.GET_USER_BY_ID}_${userId}`] })
-  //   });
-  // }, [])
+  useEffect(() => {
+    socket.on('messageCreated', (data) => {
+      queryClient.invalidateQueries({ queryKey: [`${QUERY_KEY.GET_CHAT_BY_ID}_${chatId}`] })
+    });
+  }, [])
 
   const { mutate } = useMutation({
-    mutationKey: [QUERY_KEY.CREATE_COMMENT],
-    mutationFn: (data: any) => commentService.create(data),
+    mutationKey: [QUERY_KEY.CREATE_MESSAGE],
+    mutationFn: (data: ICreateMessage) => chatService.createMessageSocket(data),
     onSuccess() {
-      toast.success('Коментар успішно додано!')
       setMessage('')
-      queryClient.invalidateQueries({ queryKey: [PAGE.PROFILE.includes(page) ? QUERY_KEY.GET_PROFILE : `${QUERY_KEY.GET_USER_BY_ID}_${userId}`] })
+      queryClient.invalidateQueries({ queryKey: [`${QUERY_KEY.GET_CHAT_BY_ID}_${chatId}`] })
     }
   })
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    const newComment = {
-      text: message,
-      authorId: currentProfileId,
-      recipientId: userId ? userId : currentProfileId
+    const newMessage = {
+      content: message,
+      userId: currentProfile?.data.id || '',
+      chatId: chatId
     }
 
-    mutate(newComment)
+    mutate(newMessage)
   }
 
   const handleChangeText = (event: any) => {

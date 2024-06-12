@@ -137,3 +137,8 @@ export interface IAllUsersResponse {
 export interface ICreateMessageContent {
   content: string
 }
+
+export interface ICreateMessage extends ICreateMessageContent {
+  userId: string
+  chatId: string
+}

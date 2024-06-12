@@ -11,5 +11,8 @@ export enum QUERY_KEY {
   UPDATE_TODO = 'updateTodo',
   REMOVE_TODO = 'removeTodo',
   UPLOAD_PHOTO = 'uploadPhoto',
-  CREATE_COMMENT = 'createComment'
+  CREATE_COMMENT = 'createComment',
+  GET_CHAT_BY_USER_ID = 'getChatByUserId',
+  GET_CHAT_BY_ID = 'getChatById',
+  CREATE_MESSAGE = 'createMessage'
 }

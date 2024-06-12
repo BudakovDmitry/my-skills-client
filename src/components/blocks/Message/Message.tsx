@@ -2,24 +2,26 @@ import { getFormattedDate } from "@/helpers/helpers"
 import { IComment } from "@/types/types"
 
 type MessageProps = {
-  message: IComment
+  isCurrentProfile: boolean
+  message: any
 }
 
-const Message = ({ message }: MessageProps) => {
+const Message = ({ isCurrentProfile, message }: MessageProps) => {
+
   return (
-    <div className="col-start-1 col-end-8 p-3 rounded-lg">
-      <div className="flex flex-row items-start">
+    <div className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
+      <div className={`flex items-start ${isCurrentProfile ? 'justify-start flex-row-reverse' : ''}`}>
         <div
-          className="flex items-center justify-center h-10 w-10 rounded-full bg-sky-800 flex-shrink-0 text-white"
+          className={`flex items-center justify-center h-10 w-10 rounded-full flex-shrink-0 text-white ${isCurrentProfile ? 'bg-sky-500' : 'bg-sky-800'}`}
         >
-          {/* {comment.author.firstName[0]} */}
+          {message.user.firstName[0]}
         </div>
         <div
-          className="relative ml-3 text-sm bg-white pt-3 pb-5 px-4 shadow rounded-xl"
+          className={`relative text-sm pt-3 pb-5 px-4 shadow rounded-xl ${isCurrentProfile ? 'mr-3 bg-sky-100' : 'ml-3 bg-white'}`}
         >
-          {/* <p className="font-bold mb-1">{comment.author.firstName} {comment.author.lastName}</p>
-          <div className="break-all mb-2">{comment.text}</div>
-          <span className="absolute text-xs text-slate-400 left-4">{getFormattedDate(comment.createdAt)}</span> */}
+          <p className="font-bold mb-1 text-end">{isCurrentProfile ? 'Ви' : `${message.user.firstName} ${message.user.lastName}`}</p>
+          <div className="break-all mb-2">{message.content}</div>
+          <span className="absolute text-xs text-slate-400 right-4">{getFormattedDate(message.createdAt)}</span>
         </div>
       </div>
     </div>
