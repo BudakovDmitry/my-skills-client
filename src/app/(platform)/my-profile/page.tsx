@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     <div className='flex-1 flex flex-col items-center mt-2 mb-14'>
-      {isLoading ? <Loader /> : <ProfileCard user={data?.data} isOnlyView={false} />}
+      {isLoading || !data ? <Loader /> : <ProfileCard user={data.data} isOnlyView={false} />}
     </div>
   )
 }

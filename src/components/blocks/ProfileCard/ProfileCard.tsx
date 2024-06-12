@@ -18,14 +18,20 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import TodoItem from "../TodoItem/TodoItem";
 import Comments from "../Comments/Comments";
 import { Button } from "@mui/material";
+import { chatService } from "@/services/chat.service";
+import { useMyProfile } from "@/hooks/useMyProfile";
+import { useRouter } from "next/navigation";
+import { PAGE } from "@/config/pages-url.config";
 
 type ProfileCardPropsType = {
-  user?: IUser
+  user: IUser
   isOnlyView?: boolean
 }
 
 const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
   const queryClient = useQueryClient()
+  const { data, isLoading } = useMyProfile()
+  const { push } = useRouter()
 
 
   const { mutate } = useMutation({
@@ -45,6 +51,14 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
     }
   })
+
+  const handleCreateChat = async () => {
+    const response = await chatService.createChat([data?.data.id || '', user.id])
+
+    if (response.status === 200) {
+      push(`${PAGE.CHATS}?chatId=${response.data.id}`)
+    }
+  }
 
   const handleUpdateTodo = (todo: ITodo) => {
     const newTodo = {
@@ -100,7 +114,7 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
         </div>
         <div className="w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
-          <Button variant="contained" sx={{ width: '100%' }}>Написати</Button>
+          <Button onClick={handleCreateChat} variant="contained" sx={{ width: '100%' }}>Написати</Button>
           <div className="flex items-center justify-center">
 
             {

@@ -37,6 +37,11 @@ class ChatService {
     });
   }
 
+  async createChat(users: string[]) {
+    const response = await axiosWithAuth.post(this.BASE_URL, { users })
+
+    return response
+  }
 
   async getChatByUserId(userId: string) {
     const response = await axiosWithAuth.get(`${this.BASE_URL}/all/${userId}`)

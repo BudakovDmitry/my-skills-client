@@ -2,6 +2,7 @@ import Loader from "@/components/ui/Loader/Loader"
 import { useChat } from "@/hooks/useChat"
 import { IUser } from "@/types/types"
 import { Dispatch, SetStateAction } from "react"
+import Image from "next/image"
 
 type ChatListProps = {
   user: IUser
@@ -55,9 +56,9 @@ const ChatList = ({ user, activeChat, setActiveChat }: ChatListProps) => {
             className={`flex flex-row items-center hover:bg-gray-200 rounded-xl p-2 ${chatItem.id === activeChat ? 'bg-gray-100' : ''}`}
           >
             <div
-              className="flex items-center justify-center h-8 w-8 bg-sky-200 rounded-md text-sky-800 font-bold"
+              className="flex items-center justify-center h-8 w-8 bg-sky-200 rounded-lg text-sky-800 font-bold overflow-hidden border-2 border-white shadow-md"
             >
-              {chatItem.users[0].user.firstName[0]}
+              {chatItem.users[0].user.photo ? <Image className="w-full h-full object-cover" src={chatItem.users[0].user.photo} alt='Photo' width={20} height={20} /> : chatItem.users[0].user.firstName[0]}
             </div>
             <div className="ml-2 text-sm font-semibold">{`${chatItem.users[0].user.firstName} ${chatItem.users[0].user.lastName}`}</div>
           </button>)}

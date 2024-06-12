@@ -5,10 +5,14 @@ import MessagesBlock from "../MessagesBlock/MessagesBlock"
 import { useMyProfile } from "@/hooks/useMyProfile"
 import ChatList from "../ChatsList/ChatList"
 import Loader from "@/components/ui/Loader/Loader"
+import { useSearchParams } from 'next/navigation';
+
 
 const Chat = () => {
+  const searchParams = useSearchParams();
+  const chatId = searchParams.get('chatId');
   const { data, isLoading } = useMyProfile()
-  const [activeChat, setActiveChat] = useState<string | null>(null)
+  const [activeChat, setActiveChat] = useState<string | null>(chatId)
 
   if (isLoading || !data) {
     return (
