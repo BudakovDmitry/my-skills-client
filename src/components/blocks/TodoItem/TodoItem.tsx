@@ -8,7 +8,6 @@ import { Box, Button, FormControl, InputLabel, Select, TextField } from '@mui/ma
 import { HexColorPicker } from "react-colorful";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { QUERY_KEY } from '@/config/query-key.config';
@@ -19,26 +18,15 @@ import { toast } from 'sonner';
 
 type TodoItemProps = {
   todo: ITodo,
-  handleRemoveTodo: (id: string) => void,
-  handleUpdateTodo: (id: ITodo) => void,
   isOnlyView?: boolean
 }
 
-const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false }: TodoItemProps) => {
+const TodoItem = ({ todo, isOnlyView = false }: TodoItemProps) => {
   const queryClient = useQueryClient()
+  const [currentTodo, setCurrentTodo] = useState<ITodo>(todo)
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [currentTodoColor, setCurrentTodoColor] = useState(todo.color)
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const [priority, setPriority] = useState<string | undefined>(todo.sticker);
-  const [todoName, setTodoName] = useState<string>(todo.name);
-  const [statusTodo, setStatusTodo] = useState<boolean>(todo.status);
-
-
-  const handleChangePriority = (event: any) => {
-    setPriority(event.target.value);
-  };
-
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -52,16 +40,18 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
     setIsExpanded((prevState: boolean) => !prevState)
   }
 
-  const onChangeNameTodo = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTodoName(event.target.value);
-  }
+  const { mutate: removeMutate } = useMutation({
+    mutationKey: [QUERY_KEY.REMOVE_TODO],
+    mutationFn: (id: string) => todoService.removeTodo(id),
+    onSuccess() {
+      toast.success('Todo успішно видалено!')
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
+    }
+  })
 
-  const handleChangeStatus = () => {
-    setStatusTodo(prevState => !prevState)
-  }
 
   const { mutate } = useMutation({
-    mutationKey: [QUERY_KEY.UPDATE_TODO],
+    mutationKey: [`${QUERY_KEY.UPDATE_TODO}_${todo.id}`],
     mutationFn: (data: ITodo) => todoService.updateTodo(data.id, data),
     onSuccess() {
       toast.success('Todo успішно оновлено!')
@@ -69,28 +59,71 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
     }
   })
 
+  const handleChangePriority = (event: any) => {
+    setCurrentTodo((prevState: ITodo) => {
+      return {
+        ...prevState,
+        sticker: event.target.value
+      }
+    })
+  };
 
-  const onUpdateTodo = () => {
-    const newTodo = {
-      ...todo,
-      name: todoName,
-      sticker: priority,
-      color: currentTodoColor,
-      status: statusTodo
-    }
 
-    handleOpenEdit()
-    mutate(newTodo)
+  const onChangeNameTodo = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentTodo((prevState: ITodo) => {
+      return {
+        ...prevState,
+        name: event.target.value
+      }
+    })
   }
 
-  // ${todo.status ? 'bg-slate-50' : 'bg-slate-200 '}
+  const handleChangeStatus = () => {
+    setCurrentTodo((prevState: ITodo) => {
+      return {
+        ...prevState,
+        status: !prevState.status
+      }
+    })
+  }
+
+
+  const handleRemoveTodo = (id: string) => {
+    removeMutate(id)
+  }
+
+
+  const handleChangeTodoColor = (newColor: string) => {
+    setCurrentTodo((prevState: ITodo) => {
+      return {
+        ...prevState,
+        color: newColor
+      }
+    })
+  }
+
+
+  const onUpdateTodo = () => {
+    if (isExpanded) {
+      handleOpenEdit()
+    }
+
+    mutate(currentTodo)
+  }
+
+  const onUpdateTodoStatus = () => {
+    handleChangeStatus()
+
+    mutate(currentTodo)
+  }
+
   return (
-    <Box className={`rounded-md overflow-hidden mb-2 animation-slideIn px-4 py-3 `} sx={{ backgroundColor: currentTodoColor }}>
+    <Box className={`rounded-md overflow-hidden mb-2 animation-slideIn px-4 py-3 `} sx={{ backgroundColor: currentTodo.color }}>
       <div className={`flex items-center`}>
-        <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={statusTodo} onChange={isExpanded ? handleChangeStatus : () => handleUpdateTodo(todo)} disabled={isOnlyView} />
+        <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={currentTodo.status} onChange={isExpanded ? handleChangeStatus : onUpdateTodoStatus} disabled={isOnlyView} />
         {isExpanded
-          ? <TextField sx={{ marginRight: 'auto', display: 'block', height: 24, '& .MuiInputBase-input': { height: '100%', fontWeight: 600, }, '& .MuiInputBase-formControl': { height: '100%' } }} onChange={onChangeNameTodo} defaultValue={todoName} id="outlined-basic" variant="outlined" />
-          : <p className={`font-bold mr-auto text-md ${todo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
+          ? <TextField sx={{ marginRight: 'auto', display: 'block', height: 24, '& .MuiInputBase-input': { height: '100%', fontWeight: 600, }, '& .MuiInputBase-formControl': { height: '100%' } }} onChange={onChangeNameTodo} defaultValue={currentTodo.name} id="outlined-basic" variant="outlined" />
+          : <p className={`font-bold mr-auto text-md ${currentTodo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
         }
         {todo.sticker ? <span className="text-xs bg-slate-300 text-slate-800 px-3 py-1 rounded-md font-bold">{todo.sticker}</span> : null}
         <button onClick={handleOpenEdit} className={`bg-trbg-transparent border-none ml-4 ${isOnlyView ? 'hidden' : 'block'}`}>
@@ -112,7 +145,7 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={priority}
+                  value={currentTodo.sticker}
                   onChange={handleChangePriority}
                   displayEmpty
                   inputProps={{ 'aria-label': 'Without label' }}
@@ -154,7 +187,7 @@ const TodoItem = ({ todo, handleRemoveTodo, handleUpdateTodo, isOnlyView = false
               }}
             >
               <MenuItem>
-                <HexColorPicker color={currentTodoColor} onChange={setCurrentTodoColor} />
+                <HexColorPicker color={currentTodo.color} onChange={handleChangeTodoColor} />
               </MenuItem>
             </Menu>
             <Button onClick={onUpdateTodo} variant="contained" color="success" sx={{

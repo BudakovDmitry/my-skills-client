@@ -11,10 +11,6 @@ import world from '@/../public/world.png'
 
 import { ITodo, IUser } from "@/types/types";
 import CreateTodoForm from "@/components/forms/CreateTodoForm/CreateTodoForm";
-import { todoService } from "@/services/todo.service";
-import { toast } from "sonner";
-import { QUERY_KEY } from "@/config/query-key.config";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import TodoItem from "../TodoItem/TodoItem";
 import Comments from "../Comments/Comments";
 import { Button } from "@mui/material";
@@ -29,28 +25,8 @@ type ProfileCardPropsType = {
 }
 
 const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
-  const queryClient = useQueryClient()
   const { data, isLoading } = useMyProfile()
   const { push } = useRouter()
-
-
-  const { mutate } = useMutation({
-    mutationKey: [QUERY_KEY.UPDATE_TODO],
-    mutationFn: (data: ITodo) => todoService.updateTodo(data.id, data),
-    onSuccess() {
-      toast.success('Todo успішно оновлено!')
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
-    }
-  })
-
-  const { mutate: removeMutate } = useMutation({
-    mutationKey: [QUERY_KEY.REMOVE_TODO],
-    mutationFn: (id: string) => todoService.removeTodo(id),
-    onSuccess() {
-      toast.success('Todo успішно видалено!')
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
-    }
-  })
 
   const handleCreateChat = async () => {
     const response = await chatService.createChat([data?.data.id || '', user.id])
@@ -58,19 +34,6 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
     if (response.status === 200) {
       push(`${PAGE.CHATS}?chatId=${response.data.id}`)
     }
-  }
-
-  const handleUpdateTodo = (todo: ITodo) => {
-    const newTodo = {
-      ...todo,
-      status: !todo.status
-    }
-
-    mutate(newTodo)
-  }
-
-  const handleRemoveTodo = (id: string) => {
-    removeMutate(id)
   }
 
   return (
@@ -97,9 +60,11 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
 
             <p className="text-xs text-gray-500 mb-8 leading-5">{user?.description}</p>
             <h3 className="font-bold text-xl mb-4">Мій todo-лист на цей місяць</h3>
+
             {user?.id && !isOnlyView ? <CreateTodoForm userId={user.id} /> : null}
+
             {user?.todos && user?.todos.length ? (
-              user.todos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} handleRemoveTodo={handleRemoveTodo} handleUpdateTodo={handleUpdateTodo} isOnlyView={isOnlyView} />)
+              user.todos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} isOnlyView={isOnlyView} />)
             ) : <p className="font-medium text-center mt-6">Ще немає жодного запису</p>}
 
           </div>
