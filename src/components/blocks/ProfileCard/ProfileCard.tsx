@@ -114,7 +114,7 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
         </div>
         <div className="w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
-          <Button onClick={handleCreateChat} variant="contained" sx={{ width: '100%' }}>Написати</Button>
+          <Button onClick={handleCreateChat} variant="contained" sx={{ width: '100%', mb: 2 }}>Написати</Button>
           <div className="flex items-center justify-center">
 
             {
