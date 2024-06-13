@@ -7,7 +7,6 @@ import { useUser } from "@/hooks/useUser";
 const Page = ({ params }: { params: { slug: string } }) => {
   const { data, isLoading } = useUser(params.slug)
 
-
   if (isLoading) {
     return (<Loader />)
   }

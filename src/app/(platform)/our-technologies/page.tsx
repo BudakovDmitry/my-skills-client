@@ -52,7 +52,7 @@ const technologies = [
     },
 ]
 
-type technologyItem = {
+type TechnologyItem = {
     id: number,
     name: string,
     version: string,
@@ -63,7 +63,7 @@ const OurTechnologies = () => {
     return (
         <div className='flex-1 flex flex-col items-center justify-center'>
             <div className='grid grid-cols-3 gap-4 w-full container'>
-                {technologies.map((item: technologyItem) => {
+                {technologies.map((item: TechnologyItem) => {
                     return (
                         <div key={item.id} className='bg-gray-200 flex items-center w-full px-6 py-4 rounded transform transition-transform duration-300 hover:-translate-y-2'>
                             <Image className='mr-4' src={item.icon} alt={item.name} />
