@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import profilePhoto from '@/../public/profile_photo.jpg'
-import facebook from '@/../public/facebook.png'
-import github from '@/../public/github.png'
-import instagram from '@/../public/instagram.png'
-import linkedIn from '@/../public/linkedin.png'
+
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 
@@ -18,6 +15,7 @@ import { chatService } from "@/services/chat.service";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config/pages-url.config";
+import SocialLinks from "../SocialLinks/SocialLinks";
 
 type ProfileCardPropsType = {
   user: IUser
@@ -80,39 +78,15 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
         <div className="w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
           <Button onClick={handleCreateChat} variant="contained" sx={{ width: '100%', mb: 2 }}>Написати</Button>
-          <div className="flex items-center justify-center">
-
-            {
-              user?.links?.facebook ? (
-                <a href={user.links.facebook} target="_blank" className="mx-1 w-6 h-6">
-                  <Image src={facebook} alt="Facebook" />
-                </a>
-              ) : null
-            }
-
-            {
-              user?.links?.github ? (
-                <a href={user.links.github} target="_blank" className="mx-1 w-6 h-6">
-                  <Image src={github} alt="Github" />
-                </a>
-              ) : null
-            }
-            {
-              user?.links?.instagram ? (
-                <a href={user.links.instagram} target="_blank" className="mx-1 w-6 h-6">
-                  <Image src={instagram} alt="Instagram" />
-                </a>
-              ) : null
-            }
-
-            {
-              user?.links?.linkedIn ? (
-                <a href={user.links.linkedIn} target="_blank" className="mx-1 w-6 h-6">
-                  <Image src={linkedIn} alt="LinkedIn" />
-                </a>
-              ) : null
-            }
-          </div>
+          {
+            user.links
+              ? (
+                <div className="flex items-center justify-center">
+                  <SocialLinks links={user.links} />
+                </div>
+              )
+              : null
+          }
         </div>
       </div>
     </>
