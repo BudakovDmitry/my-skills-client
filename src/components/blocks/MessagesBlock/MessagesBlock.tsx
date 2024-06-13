@@ -21,11 +21,17 @@ const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
           className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4"
         >
           <div className="flex flex-col h-full overflow-y-auto mb-4">
-            <div className="flex flex-col h-36">
-              <div className="grid grid-cols-12 gap-y-2">
-                {chatData?.data.messages.map((message: any) => <Message key={message.id} isCurrentProfile={message.userId === currentProfile?.data.id} message={message} />)}
+
+            {chatData?.data.messages.length ? (
+              <div className="flex flex-col h-36">
+                <div className="grid grid-cols-12 gap-y-2">
+                  {chatData?.data.messages.map((message: any) => <Message key={message.id} isCurrentProfile={message.userId === currentProfile?.data.id} message={message} />)}
+                </div>
               </div>
-            </div>
+            )
+              : <div className="flex-1 flex items-center justify-center font-medium">Повідомлень ще немає</div>}
+
+
           </div>
           <AddMessageForm chatId={activeChat} />
         </div>
