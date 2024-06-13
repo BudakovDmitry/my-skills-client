@@ -1,5 +1,4 @@
 import { getFormattedDate } from "@/helpers/helpers"
-import { IComment } from "@/types/types"
 
 type MessageProps = {
   isCurrentProfile: boolean

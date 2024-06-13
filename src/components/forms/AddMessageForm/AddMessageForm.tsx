@@ -10,11 +10,8 @@ import validationSchema from "./validationSchema";
 import EmojiPicker from '@/components/blocks/EmojiPicker/EmojiPicker';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { commentService } from "@/services/comment.service";
 import { useEffect, useState } from "react";
 import { useMyProfile } from "@/hooks/useMyProfile";
-import { usePathname } from 'next/navigation';
-import { PAGE } from "@/config/pages-url.config";
 import { chatService } from "@/services/chat.service";
 import io from 'socket.io-client';
 

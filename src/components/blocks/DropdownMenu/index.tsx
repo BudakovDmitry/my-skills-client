@@ -12,18 +12,12 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
 import { PAGE } from '@/config/pages-url.config';
 
-function useIsDarkMode() {
-  const theme = useTheme();
-  return theme.palette.mode === 'dark';
-}
 
 type MenuSimplePropsType = {
   user: IUser
 }
 
 export default function MenuSimple({ user }: MenuSimplePropsType) {
-  const isDarkMode = useIsDarkMode();
-
   const logoutHandler = async () => {
     const response = await authService.logout()
 
@@ -33,7 +27,7 @@ export default function MenuSimple({ user }: MenuSimplePropsType) {
   }
 
   return (
-    <div className={`${isDarkMode ? 'dark' : ''}`}>
+    <div>
       <Dropdown>
         <div className='ml-2'>
           <MenuButton>
@@ -62,7 +56,6 @@ const resolveSlotProps = (fn: any, args: any) =>
   typeof fn === 'function' ? fn(args) : fn;
 
 const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
-  const isDarkMode = useIsDarkMode();
 
   return (
     <BaseMenu
@@ -78,7 +71,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
           return {
             ...resolvedSlotProps,
             className: clsx(
-              `${isDarkMode ? 'dark' : ''} z-10`,
+              `z-10`,
               resolvedSlotProps?.className,
             ),
           };

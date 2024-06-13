@@ -11,7 +11,7 @@ import { QUERY_KEY } from "@/config/query-key.config";
 import { useQueryClient } from '@tanstack/react-query'
 
 type CreateTodoFromProps = {
- userId: string, 
+  userId: string,
 }
 
 const CreateTodoForm = ({ userId }: CreateTodoFromProps) => {
@@ -23,11 +23,7 @@ const CreateTodoForm = ({ userId }: CreateTodoFromProps) => {
 
   const { mutate } = useMutation({
     mutationKey: [QUERY_KEY.CREATE_TODO],
-    mutationFn: (data: ICreateTodo) => {
-      const response = todoService.createTodo(data)
-
-      return response
-    },
+    mutationFn: (data: ICreateTodo) => todoService.createTodo(data),
     onSuccess() {
       toast.success('Todo успішно додано!')
       reset()
