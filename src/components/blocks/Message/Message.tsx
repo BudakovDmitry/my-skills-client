@@ -1,14 +1,15 @@
 import { getFormattedDate } from "@/helpers/helpers"
+import { RefObject, forwardRef } from "react"
 
 type MessageProps = {
   isCurrentProfile: boolean
   message: any
 }
 
-const Message = ({ isCurrentProfile, message }: MessageProps) => {
+const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, message }, ref) => {
 
   return (
-    <div className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
+    <div ref={ref} className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
       <div className={`flex items-start ${isCurrentProfile ? 'justify-start flex-row-reverse' : ''}`}>
         <div
           className={`flex items-center justify-center h-10 w-10 rounded-full flex-shrink-0 text-white ${isCurrentProfile ? 'bg-sky-500' : 'bg-sky-800'}`}
@@ -25,6 +26,6 @@ const Message = ({ isCurrentProfile, message }: MessageProps) => {
       </div>
     </div>
   )
-}
+})
 
 export default Message

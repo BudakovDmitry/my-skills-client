@@ -5,6 +5,7 @@ import Message from "../Message/Message"
 import Image from "next/image"
 
 import arrow from '@/../public/arrow-down.png'
+import { useRef } from "react"
 
 type MessagesBlockProps = {
   activeChat: string | null
@@ -13,6 +14,13 @@ type MessagesBlockProps = {
 const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
   const { data: chatData, isLoading: isLoadingChat } = useChatById(activeChat || '1')
   const { data: currentProfile, isLoading: isLoadingCurrentProfile } = useMyProfile()
+  const lastElementRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollToNewMessage = () => {
+    if (lastElementRef.current) {
+      lastElementRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  };
 
   return (
     <div className="flex flex-col flex-auto h-full p-6">
@@ -25,7 +33,12 @@ const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
             {chatData?.data.messages.length ? (
               <div className="flex flex-col h-36">
                 <div className="grid grid-cols-12 gap-y-2">
-                  {chatData?.data.messages.map((message: any) => <Message key={message.id} isCurrentProfile={message.userId === currentProfile?.data.id} message={message} />)}
+                  {chatData?.data.messages.map((message: any, index: number) => <Message
+                    key={message.id}
+                    ref={index === chatData.data.messages.length - 1 ? lastElementRef : undefined}
+                    isCurrentProfile={message.userId === currentProfile?.data.id}
+                    message={message}
+                  />)}
                 </div>
               </div>
             )
@@ -33,7 +46,7 @@ const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
 
 
           </div>
-          <AddMessageForm chatId={activeChat} />
+          <AddMessageForm chatId={activeChat} handleScrollToNewMessage={handleScrollToNewMessage} />
         </div>
         : <div className="relative mt-2 -ml-6 w-32">
           <Image src={arrow} alt="Arrow" className="rotate-90 w-32" />

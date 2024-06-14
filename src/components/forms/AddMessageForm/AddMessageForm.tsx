@@ -21,9 +21,10 @@ const socket = io('http://localhost:8000', {
 
 type AddMessageFormProps = {
   chatId: string
+  handleScrollToNewMessage: () => void
 }
 
-const AddMessageForm = ({ chatId }: AddMessageFormProps) => {
+const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProps) => {
   const queryClient = useQueryClient()
   const { data: currentProfile } = useMyProfile()
   const [message, setMessage] = useState<string>('');
@@ -43,6 +44,7 @@ const AddMessageForm = ({ chatId }: AddMessageFormProps) => {
     onSuccess() {
       setMessage('')
       queryClient.invalidateQueries({ queryKey: [`${QUERY_KEY.GET_CHAT_BY_ID}_${chatId}`] })
+      handleScrollToNewMessage()
     }
   })
 
