@@ -44,6 +44,25 @@ export interface IUser {
   links?: ISocialLinks
   todos?: ITodo[]
   commentsReceived?: IComment[]
+  role: IRole
+}
+
+export interface IRole {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+
+  name: string
+  permissions: IPermission[]
+}
+
+export interface IPermission {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+
+  name: string
+  value: boolean
 }
 
 export interface IAuthResponse {

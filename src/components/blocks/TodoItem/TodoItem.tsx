@@ -18,10 +18,11 @@ import { toast } from 'sonner';
 
 type TodoItemProps = {
   todo: ITodo,
-  isOnlyView?: boolean
+  isOnlyView?: boolean,
+  hasCustomizationTodoPermission: boolean
 }
 
-const TodoItem = ({ todo, isOnlyView = false }: TodoItemProps) => {
+const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: TodoItemProps) => {
   const queryClient = useQueryClient()
   const [currentTodo, setCurrentTodo] = useState<ITodo>(todo)
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -136,60 +137,65 @@ const TodoItem = ({ todo, isOnlyView = false }: TodoItemProps) => {
       {isExpanded && (
         <div className="w-full mt-4">
           <div className='flex items-end mt-6'>
-            <div>
-              <h5 className='mb-2 text-xs font-bold'>Пріорітет:</h5>
-              <FormControl fullWidth sx={{
-                marginRight: 6,
-                width: '200px',
-              }}>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={currentTodo.sticker}
-                  onChange={handleChangePriority}
-                  displayEmpty
-                  inputProps={{ 'aria-label': 'Without label' }}
-                  sx={{ backgroundColor: '#ffffff', height: '36px' }}
-                >
-                  <MenuItem value='Нормальний'>Нормальний</MenuItem>
-                  <MenuItem value='Високий'>Високий</MenuItem>
-                  <MenuItem value='Найвищий'>Найвищий</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
+            {hasCustomizationTodoPermission
+              ? (
+                <div className='flex items-end'>
+                  <div>
+                    <h5 className='mb-2 text-xs font-bold'>Пріорітет:</h5>
+                    <FormControl fullWidth sx={{
+                      marginRight: 6,
+                      width: '200px',
+                    }}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={currentTodo.sticker}
+                        onChange={handleChangePriority}
+                        displayEmpty
+                        inputProps={{ 'aria-label': 'Without label' }}
+                        sx={{ backgroundColor: '#ffffff', height: '36px' }}
+                      >
+                        <MenuItem value='Нормальний'>Нормальний</MenuItem>
+                        <MenuItem value='Високий'>Високий</MenuItem>
+                        <MenuItem value='Найвищий'>Найвищий</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </div>
 
-            <Tooltip title="Колір">
-              <IconButton
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                sx={{
-                  backgroundColor: '#ffffff',
-                  height: '36px',
-                  width: '36px',
-                  "&:hover": {
-                    backgroundColor: '#ffffff'
-                  }
-                }}
-              >
-                <Box className='block w-5 h-5 rounded-full shadow-lg' sx={{ background: 'linear-gradient(to bottom right, #ff7e5f, #feb47b, #86a8e7, #91eac9)' }}></Box>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleCloseEdit}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
-              <MenuItem>
-                <HexColorPicker color={currentTodo.color} onChange={handleChangeTodoColor} />
-              </MenuItem>
-            </Menu>
+                  <Tooltip title="Колір">
+                    <IconButton
+                      id="basic-button"
+                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                      sx={{
+                        backgroundColor: '#ffffff',
+                        height: '36px',
+                        width: '36px',
+                        "&:hover": {
+                          backgroundColor: '#ffffff'
+                        }
+                      }}
+                    >
+                      <Box className='block w-5 h-5 rounded-full shadow-lg' sx={{ background: 'linear-gradient(to bottom right, #ff7e5f, #feb47b, #86a8e7, #91eac9)' }}></Box>
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleCloseEdit}
+                    MenuListProps={{
+                      'aria-labelledby': 'basic-button',
+                    }}
+                  >
+                    <MenuItem>
+                      <HexColorPicker color={currentTodo.color} onChange={handleChangeTodoColor} />
+                    </MenuItem>
+                  </Menu>
+                </div>
+              ) : null}
             <Button onClick={onUpdateTodo} variant="contained" color="success" sx={{
               marginLeft: 'auto',
               textTransform: 'none',
