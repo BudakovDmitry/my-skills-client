@@ -9,8 +9,8 @@ import tailwindcssIcon from '@/../public/tailwindcss.png';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Наші технології',
-  description: 'Технології з якими працює компанія',
+    title: 'Наші технології',
+    description: 'Технології з якими працює компанія',
 };
 
 const technologies = [
@@ -62,7 +62,7 @@ type TechnologyItem = {
 const OurTechnologies = () => {
     return (
         <div className='flex-1 flex flex-col items-center justify-center'>
-            <div className='grid grid-cols-3 gap-4 w-full container'>
+            <div className='grid grid-col-1 lg:grid-cols-3 gap-4 w-full container px-4 lg:p-0'>
                 {technologies.map((item: TechnologyItem) => {
                     return (
                         <div key={item.id} className='bg-gray-200 flex items-center w-full px-6 py-4 rounded transform transition-transform duration-300 hover:-translate-y-2'>

@@ -1,5 +1,6 @@
-import Image from "next/image";
+'use client'
 
+import Image from "next/image";
 import facebook from '@/../public/facebook.png'
 import github from '@/../public/github.png'
 import instagram from '@/../public/instagram.png'
@@ -15,7 +16,7 @@ const SocialLinks = ({ links }: SocialLinksProps) => {
     <>
       {
         links.facebook ? (
-          <a href={links.facebook} target="_blank" className="mx-1 w-6 h-6">
+          <a href={links.facebook} target="_blank" className="mx-1 w-10 lg:w-6 h-10 lg:h-6">
             <Image src={facebook} alt="Facebook" />
           </a>
         ) : null
@@ -23,14 +24,14 @@ const SocialLinks = ({ links }: SocialLinksProps) => {
 
       {
         links.github ? (
-          <a href={links.github} target="_blank" className="mx-1 w-6 h-6">
+          <a href={links.github} target="_blank" className="mx-1 w-10 lg:w-6 h-10 lg:h-6">
             <Image src={github} alt="Github" />
           </a>
         ) : null
       }
       {
         links.instagram ? (
-          <a href={links.instagram} target="_blank" className="mx-1 w-6 h-6">
+          <a href={links.instagram} target="_blank" className="mx-1 w-10 lg:w-6 h-10 lg:h-6">
             <Image src={instagram} alt="Instagram" />
           </a>
         ) : null
@@ -38,7 +39,7 @@ const SocialLinks = ({ links }: SocialLinksProps) => {
 
       {
         links.linkedIn ? (
-          <a href={links.linkedIn} target="_blank" className="mx-1 w-6 h-6">
+          <a href={links.linkedIn} target="_blank" className="mx-1 w-10 lg:w-6 h-10 lg:h-6">
             <Image src={linkedIn} alt="LinkedIn" />
           </a>
         ) : null

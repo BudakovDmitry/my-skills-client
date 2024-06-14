@@ -36,8 +36,8 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
 
   return (
     <>
-      <div className="flex justify-center items-start w-2/3">
-        <div className="min-h-full w-2/3 mr-2">
+      <div className="flex flex-col-reverse lg:flex-row justify-center items-start w-full lg:w-2/3 px-4 lg:px-0">
+        <div className="min-h-full lg:w-2/3 lg:mr-2">
           <div className="p-8 mb-6 rounded-lg shadow-lg">
             <h2 className="font-bold text-2xl mb-4">{`${user?.firstName} ${user?.lastName}`}</h2>
             <div className="w-4/5 border-b border-red-200 mb-4"></div>
@@ -75,7 +75,7 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
 
           </div>
         </div>
-        <div className="w-1/3">
+        <div className="w-full lg:w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
           <Button onClick={handleCreateChat} variant="contained" sx={{ width: '100%', mb: 2 }}>Написати</Button>
           {

@@ -4,7 +4,7 @@ import { Menu as BaseMenu, MenuProps } from '@mui/base/Menu';
 import { MenuButton as BaseMenuButton, MenuButtonProps } from '@mui/base/MenuButton';
 import { MenuItem as BaseMenuItem, MenuItemProps } from '@mui/base/MenuItem';
 import { Dropdown } from '@mui/base/Dropdown';
-import { useTheme } from '@mui/system';
+
 import { authService } from '@/services/auth.service';
 import { IUser } from '@/types/types';
 import Avatar from '@mui/material/Avatar';
@@ -33,7 +33,7 @@ export default function MenuSimple({ user }: MenuSimplePropsType) {
           <MenuButton>
             <Avatar alt={user.firstName} src={user.photo} className='mr-4' />
             {user.firstName}
-            <KeyboardArrowDownIcon />
+            <KeyboardArrowDownIcon className='ml-auto' />
           </MenuButton>
         </div>
         <Menu>
@@ -71,7 +71,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
           return {
             ...resolvedSlotProps,
             className: clsx(
-              `z-10`,
+              `z-1405`,
               resolvedSlotProps?.className,
             ),
           };
@@ -84,7 +84,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
           return {
             ...resolvedSlotProps,
             className: clsx(
-              'text-sm box-border font-sans p-1.5 my-3 mx-0 rounded-xl overflow-auto outline-0 bg-white dark:bg-slate-900 border border-solid border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-300 min-w-listbox shadow-md dark:shadow-slate-900',
+              'text-sm box-border font-sans p-1.5 my-3 mx-0 rounded-xl overflow-auto outline-0 bg-white border border-solid border-slate-200 text-slate-00 min-w-listbox shadow-md',
               resolvedSlotProps?.className,
             ),
           };
@@ -101,7 +101,7 @@ const MenuButton = React.forwardRef<HTMLButtonElement, MenuButtonProps>(
       <BaseMenuButton
         ref={ref}
         className={clsx(
-          'cursor-pointer flex items-center  text-md font-semibold px-4 py-2 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 hover:dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 focus-visible:shadow-[0_0_0_4px_#ddd6fe] dark:focus-visible:shadow-[0_0_0_4px_#a78bfa] focus-visible:outline-none active:shadow-none',
+          'cursor-pointer flex items-center w-full text-md font-semibold px-4 py-2 bg-white border-slate-200 text-slate-900  hover:border-slate-300 focus-visible:shadow-[0_0_0_4px_#ddd6fe] focus-visible:outline-none active:shadow-none',
           className,
         )}
         {...other}

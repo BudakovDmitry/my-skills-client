@@ -10,8 +10,8 @@ import SocialLinks from "../SocialLinks/SocialLinks";
 const ProfilesCard = ({ user }: { user: IUser }) => {
 
   return (
-    <div className="flex items-center justify-center w-2/3 my-16">
-      <div className="p-8 rounded-lg shadow-2xl min-h-full w-2/3">
+    <div className="flex items-center justify-center flex-col-reverse lg:flex-row w-full lg:w-2/3 my-16 px-4 lg:px-0">
+      <div className="p-8 rounded-lg shadow-2xl min-h-full w-full lg:w-2/3">
         <h2 className="font-bold text-2xl mb-4">{`${user.firstName} ${user.lastName}`}</h2>
         <div className="w-4/5 border-b border-red-200 mb-4"></div>
         <div className="flex mb-2">
@@ -34,7 +34,7 @@ const ProfilesCard = ({ user }: { user: IUser }) => {
             : null
         }
       </div>
-      <div className="aspect-square w-1/3 flex items-center justify-center">
+      <div className="aspect-square w-full lg:w-1/3 flex lg:items-center justify-center">
         <Image className="object-cover aspect-square rounded-md" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={600} />
       </div>
     </div>

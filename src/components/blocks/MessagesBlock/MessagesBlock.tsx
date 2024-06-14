@@ -48,7 +48,7 @@ const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
           </div>
           <AddMessageForm chatId={activeChat} handleScrollToNewMessage={handleScrollToNewMessage} />
         </div>
-        : <div className="relative mt-2 -ml-6 w-32">
+        : <div className="hidden lg:block relative mt-2 -ml-6 w-32">
           <Image src={arrow} alt="Arrow" className="rotate-90 w-32" />
           <p className="absolute top-0 -right-20 font-bold italic">Оберіть чат</p>
         </div>
