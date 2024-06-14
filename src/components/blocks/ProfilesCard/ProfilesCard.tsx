@@ -14,14 +14,19 @@ const ProfilesCard = ({ user }: { user: IUser }) => {
       <div className="p-8 rounded-lg shadow-2xl min-h-full w-full lg:w-2/3">
         <h2 className="font-bold text-2xl mb-4">{`${user.firstName} ${user.lastName}`}</h2>
         <div className="w-4/5 border-b border-red-200 mb-4"></div>
-        <div className="flex mb-2">
-          <Image className="mr-2 h-5 w-auto object-cover" src={work} alt="Work" />
-          <p className="font-bold">{user.work}</p>
-        </div>
-        <div className="flex mb-6">
-          <Image className="mr-2 h-5 w-auto object-cover" src={world} alt="World" />
-          <p className="text-sm text-gray-500">Місцезнаходження - {user.location}</p>
-        </div>
+        {user.work ? (
+          <div className="flex mb-2">
+            <Image className="mr-2 h-5 w-auto object-cover" src={work} alt="Work" />
+            <p className="font-bold">{user.work}</p>
+          </div>
+        ) : null}
+        {user.location ? (
+          <div className="flex mb-6">
+            <Image className="mr-2 h-5 w-auto object-cover" src={world} alt="World" />
+            <p className="text-sm text-gray-500">Місцезнаходження - {user.location}</p>
+          </div>
+        ) : null}
+
         <p className="text-xs text-gray-500 mb-8 leading-5">{user.description}</p>
         <Link href={`${PAGE.PROFILES}/${user.id}`} className="text-sm bg-red-400 text-white font-bold rounded-full px-4 py-2 mb-8 inline-block">Дивитись анкету</Link>
         {

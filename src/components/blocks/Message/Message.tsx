@@ -17,10 +17,10 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, me
           {message.user.firstName[0]}
         </div>
         <div
-          className={`relative text-sm pt-3 pb-5 px-4 shadow rounded-xl ${isCurrentProfile ? 'mr-3 bg-sky-100' : 'ml-3 bg-white'}`}
+          className={`relative text-sm pt-3 pb-5 px-4 min-w-32 shadow rounded-xl ${isCurrentProfile ? 'mr-3 bg-sky-100' : 'ml-3 bg-white'}`}
         >
           <p className="font-bold mb-1 text-end">{isCurrentProfile ? 'Ви' : `${message.user.firstName} ${message.user.lastName}`}</p>
-          <div className="break-all mb-2">{message.content}</div>
+          <div className={`break-all mb-2 ${isCurrentProfile ? 'text-end' : 'text-start'}`}>{message.content}</div>
           <span className="absolute text-xs text-slate-400 right-4">{getFormattedDate(message.createdAt)}</span>
         </div>
       </div>
