@@ -15,5 +15,6 @@ export enum QUERY_KEY {
   GET_CHAT_BY_USER_ID = 'getChatByUserId',
   GET_CHAT_BY_ID = 'getChatById',
   CREATE_MESSAGE = 'createMessage',
-  CREATE_CHAT = 'createChat'
+  CREATE_CHAT = 'createChat',
+  UPDATE_PLAN = 'updatePlan'
 }

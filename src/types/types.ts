@@ -170,3 +170,7 @@ export interface ICreateMessage extends ICreateMessageContent {
   userId: string
   chatId: string
 }
+
+export interface IUpdatePlan {
+  planName: string
+}
