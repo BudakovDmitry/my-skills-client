@@ -17,6 +17,7 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import { PERMISSION } from "@/utils/permissions";
+import { checkingPermission } from "@/helpers/helpers";
 
 registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateSize, FilePondPluginFileValidateType);
 
@@ -65,14 +66,10 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
     mutate(data)
   }
 
-  const hasAddPhotoPermission = user.role.permissions.some(
-    permission => permission.name === PERMISSION.ADD_PHOTO && permission.value === true
-  );
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="grid grid-cols-1 gap-6 mt-8 lg:grid-cols-4">
-        {hasAddPhotoPermission
+        {checkingPermission(user.plan.permissions, PERMISSION.ADD_PHOTO)
           ?
           (
             <div className="col-span-4 relative">

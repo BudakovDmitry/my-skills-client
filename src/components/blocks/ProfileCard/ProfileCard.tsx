@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { PAGE } from "@/config/pages-url.config";
 import SocialLinks from "../SocialLinks/SocialLinks";
 import { PERMISSION } from "@/utils/permissions";
+import { checkingPermission } from "@/helpers/helpers";
 
 type ProfileCardPropsType = {
   user: IUser
@@ -34,11 +35,6 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
       push(`${PAGE.CHATS}?chatId=${response.data.id}`)
     }
   }
-  console.log('user', user)
-
-  const hasCustomizationTodoPermission = user.role.permissions.some(
-    permission => permission.name === PERMISSION.CUSTOMIZATION_TODO && permission.value === true
-  );
 
   return (
     <>
@@ -68,7 +64,7 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
             {user?.id && !isOnlyView ? <CreateTodoForm userId={user.id} /> : null}
 
             {user?.todos && user?.todos.length ? (
-              user.todos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} isOnlyView={isOnlyView} hasCustomizationTodoPermission={hasCustomizationTodoPermission} />)
+              user.todos.map((todo: ITodo) => <TodoItem key={todo.id} todo={todo} isOnlyView={isOnlyView} hasCustomizationTodoPermission={checkingPermission(user.plan.permissions, PERMISSION.CUSTOMIZATION_TODO)} />)
             ) : <p className="font-medium text-center mt-6">Ще немає жодного запису</p>}
 
           </div>

@@ -1,5 +1,6 @@
 export enum PERMISSION {
   ADD_PHOTO = 'addPhoto',
   CUSTOMIZATION_TODO = 'customizationTodo',
-  VIEW_ALL_PROFILES = 'viewAllProfiles'
+  VIEW_ALL_PROFILES = 'viewAllProfiles',
+  SEND_MESSAGE = 'sendMessage'
 }

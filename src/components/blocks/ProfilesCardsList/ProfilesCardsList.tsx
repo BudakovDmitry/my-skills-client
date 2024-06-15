@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { PERMISSION } from "@/utils/permissions"
 import { useMyProfile } from "@/hooks/useMyProfile"
 import { PAGE } from "@/config/pages-url.config"
+import { checkingPermission } from "@/helpers/helpers"
 
 const ProfilesCardsList = () => {
   const [page, setPage] = useState<number>(1);
@@ -21,11 +22,7 @@ const ProfilesCardsList = () => {
     setPage(value);
   };
 
-  const hasViewAllProfilesPermission = profileData?.data.role.permissions.some(
-    permission => permission.name === PERMISSION.VIEW_ALL_PROFILES && permission.value === true
-  );
-
-  if (isLoading || isLoadingProfile) {
+  if (isLoading || isLoadingProfile || !profileData) {
     return (
       <div className="flex-1 flex items-center">
         <Loader />
@@ -33,7 +30,7 @@ const ProfilesCardsList = () => {
     )
   }
 
-  if (!hasViewAllProfilesPermission) {
+  if (!checkingPermission(profileData.data.plan.permissions, PERMISSION.VIEW_ALL_PROFILES)) {
     router.push(PAGE.HOME)
   }
 

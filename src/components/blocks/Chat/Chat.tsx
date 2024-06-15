@@ -6,6 +6,10 @@ import { useMyProfile } from "@/hooks/useMyProfile"
 import ChatList from "../ChatsList/ChatList"
 import Loader from "@/components/ui/Loader/Loader"
 import { useSearchParams } from 'next/navigation';
+import { PAGE } from "@/config/pages-url.config"
+import { checkingPermission } from "@/helpers/helpers"
+import { PERMISSION } from "@/utils/permissions"
+import { useRouter } from "next/navigation";
 
 
 const Chat = () => {
@@ -13,6 +17,7 @@ const Chat = () => {
   const chatId = searchParams.get('chatId');
   const { data, isLoading } = useMyProfile()
   const [activeChat, setActiveChat] = useState<string | null>(chatId)
+  const router = useRouter();
 
   if (isLoading || !data) {
     return (
@@ -20,6 +25,10 @@ const Chat = () => {
         <Loader />
       </div>
     )
+  }
+
+  if (!checkingPermission(data.data.plan.permissions, PERMISSION.SEND_MESSAGE)) {
+    router.push(PAGE.HOME)
   }
 
   return (

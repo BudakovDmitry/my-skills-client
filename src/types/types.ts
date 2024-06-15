@@ -45,9 +45,18 @@ export interface IUser {
   todos?: ITodo[]
   commentsReceived?: IComment[]
   role: IRole
+  plan: IPlan
 }
 
 export interface IRole {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+
+  name: string
+}
+
+export interface IPlan {
   id: string
   createdAt: Date
   updatedAt: Date

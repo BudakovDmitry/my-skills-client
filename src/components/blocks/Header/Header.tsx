@@ -13,14 +13,17 @@ import { IconButton, Tooltip } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Drawer from "../Drawer/Drawer";
 import { PERMISSION } from "@/utils/permissions";
+import MenuItem from "@/components/ui/MenuItem/MenuItem";
+import { checkingPermission } from "@/helpers/helpers";
+import Loader from "@/components/ui/Loader/Loader";
 
 const Header = () => {
     const { data: profileData, isLoading: isProfileLoading } = useMyProfile()
     const { data: pageLinkData } = usePageLink()
 
-    const hasViewAllProfilesPermission = profileData?.data.role.permissions.some(
-        permission => permission.name === PERMISSION.VIEW_ALL_PROFILES && permission.value === true
-    );
+    if (isProfileLoading) {
+        return <Loader />
+    }
 
     return (
         <header className='py-4 px-4 lg:px-6 flex items-center justify-between border-b'>
@@ -31,20 +34,10 @@ const Header = () => {
             <div className='hidden lg:flex items-center'>
                 <nav className="border-r-2 pr-4">
                     <ul className='flex items-center'>
-                        {pageLinkData?.data.map((item: IPageLink) => (
-                            <li key={item.id} className={`mx-2 font-semibold px-4 py-2 rounded-md ${item.isButton ? 'text-white bg-sky-500' : 'text-sky-500 hover:underline transition ease-out'}`}>
-                                {hasViewAllProfilesPermission
-                                    ? <Link href={item.link}>{item.name}</Link>
-                                    : (
-                                        <Tooltip title="Ви не маєте доступу, змініть свій тариф">
-                                            <span>{item.name}</span>
-                                        </Tooltip>
-                                    )}
-                            </li>
-                        ))}
+                        {pageLinkData?.data.map((item: IPageLink) => <MenuItem key={item.id} item={item} hasPermission={profileData ? checkingPermission(profileData.data.plan.permissions, PERMISSION.VIEW_ALL_PROFILES) : false} />)}
                     </ul>
                 </nav>
-                {profileData ? (
+                {profileData && checkingPermission(profileData.data.plan.permissions, PERMISSION.SEND_MESSAGE) ? (
                     <div className="border-r-2 px-2">
                         <Link href={PAGE.CHATS} >
                             <IconButton>

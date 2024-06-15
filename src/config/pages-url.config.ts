@@ -7,5 +7,6 @@ export enum PAGE {
   PROFILE_EDIT = '/my-profile/edit',
   LOGIN = '/login',
   REGISTRATION = '/registration',
-  CHATS = '/chats'
+  CHATS = '/chats',
+  TARIFFS = '/tariffs'
 }

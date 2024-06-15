@@ -1,3 +1,5 @@
+import { IPermission } from "@/types/types";
+
 export const getFormattedDate = (dateString: string) => {
   const date = new Date(dateString);
   const now = new Date();
@@ -13,3 +15,7 @@ export const getFormattedDate = (dateString: string) => {
     return date.toLocaleTimeString('uk-UA', options);
   }
 }
+
+export const checkingPermission = (userPermissions: IPermission[], permission: string) => {
+  return userPermissions.some((userPermission: IPermission) => userPermission.name === permission && userPermission.value === true)
+};
