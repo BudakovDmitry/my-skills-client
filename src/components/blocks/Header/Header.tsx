@@ -22,7 +22,7 @@ const Header = () => {
     const { data: pageLinkData } = usePageLink()
 
     if (isProfileLoading) {
-        return <Loader />
+        return
     }
 
     return (

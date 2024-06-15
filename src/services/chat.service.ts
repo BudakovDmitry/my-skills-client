@@ -37,6 +37,18 @@ class ChatService {
     });
   }
 
+  async updateMessageReadSocket(data: any) {
+    return new Promise((resolve, reject) => {
+      this.socket.emit('markChatAsRead', data, (response: any) => {
+        if (response && response.error) {
+          reject(response.error);
+        } else {
+          resolve(response);
+        }
+      });
+    });
+  }
+
   async createChat(users: string[]) {
     const response = await axiosWithAuth.post(this.BASE_URL, { users })
 

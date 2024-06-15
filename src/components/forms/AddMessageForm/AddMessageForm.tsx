@@ -5,7 +5,6 @@ import { ICreateMessageContent, ICreateComment, ICreateCommentContent, ICreateMe
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { toast } from "sonner";
 import validationSchema from "./validationSchema";
 import EmojiPicker from '@/components/blocks/EmojiPicker/EmojiPicker';
 import { IconButton } from "@mui/material";
@@ -32,8 +31,16 @@ const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProp
     resolver: yupResolver(validationSchema)
   });
 
+  const { mutate: updateMessageReadMutate } = useMutation({
+    mutationKey: [QUERY_KEY.CREATE_MESSAGE],
+    mutationFn: (data: { userId: string, chatId: string }) => chatService.updateMessageReadSocket(data),
+    onSuccess() {
+    }
+  })
+
   useEffect(() => {
     socket.on('messageCreated', (data) => {
+      updateMessageReadMutate({ userId: currentProfile!.data.id, chatId })
       queryClient.invalidateQueries({ queryKey: [`${QUERY_KEY.GET_CHAT_BY_ID}_${chatId}`] })
     });
   }, [])
