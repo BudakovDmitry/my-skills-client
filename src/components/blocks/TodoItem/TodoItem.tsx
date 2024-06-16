@@ -149,7 +149,7 @@ const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: 
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={currentTodo.sticker}
+                        value={currentTodo.sticker ? currentTodo.sticker : 'Нормальний'}
                         onChange={handleChangePriority}
                         displayEmpty
                         inputProps={{ 'aria-label': 'Without label' }}

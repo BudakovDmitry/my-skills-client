@@ -174,3 +174,5 @@ export interface ICreateMessage extends ICreateMessageContent {
 export interface IUpdatePlan {
   planName: string
 }
+
+export type PlanName = 'BASIC' | 'PREMIUM' | 'ULTIMATE';
