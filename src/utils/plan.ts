@@ -1,0 +1,5 @@
+export enum PLAN {
+  BASIC = 'BASIC',
+  PREMIUM = 'PREMIUM',
+  ULTIMATE = 'ULTIMATE'
+}

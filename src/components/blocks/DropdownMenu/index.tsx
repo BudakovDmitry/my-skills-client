@@ -11,6 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
 import { PAGE } from '@/config/pages-url.config';
+import { Badge } from '@mui/material';
+import { PLAN } from '@/utils/plan';
+import { isPremiumUserPlan } from '@/helpers/helpers';
 
 
 type MenuSimplePropsType = {
@@ -31,7 +34,15 @@ export default function MenuSimple({ user }: MenuSimplePropsType) {
       <Dropdown>
         <div className='ml-2'>
           <MenuButton>
-            <Avatar alt={user.firstName} src={user.photo} className='mr-4' />
+            {
+              isPremiumUserPlan(user.plan.name)
+                ? (
+                  <Badge badgeContent={user.plan.name} color="warning" sx={{ fontSize: 6 }}>
+                    <Avatar alt={user.firstName} src={user.photo} className='mr-4 border-2 border-orange-500' />
+                  </Badge>
+                ) :
+                <Avatar alt={user.firstName} src={user.photo} className='mr-4' />
+            }
             {user.firstName}
             <KeyboardArrowDownIcon className='ml-auto' />
           </MenuButton>

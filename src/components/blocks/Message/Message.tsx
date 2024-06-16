@@ -1,5 +1,5 @@
-import { getFormattedDate } from "@/helpers/helpers"
-import { RefObject, forwardRef } from "react"
+import { getFormattedDate, isPremiumUserPlan } from "@/helpers/helpers"
+import { forwardRef } from "react"
 
 type MessageProps = {
   isCurrentProfile: boolean
@@ -7,12 +7,11 @@ type MessageProps = {
 }
 
 const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, message }, ref) => {
-
   return (
     <div ref={ref} className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
       <div className={`flex items-start ${isCurrentProfile ? 'justify-start flex-row-reverse' : ''}`}>
         <div
-          className={`flex items-center justify-center h-10 w-10 rounded-full flex-shrink-0 text-white ${isCurrentProfile ? 'bg-sky-500' : 'bg-sky-800'}`}
+          className={`flex items-center justify-center h-10 w-10 rounded-full flex-shrink-0 text-white ${isCurrentProfile ? 'bg-sky-500' : 'bg-sky-800'} border-2 ${isPremiumUserPlan(message.user.plan.name) ? 'border-orange-500' : 'border-white'}`}
         >
           {message.user.firstName[0]}
         </div>

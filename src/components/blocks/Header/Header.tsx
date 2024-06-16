@@ -9,7 +9,7 @@ import { usePageLink } from "@/hooks/usePageLink";
 import { IPageLink } from "@/types/types";
 import { PAGE } from "@/config/pages-url.config";
 import ProfileSkeleton from "../ProfileSkeleton/ProfileSkeleton";
-import { IconButton, Tooltip } from "@mui/material";
+import { IconButton } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Drawer from "../Drawer/Drawer";
 import { PERMISSION } from "@/utils/permissions";

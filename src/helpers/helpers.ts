@@ -1,4 +1,5 @@
 import { IPermission } from "@/types/types";
+import { PLAN } from "@/utils/plan";
 
 export const getFormattedDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -19,3 +20,8 @@ export const getFormattedDate = (dateString: string) => {
 export const checkingPermission = (userPermissions: IPermission[], permission: string) => {
   return userPermissions.some((userPermission: IPermission) => userPermission.name === permission && userPermission.value === true)
 };
+
+
+export const isPremiumUserPlan = (userPlan: string) => {
+  return userPlan === PLAN.PREMIUM || userPlan === PLAN.ULTIMATE
+}
