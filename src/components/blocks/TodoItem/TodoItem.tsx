@@ -60,47 +60,17 @@ const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: 
     }
   })
 
-  const handleChangePriority = (event: any) => {
+  const handleUpdateTodo = (field: string, data: string | boolean) => {
     setCurrentTodo((prevState: ITodo) => {
       return {
         ...prevState,
-        sticker: event.target.value
-      }
-    })
-  };
-
-
-  const onChangeNameTodo = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentTodo((prevState: ITodo) => {
-      return {
-        ...prevState,
-        name: event.target.value
+        [field]: data
       }
     })
   }
-
-  const handleChangeStatus = () => {
-    setCurrentTodo((prevState: ITodo) => {
-      return {
-        ...prevState,
-        status: !prevState.status
-      }
-    })
-  }
-
 
   const handleRemoveTodo = (id: string) => {
     removeMutate(id)
-  }
-
-
-  const handleChangeTodoColor = (newColor: string) => {
-    setCurrentTodo((prevState: ITodo) => {
-      return {
-        ...prevState,
-        color: newColor
-      }
-    })
   }
 
 
@@ -113,7 +83,7 @@ const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: 
   }
 
   const onUpdateTodoStatus = () => {
-    handleChangeStatus()
+    handleUpdateTodo('status', !currentTodo.status)
 
     mutate(currentTodo)
   }
@@ -121,9 +91,9 @@ const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: 
   return (
     <Box className={`rounded-md overflow-hidden mb-2 animation-slideIn px-4 py-3 `} sx={{ backgroundColor: currentTodo.color }}>
       <div className={`flex items-center`}>
-        <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={currentTodo.status} onChange={isExpanded ? handleChangeStatus : onUpdateTodoStatus} disabled={isOnlyView} />
+        <input type="checkbox" className={`mr-3 ${isOnlyView ? 'cursor-default' : 'cursor-pointer'}`} checked={currentTodo.status} onChange={isExpanded ? () => handleUpdateTodo('status', !currentTodo.status) : onUpdateTodoStatus} disabled={isOnlyView} />
         {isExpanded
-          ? <TextField sx={{ marginRight: 'auto', display: 'block', height: 24, '& .MuiInputBase-input': { height: '100%', fontWeight: 600, }, '& .MuiInputBase-formControl': { height: '100%' } }} onChange={onChangeNameTodo} defaultValue={currentTodo.name} id="outlined-basic" variant="outlined" />
+          ? <TextField sx={{ marginRight: 'auto', display: 'block', height: 24, '& .MuiInputBase-input': { height: '100%', fontWeight: 600, }, '& .MuiInputBase-formControl': { height: '100%' } }} onChange={(e: any) => handleUpdateTodo('name', e.target.value)} defaultValue={currentTodo.name} id="outlined-basic" variant="outlined" />
           : <p className={`font-bold mr-auto text-md ${currentTodo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
         }
         {todo.sticker ? <span className="text-xs bg-slate-300 text-slate-800 px-3 py-1 rounded-md font-bold">{todo.sticker}</span> : null}
@@ -150,7 +120,7 @@ const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: 
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={currentTodo.sticker ? currentTodo.sticker : 'Нормальний'}
-                        onChange={handleChangePriority}
+                        onChange={(e: any) => handleUpdateTodo('sticker', e.target.value)}
                         displayEmpty
                         inputProps={{ 'aria-label': 'Without label' }}
                         sx={{ backgroundColor: '#ffffff', height: '36px' }}
@@ -191,7 +161,7 @@ const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: 
                     }}
                   >
                     <MenuItem>
-                      <HexColorPicker color={currentTodo.color} onChange={handleChangeTodoColor} />
+                      <HexColorPicker color={currentTodo.color} onChange={(newColor: string) => handleUpdateTodo('color', newColor)} />
                     </MenuItem>
                   </Menu>
                 </div>
