@@ -2,6 +2,8 @@ import { getFormattedDate, isPremiumUserPlan } from "@/helpers/helpers"
 import { forwardRef } from "react"
 import { useRouter } from "next/navigation"
 import { PAGE } from "@/config/pages-url.config"
+import Image from "next/image"
+import { Avatar } from "@mui/material"
 
 type MessageProps = {
   isCurrentProfile: boolean
@@ -16,15 +18,13 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, me
   }
 
 
+  console.log('message', message)
   return (
     <div ref={ref} className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
       <div className={`flex items-start ${isCurrentProfile ? 'justify-start flex-row-reverse' : ''}`}>
-        <div
+        <Avatar
           onClick={isCurrentProfile ? undefined : () => handleOpenUserProfile(message.userId)}
-          className={`flex items-center justify-center h-10 w-10 rounded-full flex-shrink-0 text-white ${isCurrentProfile ? 'bg-sky-500' : 'bg-sky-800 cursor-pointer'} border-2 ${isPremiumUserPlan(message.user.plan.name) ? 'border-orange-500' : 'border-white'}`}
-        >
-          {message.user.firstName[0]}
-        </div>
+          alt={message.user.firstName} src={message.user.photo} className={`${isCurrentProfile ? 'ml-2' : 'mr-2'} border-2 ${isPremiumUserPlan(message.user.plan.name) ? 'border-orange-500' : 'border-white'}`} />
         <div
           className={`relative text-sm pt-3 pb-5 px-4 min-w-32 shadow rounded-xl ${isCurrentProfile ? 'mr-3 bg-sky-100' : 'ml-3 bg-white'}`}
         >

@@ -20,7 +20,7 @@ const Home = () => {
                 {/* <Content name='Home' /> */}
 
                 <Image className='mb-3 size-26' src={logoImage} alt='Logo' />
-                <h1 className='text-6xl font-bold mb-6'>My skills</h1>
+                <h1 className='text-6xl font-bold mb-6 js--title'>My skills</h1>
                 <p className='text-md lg:text-base text-gray-500 font-medium max-w-2xl text-center leading-8 mb-10'>Платформа, створена для ефективного представлення та просування ваших професійних навичок у цифровому
                     світі.</p>
                 <div>
