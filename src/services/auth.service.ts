@@ -1,7 +1,7 @@
-import { axiosClassic } from "@/shared/api/interceptors"
+import { axiosClassic } from "@/shared/api"
 import { removeFromStorage, saveTokenStorage } from "./authToken.service"
 import { ILogin, IRegistration, IAuthResponse } from "@/types/types"
-import { ENDPOINTS } from "@/config/endpoints.config"
+import { ENDPOINTS } from "@/shared/config"
 
 class AuthService {
   private BASE_URL = ENDPOINTS.AUTH

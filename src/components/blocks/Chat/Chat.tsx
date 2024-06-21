@@ -6,13 +6,11 @@ import { useMyProfile } from "@/hooks/useMyProfile"
 import ChatList from "../ChatsList/ChatList"
 import { Loader } from "@/shared/ui"
 import { useSearchParams } from 'next/navigation';
-import { PAGE } from "@/config/pages-url.config"
+import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config"
 import { checkingPermission } from "@/helpers/helpers"
-import { PERMISSION } from "@/utils/permissions"
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { io } from 'socket.io-client';
-import { QUERY_KEY } from "@/config/query-key.config"
 import { chatService } from "@/services/chat.service"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 

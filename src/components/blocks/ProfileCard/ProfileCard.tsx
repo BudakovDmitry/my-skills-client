@@ -14,9 +14,8 @@ import { Button } from "@mui/material";
 import { chatService } from "@/services/chat.service";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { useRouter } from "next/navigation";
-import { PAGE } from "@/config/pages-url.config";
+import { PAGE, PERMISSION } from "@/shared/config";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import { PERMISSION } from "@/utils/permissions";
 import { checkingPermission } from "@/helpers/helpers";
 
 type ProfileCardPropsType = {

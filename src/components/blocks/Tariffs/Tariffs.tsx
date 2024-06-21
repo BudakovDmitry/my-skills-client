@@ -1,13 +1,12 @@
 'use client'
 
 import { Loader } from "@/shared/ui"
-import { QUERY_KEY } from "@/config/query-key.config"
 import { useMyProfile } from "@/hooks/useMyProfile"
 import { userService } from "@/services/user.service"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation";
-import { PAGE } from "@/config/pages-url.config"
+import { PAGE, QUERY_KEY } from "@/shared/config"
 
 const Tariffs = () => {
   const queryClient = useQueryClient()

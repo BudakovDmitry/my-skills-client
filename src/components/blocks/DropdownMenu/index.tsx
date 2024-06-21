@@ -10,9 +10,8 @@ import { IUser } from '@/types/types';
 import Avatar from '@mui/material/Avatar';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
-import { PAGE } from '@/config/pages-url.config';
+import { PAGE } from '@/shared/config';
 import { Badge } from '@mui/material';
-import { PLAN } from '@/utils/plan';
 import { isPremiumUserPlan } from '@/helpers/helpers';
 
 

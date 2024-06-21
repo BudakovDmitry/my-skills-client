@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import "@/app/globals.css";
-import { SITE_NAME } from "@/constants/seo.constants";
+import { SITE_NAME } from "@/shared/config";
 
 export const metadata: Metadata = {
   title: {

@@ -1,6 +1,6 @@
 'use client'
 
-import { QUERY_KEY } from "@/config/query-key.config";
+import { QUERY_KEY, PAGE } from "@/shared/config";
 import { IComment, ICreateComment, ICreateCommentContent } from "@/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -14,7 +14,6 @@ import { commentService } from "@/services/comment.service";
 import { useState } from "react";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { usePathname } from 'next/navigation';
-import { PAGE } from "@/config/pages-url.config";
 
 const AddCommentForm = () => {
   const [message, setMessage] = useState<string>('');

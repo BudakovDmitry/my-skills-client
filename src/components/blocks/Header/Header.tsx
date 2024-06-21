@@ -7,12 +7,11 @@ import { useMyProfile } from "@/hooks/useMyProfile";
 import MenuSimple from "@/components/blocks/DropdownMenu";
 import { usePageLink } from "@/hooks/usePageLink";
 import { IPageLink } from "@/types/types";
-import { PAGE } from "@/config/pages-url.config";
+import { PAGE, PERMISSION } from "@/shared/config";
 import ProfileSkeleton from "../ProfileSkeleton/ProfileSkeleton";
 import { IconButton } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Drawer from "../Drawer/Drawer";
-import { PERMISSION } from "@/utils/permissions";
 import MenuItem from "@/components/ui/MenuItem/MenuItem";
 import { checkingPermission } from "@/helpers/helpers";
 import { Loader } from "@/shared/ui"

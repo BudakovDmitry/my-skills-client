@@ -1,5 +1,5 @@
-import { axiosWithAuth } from "@/shared/api/interceptors"
-import { ENDPOINTS } from "@/config/endpoints.config"
+import { axiosWithAuth } from "@/shared/api"
+import { ENDPOINTS } from "@/shared/config"
 import { ICreateMessage } from "@/types/types"
 import { io, Socket } from 'socket.io-client';
 

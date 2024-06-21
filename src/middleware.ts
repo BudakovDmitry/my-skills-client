@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { EnumTokens } from "./services/authToken.service";
-import { PAGE } from "./config/pages-url.config";
+import { PAGE } from "./shared/config";
 
 export const middleware = async (request: NextRequest, response: NextResponse) => {
   const { url, cookies } = request

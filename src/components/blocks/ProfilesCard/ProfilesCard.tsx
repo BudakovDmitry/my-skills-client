@@ -4,7 +4,7 @@ import profilePhoto from '@/../public/profile_photo.jpg'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 import { IUser } from "@/types/types";
-import { PAGE } from "@/config/pages-url.config";
+import { PAGE } from "@/shared/config";
 import SocialLinks from "../SocialLinks/SocialLinks";
 
 const ProfilesCard = ({ user }: { user: IUser }) => {

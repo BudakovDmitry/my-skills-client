@@ -7,7 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import validationSchema from "./validationSchema";
 import { todoService } from "@/services/todo.service";
-import { QUERY_KEY } from "@/config/query-key.config";
+import { QUERY_KEY } from "@/shared/config";
 import { useQueryClient } from '@tanstack/react-query'
 
 type CreateTodoFromProps = {

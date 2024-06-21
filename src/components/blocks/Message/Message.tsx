@@ -1,7 +1,7 @@
 import { getFormattedDate, isPremiumUserPlan } from "@/helpers/helpers"
 import { forwardRef } from "react"
 import { useRouter } from "next/navigation"
-import { PAGE } from "@/config/pages-url.config"
+import { PAGE } from "@/shared/config"
 import Image from "next/image"
 import { Avatar } from "@mui/material"
 

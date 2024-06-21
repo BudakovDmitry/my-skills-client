@@ -1,5 +1,5 @@
 import { IPermission } from "@/types/types";
-import { PLAN } from "@/utils/plan";
+import { PLAN } from '@/shared/config';
 
 export const getFormattedDate = (dateString: string) => {
   const date = new Date(dateString);

@@ -1,0 +1,1 @@
+export const serverBaseUrl = process.env.NEXT_PUBLIC_BASE_URL_SERVER

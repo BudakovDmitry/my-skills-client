@@ -1,10 +1,11 @@
 import axios, { type CreateAxiosDefaults } from "axios";
 import { getAccessToken, removeFromStorage } from "@/services/authToken.service";
-import { errorCatch } from "@/shared/api/error";
+import { errorCatch } from "@/shared/api";
 import { authService } from "@/services/auth.service";
+import { serverBaseUrl } from "@/shared/config"
 
 const options:CreateAxiosDefaults = {
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL_SERVER,
+  baseURL: serverBaseUrl,
   headers: {
     'Content-Type': 'application/json'
   },

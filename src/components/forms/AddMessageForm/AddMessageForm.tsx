@@ -1,6 +1,6 @@
 'use client'
 
-import { QUERY_KEY } from "@/config/query-key.config";
+import { QUERY_KEY } from "@/shared/config";
 import { ICreateMessageContent, ICreateComment, ICreateCommentContent, ICreateMessage } from "@/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

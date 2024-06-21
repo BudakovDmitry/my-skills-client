@@ -1,5 +1,5 @@
-import { axiosWithAuth } from "@/shared/api/interceptors"
-import { ENDPOINTS } from "@/config/endpoints.config";
+import { axiosWithAuth } from "@/shared/api"
+import { ENDPOINTS } from "@/shared/config"
 import { IAllUsersResponse, IUser, IUserEdit } from "@/types/types";
 
 class UserService {

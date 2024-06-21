@@ -8,8 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { IRegistration } from "@/types/types";
 import { authService } from "@/services/auth.service";
 import { toast } from "sonner";
-import { PAGE } from "@/config/pages-url.config";
-import { QUERY_KEY } from "@/config/query-key.config";
+import { PAGE, QUERY_KEY } from "@/shared/config";
 
 const RegistrationForm = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<IRegistration>({

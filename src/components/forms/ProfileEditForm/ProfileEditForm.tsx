@@ -8,15 +8,13 @@ import { useMutation } from "@tanstack/react-query";
 import { IUserEdit, IUser } from "@/types/types";
 import { toast } from "sonner";
 import { userService } from "@/services/user.service";
-import { PAGE } from "@/config/pages-url.config";
-import { QUERY_KEY } from "@/config/query-key.config";
+import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config";
 import { FilePond, registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import { PERMISSION } from "@/utils/permissions";
 import { checkingPermission } from "@/helpers/helpers";
 
 registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateSize, FilePondPluginFileValidateType);

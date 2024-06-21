@@ -14,7 +14,7 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IPageLink, IUser } from '@/types/types';
 import { AxiosResponse } from 'axios';
-import { PAGE } from '@/config/pages-url.config';
+import { PAGE } from '@/shared/config';
 import Link from 'next/link';
 import MenuSimple from '../DropdownMenu';
 import EmailIcon from '@mui/icons-material/Email';

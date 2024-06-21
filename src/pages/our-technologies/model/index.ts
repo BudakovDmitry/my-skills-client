@@ -1,5 +1,4 @@
-import Image, { StaticImageData } from "next/image";
-
+import { StaticImageData } from "next/image";
 import nodejsIcon from '@/../public/nodejs.png';
 import mongodbIcon from '@/../public/mongodb.png';
 import typescriptIcon from '@/../public/typescript.png';
@@ -7,8 +6,7 @@ import nextjsIcon from '@/../public/nextjs.png';
 import reactIcon from '@/../public/react.png';
 import tailwindcssIcon from '@/../public/tailwindcss.png';
 
-
-const technologies = [
+export const technologies = [
   {
     id: 0,
     name: 'NodeJS',
@@ -47,31 +45,9 @@ const technologies = [
   },
 ]
 
-type TechnologyItem = {
+export type TechnologyItem = {
   id: number,
   name: string,
   version: string,
   icon: StaticImageData
 }
-
-const OurTechnologiesPage = () => {
-  return (
-    <div className='flex-1 flex flex-col items-center justify-center'>
-      <div className='grid grid-col-1 lg:grid-cols-3 gap-4 w-full container px-4 lg:p-0'>
-        {technologies.map((item: TechnologyItem) => {
-          return (
-            <div key={item.id} className='bg-gray-200 flex items-center w-full px-6 py-4 rounded transform transition-transform duration-300 hover:-translate-y-2'>
-              <Image className='mr-4' src={item.icon} alt={item.name} />
-              <div>
-                <h4 className='font-bold'>{item.name}</h4>
-                <p className='text-gray-500 text-sm'>{item.version}</p>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
-export default OurTechnologiesPage;

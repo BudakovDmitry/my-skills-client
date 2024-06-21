@@ -6,9 +6,8 @@ import { IUser } from "@/types/types"
 import { Loader, Pagination } from "@/shared/ui"
 import { useState } from "react"
 import { useRouter } from "next/navigation";
-import { PERMISSION } from "@/utils/permissions"
+import { PERMISSION, PAGE } from "@/shared/config"
 import { useMyProfile } from "@/hooks/useMyProfile"
-import { PAGE } from "@/config/pages-url.config"
 import { checkingPermission } from "@/helpers/helpers"
 
 const ProfilesCardsList = () => {
