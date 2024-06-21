@@ -4,7 +4,7 @@ import { useState } from "react"
 import MessagesBlock from "../MessagesBlock/MessagesBlock"
 import { useMyProfile } from "@/hooks/useMyProfile"
 import ChatList from "../ChatsList/ChatList"
-import Loader from "@/components/ui/Loader/Loader"
+import { Loader } from "@/shared/ui"
 import { useSearchParams } from 'next/navigation';
 import { PAGE } from "@/config/pages-url.config"
 import { checkingPermission } from "@/helpers/helpers"

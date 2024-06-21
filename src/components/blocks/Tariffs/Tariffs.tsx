@@ -1,6 +1,6 @@
 'use client'
 
-import Loader from "@/components/ui/Loader/Loader"
+import { Loader } from "@/shared/ui"
 import { QUERY_KEY } from "@/config/query-key.config"
 import { useMyProfile } from "@/hooks/useMyProfile"
 import { userService } from "@/services/user.service"

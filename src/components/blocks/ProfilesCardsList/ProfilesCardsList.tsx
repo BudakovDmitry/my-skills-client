@@ -3,8 +3,7 @@
 import { useAllUsers } from "@/hooks/useAllUsers"
 import ProfilesCard from "../ProfilesCard/ProfilesCard"
 import { IUser } from "@/types/types"
-import Loader from "@/components/ui/Loader/Loader"
-import Pagination from "@/components/ui/Pagination/Pagination"
+import { Loader, Pagination } from "@/shared/ui"
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { PERMISSION } from "@/utils/permissions"

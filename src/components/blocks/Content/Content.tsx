@@ -1,6 +1,6 @@
 'use client'
 
-import Loader from "@/components/ui/Loader/Loader"
+import { Loader } from "@/shared/ui"
 import { usePage } from "@/hooks/usePage"
 
 const Content = ({ name }: { name: string }) => {

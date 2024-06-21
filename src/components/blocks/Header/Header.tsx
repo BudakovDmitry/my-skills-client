@@ -15,7 +15,7 @@ import Drawer from "../Drawer/Drawer";
 import { PERMISSION } from "@/utils/permissions";
 import MenuItem from "@/components/ui/MenuItem/MenuItem";
 import { checkingPermission } from "@/helpers/helpers";
-import Loader from "@/components/ui/Loader/Loader";
+import { Loader } from "@/shared/ui"
 
 const Header = () => {
     const { data: profileData, isLoading: isProfileLoading } = useMyProfile()

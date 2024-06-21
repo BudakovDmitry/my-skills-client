@@ -1,4 +1,4 @@
-import Loader from "@/components/ui/Loader/Loader"
+import { Loader } from "@/shared/ui"
 import { useChat } from "@/hooks/useChat"
 import { IUser } from "@/types/types"
 import Image from "next/image"

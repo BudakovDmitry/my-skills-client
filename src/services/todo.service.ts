@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "@/api/interceptors"
+import { axiosWithAuth } from "@/shared/api/interceptors"
 import { ENDPOINTS } from "@/config/endpoints.config"
 import { ICreateTodo, ITodo } from "@/types/types"
 
