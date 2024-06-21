@@ -8,7 +8,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { PERMISSION, PAGE } from "@/shared/config"
 import { useMyProfile } from "@/hooks/useMyProfile"
-import { checkingPermission } from "@/helpers/helpers"
+import { checkingPermission } from "@/shared/utils"
 
 const ProfilesCardsList = () => {
   const [page, setPage] = useState<number>(1);

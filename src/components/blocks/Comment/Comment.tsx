@@ -1,4 +1,4 @@
-import { getFormattedDate } from "@/helpers/helpers"
+import { getFormattedDate } from "@/shared/utils"
 import { IComment } from "@/types/types"
 
 type CommentProps = {

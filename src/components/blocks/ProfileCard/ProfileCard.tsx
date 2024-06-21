@@ -11,12 +11,12 @@ import CreateTodoForm from "@/components/forms/CreateTodoForm/CreateTodoForm";
 import TodoItem from "../TodoItem/TodoItem";
 import Comments from "../Comments/Comments";
 import { Button } from "@mui/material";
-import { chatService } from "@/services/chat.service";
+import { chatService } from "@/shared/api";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { useRouter } from "next/navigation";
 import { PAGE, PERMISSION } from "@/shared/config";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import { checkingPermission } from "@/helpers/helpers";
+import { checkingPermission } from "@/shared/utils"
 
 type ProfileCardPropsType = {
   user: IUser

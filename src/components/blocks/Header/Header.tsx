@@ -13,7 +13,7 @@ import { IconButton } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Drawer from "../Drawer/Drawer";
 import MenuItem from "@/components/ui/MenuItem/MenuItem";
-import { checkingPermission } from "@/helpers/helpers";
+import { checkingPermission } from "@/shared/utils"
 import { Loader } from "@/shared/ui"
 
 const Header = () => {

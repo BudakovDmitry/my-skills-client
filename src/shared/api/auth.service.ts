@@ -1,5 +1,4 @@
-import { axiosClassic } from "@/shared/api"
-import { removeFromStorage, saveTokenStorage } from "./authToken.service"
+import { axiosClassic, removeFromStorage, saveTokenStorage } from "@/shared/api"
 import { ILogin, IRegistration, IAuthResponse } from "@/types/types"
 import { ENDPOINTS } from "@/shared/config"
 

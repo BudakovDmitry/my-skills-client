@@ -10,7 +10,7 @@ import validationSchema from "./validationSchema";
 import EmojiPicker from '@/components/blocks/EmojiPicker/EmojiPicker';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { commentService } from "@/services/comment.service";
+import { commentService } from "@/shared/api";
 import { useState } from "react";
 import { useMyProfile } from "@/hooks/useMyProfile";
 import { usePathname } from 'next/navigation';
@@ -23,8 +23,8 @@ const AddCommentForm = () => {
     resolver: yupResolver(validationSchema)
   });
   const pathname = usePathname();
-  const page = pathname.split('/')[1];
-  const userId = pathname.split('/')[2];
+  const page = pathname?.split('/')[1] || '';
+  const userId = pathname?.split('/')[2];
   const currentProfileId = currentProfile ? currentProfile.data.id : '';
 
   const { mutate } = useMutation({

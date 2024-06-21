@@ -6,7 +6,7 @@ import validationSchema from "./validationSchema";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { IRegistration } from "@/types/types";
-import { authService } from "@/services/auth.service";
+import { authService } from "@/shared/api";
 import { toast } from "sonner";
 import { PAGE, QUERY_KEY } from "@/shared/config";
 

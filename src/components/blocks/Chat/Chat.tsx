@@ -7,11 +7,11 @@ import ChatList from "../ChatsList/ChatList"
 import { Loader } from "@/shared/ui"
 import { useSearchParams } from 'next/navigation';
 import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config"
-import { checkingPermission } from "@/helpers/helpers"
+import { checkingPermission } from "@/shared/utils"
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { io } from 'socket.io-client';
-import { chatService } from "@/services/chat.service"
+import { chatService } from "@/shared/api"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 const socket = io('http://localhost:8000', {
@@ -21,7 +21,7 @@ const socket = io('http://localhost:8000', {
 
 const Chat = () => {
   const searchParams = useSearchParams();
-  const chatId = searchParams.get('chatId');
+  const chatId = searchParams?.get('chatId') || '';
   const { data, isLoading } = useMyProfile()
   const [activeChat, setActiveChat] = useState<string | null>(chatId)
   const router = useRouter();

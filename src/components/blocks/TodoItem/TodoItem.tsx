@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { QUERY_KEY } from '@/shared/config';
-import { todoService } from '@/services/todo.service';
+import { todoService } from '@/shared/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 

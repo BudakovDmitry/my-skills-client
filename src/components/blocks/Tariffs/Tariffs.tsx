@@ -2,7 +2,7 @@
 
 import { Loader } from "@/shared/ui"
 import { useMyProfile } from "@/hooks/useMyProfile"
-import { userService } from "@/services/user.service"
+import { userService } from "@/shared/api"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation";

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { pageService } from "@/services/page.service";
+import { pageService } from "@/shared/api";
 import { QUERY_KEY } from "@/shared/config";
 
 export const usePage = (name: string) => {

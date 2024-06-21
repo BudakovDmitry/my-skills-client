@@ -1,7 +1,5 @@
 import axios, { type CreateAxiosDefaults } from "axios";
-import { getAccessToken, removeFromStorage } from "@/services/authToken.service";
-import { errorCatch } from "@/shared/api";
-import { authService } from "@/services/auth.service";
+import { getAccessToken, removeFromStorage, errorCatch, authService } from "@/shared/api";
 import { serverBaseUrl } from "@/shared/config"
 
 const options:CreateAxiosDefaults = {

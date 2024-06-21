@@ -1,4 +1,4 @@
-import { getFormattedDate, isPremiumUserPlan } from "@/helpers/helpers"
+import { getFormattedDate, isPremiumUserPlan } from "@/shared/utils"
 import { forwardRef } from "react"
 import { useRouter } from "next/navigation"
 import { PAGE } from "@/shared/config"

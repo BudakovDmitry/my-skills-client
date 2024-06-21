@@ -5,14 +5,14 @@ import { MenuButton as BaseMenuButton, MenuButtonProps } from '@mui/base/MenuBut
 import { MenuItem as BaseMenuItem, MenuItemProps } from '@mui/base/MenuItem';
 import { Dropdown } from '@mui/base/Dropdown';
 
-import { authService } from '@/services/auth.service';
+import { authService } from '@/shared/api';
 import { IUser } from '@/types/types';
 import Avatar from '@mui/material/Avatar';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
 import { PAGE } from '@/shared/config';
 import { Badge } from '@mui/material';
-import { isPremiumUserPlan } from '@/helpers/helpers';
+import { isPremiumUserPlan } from "@/shared/utils"
 
 
 type MenuSimplePropsType = {

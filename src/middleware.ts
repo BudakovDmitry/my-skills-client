@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { EnumTokens } from "./services/authToken.service";
+import { EnumTokens } from "@/shared/api";
 import { PAGE } from "./shared/config";
 
 export const middleware = async (request: NextRequest, response: NextResponse) => {
