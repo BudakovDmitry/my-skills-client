@@ -17,8 +17,6 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, me
     router.push(`${PAGE.PROFILES}/${userId}`)
   }
 
-
-  console.log('message', message)
   return (
     <div ref={ref} className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
       <div className={`flex items-start ${isCurrentProfile ? 'justify-start flex-row-reverse' : ''}`}>

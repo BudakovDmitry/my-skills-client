@@ -69,13 +69,13 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
 
           </div>
 
-          <div className="p-8 rounded-lg shadow-lg">
+          {/* <div className="p-8 rounded-lg shadow-lg">
             <h3 className="font-bold text-xl mb-4">Коментарі</h3>
-            {/* {user?.commentsReceived ? (
+            {user?.commentsReceived ? (
               <Comments userComments={user.commentsReceived} />
-            ) : null} */}
+            ) : null}
 
-          </div>
+          </div> */}
         </div>
         <div className="w-full lg:w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
