@@ -1,27 +1,17 @@
-'use client'
-
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 import { Popover } from '@mui/material';
-import { useState } from 'react';
-
-type EmojiPickerProps = {
-  addEmojiToMessage: (emoji: { native: string; }) => void
-}
+import { useEmojiPicker } from '../api/useEmojiPicker';
+import { EmojiPickerProps } from '../model/types';
 
 const EmojiPicker = ({ addEmojiToMessage }: EmojiPickerProps) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleOpenPopover = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClosePopover = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const {
+    handleOpenPopover,
+    handleClosePopover,
+    id,
+    open,
+    anchorEl
+  } = useEmojiPicker()
 
   return (
     <>

@@ -1,25 +1,19 @@
-import AddMessageForm from "@/components/forms/AddMessageForm/AddMessageForm"
-import { useChatById, useMyProfile } from "@/shared/api"
-import Message from "../Message/Message"
+import AddMessageForm from "./AddMessageForm"
+import Message from "./Message"
 import Image from "next/image"
-
 import arrow from '@/../public/arrow-down.png'
-import { useRef } from "react"
-
-type MessagesBlockProps = {
-  activeChat: string | null
-}
+import { MessagesBlockProps } from "../model/types"
+import { useMessagesBlock } from "../api/useMessagesBlock"
+import { Loader } from "@/shared/ui"
 
 const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
-  const { data: chatData, isLoading: isLoadingChat } = useChatById(activeChat || '1')
-  const { data: currentProfile, isLoading: isLoadingCurrentProfile } = useMyProfile()
-  const lastElementRef = useRef<HTMLDivElement>(null);
+  const {
+    chatData,
+    currentProfile,
+    handleScrollToNewMessage,
+    lastElementRef
+  } = useMessagesBlock(activeChat)
 
-  const handleScrollToNewMessage = () => {
-    if (lastElementRef.current) {
-      lastElementRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }
-  };
 
   return (
     <div className="flex flex-col flex-auto h-full p-6">

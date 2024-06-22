@@ -1,4 +1,4 @@
-import ChatsPage from "@/pages/chats/ChatsPage";
+import ChatsPage from "@/pages/chats/ui/ChatsPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,14 +1,9 @@
-'use client'
-
 import { QUERY_KEY } from "@/shared/config";
-import { ICreateMessageContent, ICreateComment, ICreateCommentContent, ICreateMessage } from "@/types/types";
+import { ICreateMessageContent, ICreateMessage } from "@/types/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
-import validationSchema from "./validationSchema";
-import EmojiPicker from '@/components/blocks/EmojiPicker/EmojiPicker';
-import { IconButton } from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
+import validationSchema from "../model/validationSchema";
 import { useEffect, useState } from "react";
 import { useMyProfile, chatService } from "@/shared/api";
 import io from 'socket.io-client';
@@ -17,12 +12,7 @@ const socket = io('http://localhost:8000', {
   transports: ['websocket'],
 });
 
-type AddMessageFormProps = {
-  chatId: string
-  handleScrollToNewMessage: () => void
-}
-
-const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProps) => {
+export const useAddMessageForm = (chatId: string, handleScrollToNewMessage: () => void) => {
   const queryClient = useQueryClient()
   const { data: currentProfile } = useMyProfile()
   const [message, setMessage] = useState<string>('');
@@ -72,31 +62,12 @@ const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProp
     setMessage(prevMessage => prevMessage + emoji.native);
   };
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div
-        className="flex flex-row items-center h-16 rounded-xl bg-white w-full pr-4"
-      >
-        <div className="flex-grow ml-4">
-          <div className="relative w-full flex items-center">
-            <EmojiPicker addEmojiToMessage={addEmojiToMessage} />
-            <input
-              value={message}
-              {...register("content")}
-              onChange={handleChangeText}
-              placeholder="Додайте повідомлення..."
-              className="flex w-full border rounded-xl focus:outline-none focus:border-sky-200 pl-4 h-9 pr-10"
-            />
-          </div>
-        </div>
-        <div className="ml-4">
-          <IconButton color="primary" type="submit" aria-label="Send message" sx={{ color: 'rgb(14, 165, 233)' }}>
-            <SendIcon />
-          </IconButton>
-        </div>
-      </div>
-    </form>
-  )
+  return {
+    register,
+    handleSubmit,
+    onSubmit,
+    handleChangeText,
+    addEmojiToMessage,
+    message
+  }
 }
-
-export default AddMessageForm

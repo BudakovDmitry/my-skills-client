@@ -3,23 +3,18 @@ import { useChat } from "@/shared/api"
 import { IUser } from "@/types/types"
 import Image from "next/image"
 import { isPremiumUserPlan } from "@/shared/utils"
-
-type ChatListProps = {
-  user: IUser
-  activeChat: string | null
-  handleChatOpen: (chatId: string) => void
-}
+import { useChatList } from "../api/useChatList"
+import { ChatListProps } from "../model/types"
 
 const ChatList = ({ user, activeChat, handleChatOpen }: ChatListProps) => {
-  const { data, isLoading } = useChat(user.id)
+  const {
+    chats,
+    isLoading,
+    countUnreadMessagesFromOtherUsers
+  } = useChatList(user.id)
 
-  function countUnreadMessagesFromOtherUsers(messages: any[], currentUserId: string): number {
-    const unreadMessages = messages.filter(message => !message.read && message.userId !== currentUserId);
-    return unreadMessages.length;
-  }
 
-
-  if (isLoading || !data) {
+  if (isLoading || !chats) {
     return (
       <Loader />
     )
@@ -53,10 +48,10 @@ const ChatList = ({ user, activeChat, handleChatOpen }: ChatListProps) => {
           <p className="font-bold text-md">Actual Chats</p>
           <p
             className="flex items-center justify-center bg-sky-700 h-5 w-5 rounded-md text-md font-bold text-white"
-          >{data?.data.length}</p>
+          >{chats.length}</p>
         </div>
         <div className="flex flex-col space-y-1 mt-4 -mx-2 h-full overflow-y-auto">
-          {data?.data.map((chatItem: any) => <button
+          {chats.map((chatItem: any) => <button
             key={chatItem.id}
             onClick={() => handleChatOpen(chatItem.id)}
             className={`flex flex-row items-center hover:bg-gray-200 rounded-xl p-2 ${chatItem.id === activeChat ? 'bg-gray-100' : ''}`}
@@ -67,9 +62,9 @@ const ChatList = ({ user, activeChat, handleChatOpen }: ChatListProps) => {
               {chatItem.users[0].user.photo ? <Image className="w-full h-full object-cover" src={chatItem.users[0].user.photo} alt='Photo' width={20} height={20} /> : chatItem.users[0].user.firstName[0]}
             </div>
             <div className="ml-2 text-sm font-semibold">{`${chatItem.users[0].user.firstName} ${chatItem.users[0].user.lastName}`}</div>
-            {countUnreadMessagesFromOtherUsers(data.data[0].messages, user.id) > 0
+            {countUnreadMessagesFromOtherUsers(chats[0].messages, user.id) > 0
               ? (
-                <span className="ml-auto mr-2 bg-orange-500 text-white font-bold w-6 h-6 flex items-center justify-center rounded-full text-xs">{countUnreadMessagesFromOtherUsers(data.data[0].messages, user.id)}</span>
+                <span className="ml-auto mr-2 bg-orange-500 text-white font-bold w-6 h-6 flex items-center justify-center rounded-full text-xs">{countUnreadMessagesFromOtherUsers(chats[0].messages, user.id)}</span>
               )
               : null}
           </button>)}

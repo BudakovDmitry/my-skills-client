@@ -1,21 +1,11 @@
 import { getFormattedDate, isPremiumUserPlan } from "@/shared/utils"
 import { forwardRef } from "react"
-import { useRouter } from "next/navigation"
-import { PAGE } from "@/shared/config"
-import Image from "next/image"
 import { Avatar } from "@mui/material"
-
-type MessageProps = {
-  isCurrentProfile: boolean
-  message: any
-}
+import { useMessage } from "../api/useMessage"
+import { MessageProps } from "../model/types"
 
 const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, message }, ref) => {
-  const router = useRouter();
-
-  const handleOpenUserProfile = (userId: string) => {
-    router.push(`${PAGE.PROFILES}/${userId}`)
-  }
+  const { handleOpenUserProfile } = useMessage()
 
   return (
     <div ref={ref} className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
