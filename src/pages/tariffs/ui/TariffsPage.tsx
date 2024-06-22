@@ -1,3 +1,5 @@
+'use client'
+
 import { Loader } from "@/shared/ui"
 import { useTariffsPage } from "../api/useTariffsPage"
 

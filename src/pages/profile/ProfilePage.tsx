@@ -1,4 +1,4 @@
-import ProfileCard from "@/components/blocks/ProfileCard/ProfileCard";
+import ProfileCard from "@/widgets/ui/ProfileCard";
 import { Loader } from "@/shared/ui"
 import { useUser } from "@/shared/api";
 

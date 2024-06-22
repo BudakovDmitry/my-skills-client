@@ -1,4 +1,4 @@
-import MyProfileEditPage from "@/pages/my-profile-edit/MyProfileEditPage"
+import MyProfileEditPage from "@/pages/my-profile-edit/ui/MyProfileEditPage"
 
 const ProfileEdit = () => <MyProfileEditPage />
 

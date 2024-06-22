@@ -1,14 +1,8 @@
 'use client'
 
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import validationSchema from "./validationSchema";
-import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import { IUserEdit, IUser } from "@/types/types";
-import { toast } from "sonner";
-import { userService } from "@/shared/api";
-import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config";
+import { IUser } from "@/types/types";
+import { PERMISSION } from "@/shared/config";
+
 import { FilePond, registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
@@ -16,53 +10,19 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import { checkingPermission } from "@/shared/utils"
+import { useMyProfileEditForm } from "../api/useMyProfileEditForm";
 
 registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateSize, FilePondPluginFileValidateType);
 
-const ProfileEditForm = ({ user }: { user: IUser }) => {
-  const defaultValuesUser = {
-    email: user.email,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    work: user.work,
-    location: user.location,
-    description: user.description,
-    links: {
-      instagram: user.links?.instagram,
-      facebook: user.links?.facebook,
-      github: user.links?.github,
-      linkedIn: user.links?.linkedIn,
-    }
-  }
+const MyProfileEditForm = ({ user }: { user: IUser }) => {
+  const {
+    handleSubmit,
+    onSubmit,
+    handleAddPhoto,
+    errors,
+    register
+  } = useMyProfileEditForm(user)
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<IUserEdit>({
-    resolver: yupResolver(validationSchema),
-    defaultValues: defaultValuesUser,
-  });
-
-  const { push } = useRouter()
-
-  const { mutate } = useMutation({
-    mutationKey: [QUERY_KEY.PROFILE_EDIT],
-    mutationFn: (data: IUserEdit) => userService.updateUser(data),
-    onSuccess() {
-      toast.success('Профіль успішно оновлений!')
-      reset()
-      push(PAGE.PROFILE)
-    }
-  })
-
-  const { mutate: mutateUploadPhoto } = useMutation({
-    mutationKey: [QUERY_KEY.UPLOAD_PHOTO],
-    mutationFn: (data: FormData) => userService.uploadPhoto(user.id, data),
-    onSuccess() {
-      toast.success('Фото успішно оновлено!')
-    }
-  })
-
-  const onSubmit: SubmitHandler<IUserEdit> = data => {
-    mutate(data)
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,13 +40,7 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
                   labelIdle='Фото'
                   stylePanelAspectRatio='1:1'
                   className=""
-                  onaddfile={(error, fileItem) => {
-                    if (!error) {
-                      const formData = new FormData()
-                      formData.append('file', fileItem.file);
-                      mutateUploadPhoto(formData)
-                    }
-                  }}
+                  onaddfile={handleAddPhoto}
                 />
               </div>
             </div>
@@ -154,4 +108,4 @@ const ProfileEditForm = ({ user }: { user: IUser }) => {
   )
 }
 
-export default ProfileEditForm
+export default MyProfileEditForm

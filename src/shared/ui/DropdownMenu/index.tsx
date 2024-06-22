@@ -4,29 +4,17 @@ import { Menu as BaseMenu, MenuProps } from '@mui/base/Menu';
 import { MenuButton as BaseMenuButton, MenuButtonProps } from '@mui/base/MenuButton';
 import { MenuItem as BaseMenuItem, MenuItemProps } from '@mui/base/MenuItem';
 import { Dropdown } from '@mui/base/Dropdown';
-
-import { authService } from '@/shared/api';
-import { IUser } from '@/types/types';
 import Avatar from '@mui/material/Avatar';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
 import { PAGE } from '@/shared/config';
 import { Badge } from '@mui/material';
 import { isPremiumUserPlan } from "@/shared/utils"
-
-
-type MenuSimplePropsType = {
-  user: IUser
-}
+import { useDropdownMenu } from '@/shared/api/useDropdownMenu';
+import { MenuSimplePropsType } from '@/shared/model/types';
 
 export default function MenuSimple({ user }: MenuSimplePropsType) {
-  const logoutHandler = async () => {
-    const response = await authService.logout()
-
-    if (response) {
-      window.location.reload()
-    }
-  }
+  const { logoutHandler } = useDropdownMenu()
 
   return (
     <div>

@@ -1,5 +1,5 @@
-import Header from "@/components/blocks/Header/Header";
-import Footer from "@/components/blocks/Footer/Footer";
+import Header from "@/widgets/ui/Header";
+import Footer from "@/widgets/ui/Footer";
 import Link from "next/link";
 import Image from "next/image";
 

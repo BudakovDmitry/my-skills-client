@@ -1,11 +1,6 @@
-import { IPageLink } from "@/types/types"
+import { MenuItemProps } from "@/shared/model/types"
 import { Tooltip } from "@mui/material"
 import Link from "next/link"
-
-type MenuItemProps = {
-  item: IPageLink
-  hasPermission: boolean
-}
 
 const MenuItem = ({ item, hasPermission }: MenuItemProps) => {
   if (item.isButton) {

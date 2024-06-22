@@ -2,91 +2,29 @@
 
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
-import { ITodo } from '@/types/types';
-import { useState } from 'react';
-import { Box, Button, FormControl, InputLabel, Select, TextField } from '@mui/material';
+import { Box, Button, FormControl, Select, TextField } from '@mui/material';
 import { HexColorPicker } from "react-colorful";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { QUERY_KEY } from '@/shared/config';
-import { todoService } from '@/shared/api';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
-
-
-type TodoItemProps = {
-  todo: ITodo,
-  isOnlyView?: boolean,
-  hasCustomizationTodoPermission: boolean
-}
+import { TodoItemProps } from '../model/types';
+import { useTodoItem } from '../api/useTodoItem';
 
 const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: TodoItemProps) => {
-  const queryClient = useQueryClient()
-  const [currentTodo, setCurrentTodo] = useState<ITodo>(todo)
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseEdit = () => {
-    setAnchorEl(null);
-  };
-
-  const handleOpenEdit = () => {
-    setIsExpanded((prevState: boolean) => !prevState)
-  }
-
-  const { mutate: removeMutate } = useMutation({
-    mutationKey: [QUERY_KEY.REMOVE_TODO],
-    mutationFn: (id: string) => todoService.removeTodo(id),
-    onSuccess() {
-      toast.success('Todo успішно видалено!')
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
-    }
-  })
-
-
-  const { mutate } = useMutation({
-    mutationKey: [`${QUERY_KEY.UPDATE_TODO}_${todo.id}`],
-    mutationFn: (data: ITodo) => todoService.updateTodo(data.id, data),
-    onSuccess() {
-      toast.success('Todo успішно оновлено!')
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.GET_PROFILE] })
-    }
-  })
-
-  const handleUpdateTodo = (field: string, data: string | boolean) => {
-    setCurrentTodo((prevState: ITodo) => {
-      return {
-        ...prevState,
-        [field]: data
-      }
-    })
-  }
-
-  const handleRemoveTodo = (id: string) => {
-    removeMutate(id)
-  }
-
-
-  const onUpdateTodo = () => {
-    if (isExpanded) {
-      handleOpenEdit()
-    }
-
-    mutate(currentTodo)
-  }
-
-  const onUpdateTodoStatus = () => {
-    handleUpdateTodo('status', !currentTodo.status)
-
-    mutate(currentTodo)
-  }
+  const {
+    open,
+    handleClick,
+    handleCloseEdit,
+    handleRemoveTodo,
+    handleUpdateTodo,
+    onUpdateTodo,
+    onUpdateTodoStatus,
+    isExpanded,
+    currentTodo,
+    handleOpenEdit,
+    anchorEl
+  } = useTodoItem(todo)
 
   return (
     <Box className={`rounded-md overflow-hidden mb-2 animation-slideIn px-4 py-3 `} sx={{ backgroundColor: currentTodo.color }}>

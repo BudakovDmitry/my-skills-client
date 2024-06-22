@@ -3,25 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import logoImage from '@/../public/logo.png'
-import { useMyProfile, usePageLink } from "@/shared/api";
-import MenuSimple from "@/components/blocks/DropdownMenu";
+
+import { MenuSimple, ProfileSkeleton, Drawer, MenuItem } from "@/shared/ui";
 import { IPageLink } from "@/types/types";
 import { PAGE, PERMISSION } from "@/shared/config";
-import ProfileSkeleton from "../ProfileSkeleton/ProfileSkeleton";
 import { IconButton } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import Drawer from "../Drawer/Drawer";
-import MenuItem from "@/components/ui/MenuItem/MenuItem";
 import { checkingPermission } from "@/shared/utils"
-import { Loader } from "@/shared/ui"
+import { useHeader } from "../api/useHeader";
 
 const Header = () => {
-    const { data: profileData, isLoading: isProfileLoading } = useMyProfile()
-    const { data: pageLinkData } = usePageLink()
-
-    if (isProfileLoading) {
-        return
-    }
+    const {
+        profileData,
+        isProfileLoading,
+        pageLinkData
+    } = useHeader()
 
     return (
         <header className='py-4 px-4 lg:px-6 flex items-center justify-between border-b'>

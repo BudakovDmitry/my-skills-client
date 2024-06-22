@@ -2,48 +2,21 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
-import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import { IPageLink, IUser } from '@/types/types';
-import { AxiosResponse } from 'axios';
+import { IPageLink } from '@/types/types';
 import { PAGE } from '@/shared/config';
 import Link from 'next/link';
-import MenuSimple from '../DropdownMenu';
+import { MenuSimple } from '@/shared/ui';
 import EmailIcon from '@mui/icons-material/Email';
-
-type SwipeableTemporaryDrawerProps = {
-  profileData?: AxiosResponse<IUser, any>
-  pageLinkData?: AxiosResponse<IPageLink[], any>
-}
-
+import { SwipeableTemporaryDrawerProps } from '@/shared/model/types';
+import { useDrawer } from '@/shared/api/useDrawer';
 
 const SwipeableTemporaryDrawer = ({ profileData, pageLinkData }: SwipeableTemporaryDrawerProps) => {
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-
-  const toggleDrawer = (anchor: string, open: boolean) => (event: any) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
+  const {
+    state,
+    toggleDrawer
+  } = useDrawer()
 
   const list = (anchor: string) => (
     <Box

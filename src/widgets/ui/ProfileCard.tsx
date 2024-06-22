@@ -6,33 +6,22 @@ import profilePhoto from '@/../public/profile_photo.jpg'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 
-import { ITodo, IUser } from "@/types/types";
-import CreateTodoForm from "@/components/forms/CreateTodoForm/CreateTodoForm";
-import TodoItem from "../TodoItem/TodoItem";
-import Comments from "../Comments/Comments";
+import { ITodo } from "@/types/types";
+import CreateTodoForm from "@/widgets/ui/CreateTodoForm";
+import TodoItem from "./TodoItem";
+import Comments from "../../components/blocks/Comments/Comments";
 import { Button } from "@mui/material";
-import { chatService, useMyProfile } from "@/shared/api";
-import { useRouter } from "next/navigation";
-import { PAGE, PERMISSION } from "@/shared/config";
-import SocialLinks from "../SocialLinks/SocialLinks";
+import { PERMISSION } from "@/shared/config";
+import SocialLinks from "./SocialLinks";
 import { checkingPermission } from "@/shared/utils"
+import { useProfileCard } from "../api/useProfileCard";
+import { ProfileCardPropsType } from "../model/types";
 
-type ProfileCardPropsType = {
-  user: IUser
-  isOnlyView?: boolean
-}
 
 const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
-  const { data, isLoading } = useMyProfile()
-  const { push } = useRouter()
-
-  const handleCreateChat = async () => {
-    const response = await chatService.createChat([data?.data.id || '', user.id])
-
-    if (response.status === 200) {
-      push(`${PAGE.CHATS}?chatId=${response.data.id}`)
-    }
-  }
+  const {
+    handleCreateChat
+  } = useProfileCard(user)
 
   return (
     <>

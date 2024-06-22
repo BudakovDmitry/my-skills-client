@@ -2,7 +2,7 @@
 
 import { Loader } from '@/shared/ui';
 import { useMyProfilePage } from '../api/useMyProfilePage';
-import ProfileCard from '@/components/blocks/ProfileCard/ProfileCard';
+import ProfileCard from '@/widgets/ui/ProfileCard';
 
 const MyProfilePage = () => {
   const { user, isLoading } = useMyProfilePage()

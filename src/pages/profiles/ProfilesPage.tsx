@@ -1,9 +1,9 @@
-import ProfilesCardsList from '@/components/blocks/ProfilesCardsList/ProfilesCardsList';
+import ProfileCardList from '@/widgets/ui/ProfileCardList';
 
 const ProfilesPage = () => {
   return (
     <div className='flex-1 flex flex-col items-center justify-between'>
-      <ProfilesCardsList />
+      <ProfileCardList />
     </div>
   )
 }

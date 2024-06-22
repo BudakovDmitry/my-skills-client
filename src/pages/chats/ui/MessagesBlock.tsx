@@ -4,7 +4,6 @@ import Image from "next/image"
 import arrow from '@/../public/arrow-down.png'
 import { MessagesBlockProps } from "../model/types"
 import { useMessagesBlock } from "../api/useMessagesBlock"
-import { Loader } from "@/shared/ui"
 
 const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
   const {

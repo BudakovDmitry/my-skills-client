@@ -1,13 +1,4 @@
-export interface IUserEdit {
-  email: string
-  firstName: string
-  lastName: string
-  work?: string
-  location?: string
-  photo?: string
-  description?: string
-  links: IUserLinks
-}
+
 
 export interface IUserLinks {
   instagram?: string
@@ -90,14 +81,6 @@ export interface ISocialLinks {
   github?: string
   linkedIn?: string
   user: IUser
-  userId: string
-}
-
-export interface ICreateTodoForm {
-  name: string
-}
-
-export interface ICreateTodo extends ICreateTodoForm {
   userId: string
 }
 

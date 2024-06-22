@@ -5,11 +5,7 @@ import facebook from '@/../public/facebook.png'
 import github from '@/../public/github.png'
 import instagram from '@/../public/instagram.png'
 import linkedIn from '@/../public/linkedin.png'
-import { IUserLinks } from "@/types/types";
-
-type SocialLinksProps = {
-  links: IUserLinks
-}
+import { SocialLinksProps } from "../model/types";
 
 const SocialLinks = ({ links }: SocialLinksProps) => {
   return (
