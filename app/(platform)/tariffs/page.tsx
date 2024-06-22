@@ -1,4 +1,4 @@
-import TarrifsPage from "@/pages/tariffs/TariffsPage"
+import TarrifsPage from "@/pages/tariffs/ui/TariffsPage"
 
 const Tarrifs = () => <TarrifsPage />
 

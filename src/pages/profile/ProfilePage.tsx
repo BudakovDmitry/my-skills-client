@@ -1,6 +1,6 @@
 import ProfileCard from "@/components/blocks/ProfileCard/ProfileCard";
 import { Loader } from "@/shared/ui"
-import { useUser } from "@/hooks/useUser";
+import { useUser } from "@/shared/api";
 
 const ProfilePage = ({ slug }: { slug: string }) => {
   const { data, isLoading } = useUser(slug)

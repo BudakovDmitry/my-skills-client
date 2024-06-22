@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import MessagesBlock from "../MessagesBlock/MessagesBlock"
-import { useMyProfile } from "@/hooks/useMyProfile"
+import { useMyProfile, chatService } from "@/shared/api"
 import ChatList from "../ChatsList/ChatList"
 import { Loader } from "@/shared/ui"
 import { useSearchParams } from 'next/navigation';
@@ -11,7 +11,6 @@ import { checkingPermission } from "@/shared/utils"
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { io } from 'socket.io-client';
-import { chatService } from "@/shared/api"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 const socket = io('http://localhost:8000', {

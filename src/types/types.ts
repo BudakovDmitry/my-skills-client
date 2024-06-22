@@ -1,16 +1,3 @@
-export interface ILogin {
-  email: string
-  password: string
-}
-
-export interface IRegistration {
-  email: string
-  firstName: string
-  lastName: string
-  password: string
-  passwordRepeat: string
-}
-
 export interface IUserEdit {
   email: string
   firstName: string

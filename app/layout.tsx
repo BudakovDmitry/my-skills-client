@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "@/app/globals.css";
+import "../src/app/main.css";
 import { SITE_NAME } from "@/shared/config";
 import { Providers } from "./providers";
 import { Toaster } from "sonner";

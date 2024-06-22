@@ -10,9 +10,8 @@ import validationSchema from "./validationSchema";
 import EmojiPicker from '@/components/blocks/EmojiPicker/EmojiPicker';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { commentService } from "@/shared/api";
+import { commentService, useMyProfile } from "@/shared/api";
 import { useState } from "react";
-import { useMyProfile } from "@/hooks/useMyProfile";
 import { usePathname } from 'next/navigation';
 
 const AddCommentForm = () => {

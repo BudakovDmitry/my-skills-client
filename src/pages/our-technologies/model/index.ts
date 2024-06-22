@@ -45,9 +45,3 @@ export const technologies = [
   },
 ]
 
-export type TechnologyItem = {
-  id: number,
-  name: string,
-  version: string,
-  icon: StaticImageData
-}

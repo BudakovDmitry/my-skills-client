@@ -2,7 +2,7 @@
 
 import ProfileEditForm from "@/components/forms/ProfileEditForm/ProfileEditForm"
 import { Loader } from "@/shared/ui"
-import { useMyProfile } from "@/hooks/useMyProfile"
+import { useMyProfile } from "@/shared/api"
 
 const MyProfileEditPage = () => {
   const { data, isLoading } = useMyProfile()

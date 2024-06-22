@@ -1,5 +1,5 @@
 import { Loader } from "@/shared/ui"
-import { useChat } from "@/hooks/useChat"
+import { useChat } from "@/shared/api"
 import { IUser } from "@/types/types"
 import Image from "next/image"
 import { isPremiumUserPlan } from "@/shared/utils"

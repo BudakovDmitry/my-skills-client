@@ -10,8 +10,7 @@ import EmojiPicker from '@/components/blocks/EmojiPicker/EmojiPicker';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import { useEffect, useState } from "react";
-import { useMyProfile } from "@/hooks/useMyProfile";
-import { chatService } from "@/shared/api";
+import { useMyProfile, chatService } from "@/shared/api";
 import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000', {

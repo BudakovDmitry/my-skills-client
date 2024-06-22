@@ -1,18 +1,25 @@
 import { errorCatch } from './error'
 import { axiosClassic, axiosWithAuth } from './interceptors'
-import { authService } from './auth.service'
+import { authService } from './services/auth.service'
 import {
   EnumTokens,
   getAccessToken,
   saveTokenStorage,
   removeFromStorage
-} from './authToken.service'
-import { chatService } from './chat.service'
-import { commentService } from './comment.service'
-import { pageService } from './page.service'
-import { pageLinkService } from './pageLink.service'
-import { todoService } from './todo.service'
-import { userService } from './user.service'
+} from './services/authToken.service'
+import { chatService } from './services/chat.service'
+import { commentService } from './services/comment.service'
+import { pageService } from './services/page.service'
+import { pageLinkService } from './services/pageLink.service'
+import { todoService } from './services/todo.service'
+import { userService } from './services/user.service'
+import { useAllUsers } from './hooks/useAllUsers'
+import { useChat, useChatById } from './hooks/useChat'
+import { useMyProfile } from './hooks/useMyProfile'
+import { usePage } from './hooks/usePage'
+import { usePageLink } from './hooks/usePageLink'
+import { useUser } from './hooks/useUser'
+
 
 export {
   errorCatch,
@@ -28,5 +35,12 @@ export {
   pageService,
   pageLinkService,
   todoService,
-  userService
+  userService,
+  useAllUsers,
+  useChat, 
+  useChatById,
+  useMyProfile,
+  usePage,
+  usePageLink,
+  useUser
 }

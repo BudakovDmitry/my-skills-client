@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { technologies, TechnologyItem } from '../model'
+import { technologies } from '../model'
+import { TechnologyItem } from '../model/types'
 
 const OurTechnologiesPage = () => {
   return (

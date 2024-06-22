@@ -1,36 +1,14 @@
 'use client'
 
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import validationSchema from "./validationSchema";
-import { authService } from "@/shared/api";
-import { ILogin } from "@/types/types";
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { PAGE, QUERY_KEY } from "@/shared/config";
-
+import { useLoginForm } from "../api/useLoginForm"
 
 const LoginForm = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<ILogin>({
-    resolver: yupResolver(validationSchema)
-  });
-
-  const { push } = useRouter()
-
-  const { mutate } = useMutation({
-    mutationKey: [QUERY_KEY.LOGIN],
-    mutationFn: (data: ILogin) => authService.main('login', data),
-    onSuccess() {
-      toast.success('Авторизація успішна!')
-      reset()
-      push(PAGE.HOME)
-    }
-  })
-
-  const onSubmit: SubmitHandler<ILogin> = (data) => {
-    mutate(data)
-  }
+  const {
+    onSubmit,
+    handleSubmit,
+    register,
+    errors
+  } = useLoginForm()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

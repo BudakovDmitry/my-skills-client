@@ -1,13 +1,12 @@
 'use client'
 
-import { useAllUsers } from "@/hooks/useAllUsers"
+import { useAllUsers, useMyProfile } from "@/shared/api"
 import ProfilesCard from "../ProfilesCard/ProfilesCard"
 import { IUser } from "@/types/types"
 import { Loader, Pagination } from "@/shared/ui"
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { PERMISSION, PAGE } from "@/shared/config"
-import { useMyProfile } from "@/hooks/useMyProfile"
 import { checkingPermission } from "@/shared/utils"
 
 const ProfilesCardsList = () => {

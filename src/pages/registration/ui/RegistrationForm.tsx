@@ -1,35 +1,14 @@
 'use client'
 
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import validationSchema from "./validationSchema";
-import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import { IRegistration } from "@/types/types";
-import { authService } from "@/shared/api";
-import { toast } from "sonner";
-import { PAGE, QUERY_KEY } from "@/shared/config";
+import { useRegistrationForm } from "../api/useRegistrationForm"
 
 const RegistrationForm = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<IRegistration>({
-    resolver: yupResolver(validationSchema)
-  });
-
-  const { push } = useRouter()
-
-  const { mutate } = useMutation({
-    mutationKey: [QUERY_KEY.REGISTRATION],
-    mutationFn: (data: IRegistration) => authService.main('registration', data),
-    onSuccess() {
-      toast.success('Реєстрація успішна!')
-      reset()
-      push(PAGE.HOME)
-    }
-  })
-
-  const onSubmit: SubmitHandler<IRegistration> = (data) => {
-    mutate(data)
-  }
+  const {
+    onSubmit,
+    register,
+    handleSubmit,
+    errors
+  } = useRegistrationForm()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

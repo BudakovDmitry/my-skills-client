@@ -1,6 +1,5 @@
 import AddMessageForm from "@/components/forms/AddMessageForm/AddMessageForm"
-import { useChatById } from "@/hooks/useChat"
-import { useMyProfile } from "@/hooks/useMyProfile"
+import { useChatById, useMyProfile } from "@/shared/api"
 import Message from "../Message/Message"
 import Image from "next/image"
 

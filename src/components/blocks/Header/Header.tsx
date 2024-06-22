@@ -3,9 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import logoImage from '@/../public/logo.png'
-import { useMyProfile } from "@/hooks/useMyProfile";
+import { useMyProfile, usePageLink } from "@/shared/api";
 import MenuSimple from "@/components/blocks/DropdownMenu";
-import { usePageLink } from "@/hooks/usePageLink";
 import { IPageLink } from "@/types/types";
 import { PAGE, PERMISSION } from "@/shared/config";
 import ProfileSkeleton from "../ProfileSkeleton/ProfileSkeleton";
