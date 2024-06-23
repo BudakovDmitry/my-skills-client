@@ -1,4 +1,4 @@
-import { useChat } from "@/shared/api"
+import { useChat } from "@/entities/chat/api"
 
 export const useChatList = (userId: string) => {
   const { data, isLoading } = useChat(userId)

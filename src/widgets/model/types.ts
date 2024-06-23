@@ -13,14 +13,6 @@ export type CreateTodoFromProps = {
   userId: string,
 }
 
-export interface ICreateTodoForm {
-  name: string
-}
-
-export interface ICreateTodo extends ICreateTodoForm {
-  userId: string
-}
-
 export type TodoItemProps = {
   todo: ITodo,
   isOnlyView?: boolean,

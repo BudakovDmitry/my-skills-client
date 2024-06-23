@@ -7,10 +7,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import validationSchema from "./validationSchema";
-import EmojiPicker from '@/components/blocks/EmojiPicker/EmojiPicker';
+import EmojiPicker from '@/';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { commentService, useMyProfile } from "@/shared/api";
+import { commentService } from "@/entities/comment/api";
+import { useMyProfile } from "@/entities/user/api";
 import { useState } from "react";
 import { usePathname } from 'next/navigation';
 

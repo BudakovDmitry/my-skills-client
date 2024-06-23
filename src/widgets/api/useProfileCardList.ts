@@ -1,4 +1,4 @@
-import { useAllUsers, useMyProfile } from "@/shared/api"
+import { useAllUsers, useMyProfile } from "@/entities/user/api"
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { PERMISSION, PAGE } from "@/shared/config"

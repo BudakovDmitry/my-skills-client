@@ -1,6 +1,7 @@
 import { axiosWithAuth } from "@/shared/api"
 import { ENDPOINTS } from "@/shared/config"
-import { ICreateTodo, ITodo } from "@/types/types"
+import { ITodo } from "@/types/types"
+import { ICreateTodo } from "../model/types"
 
 class TodoService {
   private BASE_URL = ENDPOINTS.TODO

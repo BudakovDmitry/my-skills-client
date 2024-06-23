@@ -1,6 +1,6 @@
 import ProfileCard from "@/widgets/ui/ProfileCard";
 import { Loader } from "@/shared/ui"
-import { useUser } from "@/shared/api";
+import { useUser } from "@/entities/user/api";
 
 const ProfilePage = ({ slug }: { slug: string }) => {
   const { data, isLoading } = useUser(slug)

@@ -1,4 +1,5 @@
-import { chatService, useMyProfile } from "@/shared/api";
+import { chatService } from "@/entities/chat/api";
+import { useMyProfile } from "@/entities/user/api";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/shared/config";
 import { IUser } from "@/types/types";

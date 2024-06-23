@@ -1,10 +1,10 @@
-import { ICreateTodo, ICreateTodoForm } from "../model/types";
+import { ICreateTodo, ICreateTodoForm } from "@/entities/todo/model/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import validationSchema from "../model/createTodoSchema";
-import { todoService } from "@/shared/api";
+import { todoService } from "@/entities/todo/api";
 import { QUERY_KEY } from "@/shared/config";
 import { useQueryClient } from '@tanstack/react-query'
 

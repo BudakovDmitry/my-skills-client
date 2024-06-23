@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { userService } from "@/shared/api";
+import { userService } from "@/entities/user/api";
 import { QUERY_KEY } from "@/shared/config";
 
 export const useUser = (id: string) => {

@@ -4,6 +4,7 @@ import ProfileSkeleton from './ProfileSkeleton'
 import MenuSimple from './DropdownMenu'
 import Drawer from './Drawer'
 import MenuItem from './MenuItem'
+import Content from './Content'
 
 export {
   Pagination,
@@ -11,5 +12,6 @@ export {
   ProfileSkeleton,
   MenuSimple,
   Drawer,
-  MenuItem
+  MenuItem,
+  Content
 }

@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from "react"
-import { useMyProfile, chatService } from "@/shared/api"
+import { chatService } from "@/entities/chat/api"
+import { useMyProfile } from "@/entities/user/api"
 import { useSearchParams } from 'next/navigation';
 import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config"
 import { checkingPermission } from "@/shared/utils"
@@ -19,7 +20,7 @@ export const useChatPage = () => {
   const searchParams = useSearchParams();
   const chatId = searchParams?.get('chatId') || '';
   const { data, isLoading } = useMyProfile()
-  const [activeChat, setActiveChat] = useState<string | null>(chatId)
+  const [activeChat, setActiveChat] = useState<string>(chatId)
   const router = useRouter();
   const queryClient = useQueryClient()
 

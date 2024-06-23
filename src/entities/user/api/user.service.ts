@@ -1,6 +1,7 @@
 import { axiosWithAuth } from "@/shared/api"
 import { ENDPOINTS } from "@/shared/config"
-import { IAllUsersResponse, IUser, IUserEdit } from "@/types/types";
+import { IAllUsersResponse, IUser } from "@/types/types";
+import { IUserEdit } from "../model/types";
 
 class UserService {
   private BASE_URL = ENDPOINTS.USER

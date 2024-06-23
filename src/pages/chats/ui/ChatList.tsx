@@ -1,6 +1,4 @@
 import { Loader } from "@/shared/ui"
-import { useChat } from "@/shared/api"
-import { IUser } from "@/types/types"
 import Image from "next/image"
 import { isPremiumUserPlan } from "@/shared/utils"
 import { useChatList } from "../api/useChatList"

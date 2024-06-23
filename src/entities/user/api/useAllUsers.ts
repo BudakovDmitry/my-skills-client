@@ -1,11 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { userService } from "@/shared/api";
+import { userService } from "@/entities/user/api";
 import { QUERY_KEY } from "@/shared/config";
-
-type AllUsersParams = {
-  pageNumber?: number;
-  pageSize?: number;
-}
+import { AllUsersParams } from "../model/types";
 
 export const useAllUsers = ({ pageNumber = 1, pageSize = 10 }: AllUsersParams = {}) => {
   const { data, isLoading } = useQuery({
