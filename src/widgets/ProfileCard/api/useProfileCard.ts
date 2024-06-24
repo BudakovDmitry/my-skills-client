@@ -2,7 +2,7 @@ import { chatService } from "@/entities/chat/api";
 import { useMyProfile } from "@/entities/user/api";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/shared/config";
-import { IUser } from "@/types/types";
+import { IUser } from "@/shared/model/types"
 
 export const useProfileCard = (user: IUser) => {
   const { data, isLoading } = useMyProfile()

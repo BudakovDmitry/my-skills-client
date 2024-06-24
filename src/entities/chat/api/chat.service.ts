@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "@/shared/api"
 import { ENDPOINTS } from "@/shared/config"
-import { ICreateMessage } from "@/types/types"
+import { ICreateMessage } from "@/shared/model/types"
 import { io, Socket } from 'socket.io-client';
 
 class ChatService {

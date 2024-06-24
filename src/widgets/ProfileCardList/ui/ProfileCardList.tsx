@@ -1,7 +1,7 @@
 'use client'
 
 import { ProfilesCard } from "@/widgets/ProfilesCard"
-import { IUser } from "@/types/types"
+import { IUser } from "@/shared/model/types"
 import { Loader, Pagination } from "@/shared/ui"
 import { useProfileCardList } from "../api/useProfileCardList"
 

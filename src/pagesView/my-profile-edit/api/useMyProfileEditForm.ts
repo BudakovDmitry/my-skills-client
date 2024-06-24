@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import validationSchema from "../model/myProfileEditSchema";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { IUser } from "@/types/types";
+import { IUser } from "@/shared/model/types"
 import { toast } from "sonner";
 import { userService } from "@/entities/user/api";
 import { PAGE, QUERY_KEY } from "@/shared/config";

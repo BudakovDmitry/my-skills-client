@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "@/shared/api"
 import { ENDPOINTS } from "@/shared/config"
-import { ICreateComment } from "@/types/types"
+import { ICreateComment } from "@/shared/model/types"
 
 class CommentService {
   private BASE_URL = ENDPOINTS.COMMENT

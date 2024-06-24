@@ -1,7 +1,7 @@
-import { IComment } from "@/types/types";
-import Comment from "../../../entities/comment/ui/Comment"
-import CommentReply from "../../../entities/comment/ui/CommentReply"
-import AddCommentForm from "@/components/forms/AddCommentForm/AddCommentForm";
+import { IComment } from "@/shared/model/types"
+import { Comment } from "@/entities/comment"
+import { CommentReply } from "@/entities/comment"
+import { AddCommentForm } from "@/entities/comment";
 
 type CommentsProps = {
   userComments: IComment[]

@@ -1,5 +1,5 @@
 import { QUERY_KEY } from "@/shared/config";
-import { ICreateMessageContent, ICreateMessage } from "@/types/types";
+import { ICreateMessageContent, ICreateMessage } from "@/shared/model/types"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";

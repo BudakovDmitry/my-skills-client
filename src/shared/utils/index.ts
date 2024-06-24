@@ -1,4 +1,4 @@
-import { IPermission } from "@/types/types";
+import { IPermission } from "@/shared/model/types"
 import { PLAN } from '@/shared/config';
 
 export const getFormattedDate = (dateString: string) => {

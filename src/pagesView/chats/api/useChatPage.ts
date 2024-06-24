@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { io } from 'socket.io-client';
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { IUser } from "@/types/types";
+import { IUser } from "@/shared/model/types"
 
 const socket = io('http://localhost:8000', {
   transports: ['websocket'],

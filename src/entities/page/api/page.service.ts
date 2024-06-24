@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "@/shared/api"
 import { ENDPOINTS } from "@/shared/config"
-import { IPage } from "@/types/types"
+import { IPage } from "@/shared/model/types"
 
 class PageService {
   private BASE_URL = ENDPOINTS.PAGE

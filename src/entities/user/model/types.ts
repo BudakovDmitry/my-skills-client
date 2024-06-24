@@ -1,4 +1,4 @@
-import { IUserLinks } from "@/types/types"
+import { IUserLinks } from "@/shared/model/types"
 
 export interface IUserEdit {
   email: string

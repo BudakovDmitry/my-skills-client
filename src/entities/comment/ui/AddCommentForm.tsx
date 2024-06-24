@@ -1,7 +1,7 @@
 'use client'
 
 import { QUERY_KEY, PAGE } from "@/shared/config";
-import { IComment, ICreateComment, ICreateCommentContent } from "@/types/types";
+import { IComment, ICreateComment, ICreateCommentContent } from "@/shared/model/types"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";

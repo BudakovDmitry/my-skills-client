@@ -1,4 +1,4 @@
-import { IUser } from "@/types/types"
+import { IUser } from "@/shared/model/types"
 
 export interface ICreateTodoForm {
   name: string

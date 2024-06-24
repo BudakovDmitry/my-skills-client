@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { PERMISSION, PAGE } from "@/shared/config"
 import { checkingPermission } from "@/shared/utils"
-import { IUser } from "@/types/types";
+import { IUser } from "@/shared/model/types"
 
 export const useProfileCardList = () => {
   const [page, setPage] = useState<number>(1);

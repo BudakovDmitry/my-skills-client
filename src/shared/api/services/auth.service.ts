@@ -1,5 +1,7 @@
 import { axiosClassic, removeFromStorage, saveTokenStorage } from "@/shared/api"
-import { ILogin, IRegistration, IAuthResponse } from "@/types/types"
+import { IAuthResponse } from "@/shared/model/types"
+import { ILogin } from "@/pagesView/login/model/types"
+import { IRegistration } from "@/pagesView/registration/model/types"
 import { ENDPOINTS } from "@/shared/config"
 
 class AuthService {

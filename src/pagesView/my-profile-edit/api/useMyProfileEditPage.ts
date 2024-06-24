@@ -1,5 +1,5 @@
 import { useMyProfile } from "@/entities/user/api"
-import { IUser } from "@/types/types"
+import { IUser } from "@/shared/model/types"
 
 export const useMyProfileEditPage = () => {
   const { data, isLoading } = useMyProfile()

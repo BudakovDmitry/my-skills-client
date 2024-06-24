@@ -1,6 +1,6 @@
 'use client'
 
-import { IUser } from "@/types/types";
+import { IUser } from "@/shared/model/types"
 import { PERMISSION } from "@/shared/config";
 
 import { FilePond, registerPlugin } from 'react-filepond';

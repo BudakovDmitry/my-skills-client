@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "@/shared/api"
 import { ENDPOINTS } from "@/shared/config"
-import { IPageLink } from "@/types/types"
+import { IPageLink } from "@/shared/model/types"
 
 class PageLinkService {
   private BASE_URL = ENDPOINTS.PAGE_LINK

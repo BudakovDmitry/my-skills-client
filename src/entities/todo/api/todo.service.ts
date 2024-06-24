@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "@/shared/api"
 import { ENDPOINTS } from "@/shared/config"
-import { ITodo } from "@/types/types"
+import { ITodo } from "../model/types"
 import { ICreateTodo } from "../model/types"
 
 class TodoService {

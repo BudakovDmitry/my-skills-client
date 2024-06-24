@@ -1,5 +1,5 @@
 import { getFormattedDate } from "@/shared/utils"
-import { IComment } from "@/types/types"
+import { IComment } from "@/shared/model/types"
 
 type CommentProps = {
   comment: IComment

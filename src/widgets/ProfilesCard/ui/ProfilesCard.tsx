@@ -3,7 +3,7 @@ import Link from "next/link";
 import profilePhoto from '@/../public/profile_photo.jpg'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
-import { IUser } from "@/types/types";
+import { IUser } from "@/shared/model/types"
 import { PAGE } from "@/shared/config";
 import { SocialLinks } from "@/widgets/SocialLinks";
 

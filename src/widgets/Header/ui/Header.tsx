@@ -5,7 +5,7 @@ import Image from "next/image";
 import logoImage from '@/../public/logo.png'
 
 import { MenuSimple, ProfileSkeleton, Drawer, MenuItem } from "@/shared/ui";
-import { IPageLink } from "@/types/types";
+import { IPageLink } from "@/shared/model/types"
 import { PAGE, PERMISSION } from "@/shared/config";
 import { IconButton } from "@mui/material";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
