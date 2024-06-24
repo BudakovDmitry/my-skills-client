@@ -1,5 +1,5 @@
-import { useChatById } from "@/entities/chat/api"
-import { useMyProfile } from "@/entities/user/api"
+import { useChatById } from "@/entities/chat"
+import { useMyProfile } from "@/entities/user"
 import { useRef } from "react"
 
 export const useMessagesBlock = (activeChat: string = '') => {

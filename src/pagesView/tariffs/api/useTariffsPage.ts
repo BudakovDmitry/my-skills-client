@@ -1,6 +1,6 @@
 'use client'
 
-import { useMyProfile, userService } from "@/entities/user/api"
+import { useMyProfile, userService } from "@/entities/user"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation";

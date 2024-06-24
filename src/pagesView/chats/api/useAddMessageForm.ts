@@ -5,8 +5,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import validationSchema from "../model/validationSchema";
 import { useEffect, useState } from "react";
-import { chatService } from "@/entities/chat/api";
-import { useMyProfile } from "@/entities/user/api";
+import { chatService } from "@/entities/chat";
+import { useMyProfile } from "@/entities/user";
 import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000', {

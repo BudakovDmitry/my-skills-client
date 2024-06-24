@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import validationSchema from "../model/createTodoSchema";
-import { todoService } from "@/entities/todo/api";
+import { todoService } from "@/entities/todo";
 import { QUERY_KEY } from "@/shared/config";
 import { useQueryClient } from '@tanstack/react-query'
 

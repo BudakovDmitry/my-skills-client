@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/shared/config";
-import { chatService } from "@/entities/chat/api";
+import { chatService } from "./chat.service";
 
 export const useChat = (userId: string) => {
   const { data, isLoading } = useQuery({

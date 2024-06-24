@@ -1,4 +1,4 @@
-import { useChat } from "@/entities/chat/api"
+import { useChat } from "@/entities/chat"
 
 export const useChatList = (userId: string) => {
   const { data, isLoading } = useChat(userId)

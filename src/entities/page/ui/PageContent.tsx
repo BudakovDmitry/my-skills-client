@@ -1,7 +1,7 @@
 'use client'
 
 import { Loader } from "@/shared/ui"
-import { usePage } from "@/entities/page/api"
+import { usePage } from "@/entities/page"
 
 const PageContent = ({ name }: { name: string }) => {
 

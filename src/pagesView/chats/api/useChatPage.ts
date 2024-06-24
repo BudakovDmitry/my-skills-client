@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from "react"
-import { chatService } from "@/entities/chat/api"
-import { useMyProfile } from "@/entities/user/api"
+import { chatService } from "@/entities/chat"
+import { useMyProfile } from "@/entities/user"
 import { useSearchParams } from 'next/navigation';
 import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config"
 import { checkingPermission } from "@/shared/utils"

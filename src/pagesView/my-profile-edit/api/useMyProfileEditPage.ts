@@ -1,4 +1,4 @@
-import { useMyProfile } from "@/entities/user/api"
+import { useMyProfile } from "@/entities/user"
 import { IUser } from "@/shared/model/types"
 
 export const useMyProfileEditPage = () => {

@@ -1,7 +1,7 @@
 import { ITodo } from '../model/types';
 import { useState } from 'react';
 import { QUERY_KEY } from '@/shared/config';
-import { todoService } from '@/entities/todo/api';
+import { todoService } from '@/entities/todo';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
