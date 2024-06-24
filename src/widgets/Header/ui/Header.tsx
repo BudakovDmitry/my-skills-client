@@ -4,7 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import logoImage from '@/../public/logo.png'
 
-import { DropdownMenu, ProfileSkeleton, Drawer, MenuItem } from "@/shared/ui";
+import { ProfileSkeleton, MenuItem } from "@/shared/ui";
+import { Drawer } from '@/widgets/Drawer'
+import { DropdownMenu } from '@/widgets/DropdownMenu'
 import { IPageLink } from "@/shared/model/types"
 import { PAGE, PERMISSION } from "@/shared/config";
 import { IconButton } from "@mui/material";

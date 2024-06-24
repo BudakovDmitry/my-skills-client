@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { IPageLink } from '@/shared/model/types';
 import { PAGE } from '@/shared/config';
 import Link from 'next/link';
-import { MenuSimple } from '@/shared/ui';
+import { DropdownMenu } from '@/widgets/DropdownMenu';
 import EmailIcon from '@mui/icons-material/Email';
 import { SwipeableTemporaryDrawerProps } from '@/shared/model/types';
 import { useDrawer } from '../api/useDrawer';
@@ -25,7 +25,7 @@ const SwipeableTemporaryDrawer = ({ profileData, pageLinkData }: SwipeableTempor
     >
       <div className='my-6'>
         {profileData
-          ? <MenuSimple user={profileData?.data} />
+          ? <DropdownMenu user={profileData?.data} />
           : <Link className='mx-2 font-medium text-gray-500 px-4' href={PAGE.LOGIN}>Увійти</Link>
         }
 
