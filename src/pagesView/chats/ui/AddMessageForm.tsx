@@ -1,6 +1,6 @@
 'use client'
 
-import { EmojiPicker } from '@/features/ui';
+import { EmojiPicker } from '@/features/EmojiPicker';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import { AddMessageFormProps } from "../model/types";

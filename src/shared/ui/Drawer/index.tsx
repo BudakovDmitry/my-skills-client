@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { MenuSimple } from '@/shared/ui';
 import EmailIcon from '@mui/icons-material/Email';
 import { SwipeableTemporaryDrawerProps } from '@/shared/model/types';
-import { useDrawer } from '@/shared/api/useDrawer';
+import { useDrawer } from '@/shared/api';
 
 const SwipeableTemporaryDrawer = ({ profileData, pageLinkData }: SwipeableTemporaryDrawerProps) => {
   const {

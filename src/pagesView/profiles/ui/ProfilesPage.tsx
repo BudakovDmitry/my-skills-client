@@ -1,4 +1,4 @@
-import ProfileCardList from '@/widgets/ui/ProfileCardList';
+import { ProfileCardList } from '@/widgets/ProfileCardList';
 
 const ProfilesPage = () => {
   return (

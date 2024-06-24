@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { PAGE } from '@/shared/config';
 import { Badge } from '@mui/material';
 import { isPremiumUserPlan } from "@/shared/utils"
-import { useDropdownMenu } from '@/shared/api/useDropdownMenu';
+import { useDropdownMenu } from '@/shared/api';
 import { MenuSimplePropsType } from '@/shared/model/types';
 
 export default function MenuSimple({ user }: MenuSimplePropsType) {

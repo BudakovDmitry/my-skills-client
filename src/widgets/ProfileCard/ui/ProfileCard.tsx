@@ -7,12 +7,11 @@ import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 
 import { ITodo } from "@/entities/todo/model/types";
-import { CreateTodoForm } from "@/entities/todo/ui";
-import { TodoItem } from "@/entities/todo/ui";
+import { TodoItem, CreateTodoForm } from "@/entities/todo";
 // import Comments from "../../components/blocks/Comments/Comments";
 import { Button } from "@mui/material";
 import { PERMISSION } from "@/shared/config";
-import SocialLinks from "./SocialLinks";
+import { SocialLinks } from "@/widgets/SocialLinks";
 import { checkingPermission } from "@/shared/utils"
 import { useProfileCard } from "../api/useProfileCard";
 import { ProfileCardPropsType } from "../model/types";

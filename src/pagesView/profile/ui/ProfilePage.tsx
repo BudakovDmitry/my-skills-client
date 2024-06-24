@@ -1,4 +1,4 @@
-import ProfileCard from "@/widgets/ui/ProfileCard";
+import { ProfileCard } from "@/widgets/ProfileCard";
 import { Loader } from "@/shared/ui"
 import { useUser } from "@/entities/user/api";
 

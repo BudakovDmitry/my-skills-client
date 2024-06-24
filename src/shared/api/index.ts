@@ -7,6 +7,8 @@ import {
   saveTokenStorage,
   removeFromStorage
 } from './services/authToken.service'
+import { useDrawer } from './useDrawer'
+import { useDropdownMenu } from './useDropdownMenu'
 
 export {
   errorCatch,
@@ -16,5 +18,7 @@ export {
   EnumTokens,
   getAccessToken,
   saveTokenStorage,
-  removeFromStorage
+  removeFromStorage,
+  useDrawer,
+  useDropdownMenu
 }

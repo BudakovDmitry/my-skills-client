@@ -1,5 +1,5 @@
-import Header from "@/widgets/ui/Header";
-import Footer from "@/widgets/ui/Footer";
+import { Header } from "@/widgets/Header";
+import { Footer } from "@/widgets/Footer";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,7 +10,6 @@ const HomePage = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className='flex-1 flex flex-col items-center justify-center'>
-        {/* <Content name='Home' /> */}
 
         <Image className='mb-3 size-26' src={logoImage} alt='Logo' />
         <h1 className='text-6xl font-bold mb-6 js--title'>My skills</h1>
