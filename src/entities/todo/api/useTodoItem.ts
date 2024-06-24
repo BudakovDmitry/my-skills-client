@@ -1,4 +1,4 @@
-import { ITodo } from '@/types/types';
+import { ITodo } from '../model/types';
 import { useState } from 'react';
 import { QUERY_KEY } from '@/shared/config';
 import { todoService } from '@/entities/todo/api';

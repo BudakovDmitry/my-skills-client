@@ -1,6 +1,6 @@
 import { IComment } from "@/types/types";
-import Comment from "../Comment/Comment"
-import CommentReply from "../CommentReply/CommentReply"
+import Comment from "../../../entities/comment/ui/Comment"
+import CommentReply from "../../../entities/comment/ui/CommentReply"
 import AddCommentForm from "@/components/forms/AddCommentForm/AddCommentForm";
 
 type CommentsProps = {

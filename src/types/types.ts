@@ -1,3 +1,4 @@
+import { ITodo } from "@/entities/todo/model/types"
 
 
 export interface IUserLinks {
@@ -57,19 +58,7 @@ export interface IAuthResponse {
   user: IUser
 }
 
-export interface ITodo {
-  id: string
-  createdAt: Date
-  updatedAt: Date
 
-  name: string
-  description?: string
-  status: boolean
-  sticker?: string
-  user: IUser
-  userId: string
-  color: string
-}
 
 export interface ISocialLinks {
   id: string

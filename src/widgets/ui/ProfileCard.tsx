@@ -6,10 +6,10 @@ import profilePhoto from '@/../public/profile_photo.jpg'
 import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 
-import { ITodo } from "@/types/types";
-import CreateTodoForm from "@/widgets/ui/CreateTodoForm";
-import TodoItem from "./TodoItem";
-import Comments from "../../components/blocks/Comments/Comments";
+import { ITodo } from "@/entities/todo/model/types";
+import { CreateTodoForm } from "@/entities/todo/ui";
+import { TodoItem } from "@/entities/todo/ui";
+// import Comments from "../../components/blocks/Comments/Comments";
 import { Button } from "@mui/material";
 import { PERMISSION } from "@/shared/config";
 import SocialLinks from "./SocialLinks";

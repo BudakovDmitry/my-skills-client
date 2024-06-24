@@ -3,7 +3,7 @@
 import { Loader } from "@/shared/ui"
 import { usePage } from "@/entities/page/api"
 
-const Content = ({ name }: { name: string }) => {
+const PageContent = ({ name }: { name: string }) => {
 
   const { data, isLoading } = usePage(name)
 
@@ -18,4 +18,4 @@ const Content = ({ name }: { name: string }) => {
   )
 }
 
-export default Content
+export default PageContent
