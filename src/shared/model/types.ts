@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { ITodo } from "@/entities/todo/model/types"
 
 export type MenuSimplePropsType = {
   user: IUser
@@ -13,8 +14,6 @@ export type MenuItemProps = {
   item: IPageLink
   hasPermission: boolean
 }
-
-import { ITodo } from "@/entities/todo/model/types"
 
 
 export interface IUserLinks {
