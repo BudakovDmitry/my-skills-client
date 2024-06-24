@@ -1,3 +1,5 @@
+'use client'
+
 import { ProfileCard } from "@/widgets/ProfileCard";
 import { Loader } from "@/shared/ui"
 import { useUser } from "@/entities/user";

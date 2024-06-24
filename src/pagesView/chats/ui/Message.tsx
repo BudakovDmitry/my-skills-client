@@ -12,7 +12,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, me
       <div className={`flex items-start ${isCurrentProfile ? 'justify-start flex-row-reverse' : ''}`}>
         <Avatar
           onClick={isCurrentProfile ? undefined : () => handleOpenUserProfile(message.userId)}
-          alt={message.user.firstName} src={message.user.photo} className={`${isCurrentProfile ? 'ml-2' : 'mr-2'} border-2 ${isPremiumUserPlan(message.user.plan.name) ? 'border-orange-500' : 'border-white'}`} />
+          alt={message.user.firstName} src={message.user.photo} className={`${isCurrentProfile ? 'ml-2' : 'mr-2 cursor-pointer'} border-2 ${isPremiumUserPlan(message.user.plan.name) ? 'border-orange-500' : 'border-white'}`} />
         <div
           className={`relative text-sm pt-3 pb-5 px-4 min-w-32 shadow rounded-xl ${isCurrentProfile ? 'mr-3 bg-sky-100' : 'ml-3 bg-white'}`}
         >

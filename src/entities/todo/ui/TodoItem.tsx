@@ -34,7 +34,7 @@ const TodoItem = ({ todo, isOnlyView = false, hasCustomizationTodoPermission }: 
           ? <TextField sx={{ marginRight: 'auto', display: 'block', height: 24, '& .MuiInputBase-input': { height: '100%', fontWeight: 600, }, '& .MuiInputBase-formControl': { height: '100%' } }} onChange={(e: any) => handleUpdateTodo('name', e.target.value)} defaultValue={currentTodo.name} id="outlined-basic" variant="outlined" />
           : <p className={`font-bold mr-auto text-md ${currentTodo.status ? 'opacity-50 line-through' : ''}`}>{todo.name}</p>
         }
-        {todo.sticker ? <span className="text-xs bg-slate-300 text-slate-800 px-3 py-1 rounded-md font-bold">{todo.sticker}</span> : null}
+        {todo.sticker ? <span className="text-xs bg-slate-300 text-slate-800 rounded-md font-bold px-4 py-2">{todo.sticker}</span> : null}
         <button onClick={handleOpenEdit} className={`bg-trbg-transparent border-none ml-4 ${isOnlyView ? 'hidden' : 'block'}`}>
           <EditIcon sx={{ width: 18, height: 18 }} />
         </button>
