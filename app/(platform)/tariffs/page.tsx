@@ -1,5 +1,5 @@
-import TarrifsPage from "@/pages/tariffs/ui/TariffsPage"
+import { TariffsPage } from "@/pagesView/tariffs"
 
-const Tarrifs = () => <TarrifsPage />
+const Tarrifs = () => <TariffsPage />
 
 export default Tarrifs

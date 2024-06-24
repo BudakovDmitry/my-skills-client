@@ -1,4 +1,4 @@
-import MyProfilePage from '@/pages/my-profile/ui/MyProfilePage';
+import { MyProfilePage } from '@/pagesView/my-profile';
 
 const MyProfile = () => <MyProfilePage />
 

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import RegistrationPage from "@/pages/registration/ui/RegistrationPage";
+import { RegistrationPage } from "@/pagesView/registration";
 
 export const metadata: Metadata = {
   title: 'Реєстрація',

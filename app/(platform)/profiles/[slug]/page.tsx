@@ -1,4 +1,4 @@
-import ProfilePage from "@/pages/profile/ProfilePage";
+import { ProfilePage } from "@/pagesView/profile";
 
 const Profile = ({ params }: { params: { slug: string } }) => <ProfilePage slug={params.slug} />
 

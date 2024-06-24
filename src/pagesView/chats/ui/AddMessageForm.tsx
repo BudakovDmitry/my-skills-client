@@ -1,10 +1,10 @@
 'use client'
 
-import EmojiPicker from '@/features/ui/EmojiPicker';
+import { EmojiPicker } from '@/features/ui';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import { AddMessageFormProps } from "../model/types";
-import { useAddMessageForm } from "../api/useAddMessageForm";
+import { useAddMessageForm } from "../api";
 
 const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProps) => {
   const {

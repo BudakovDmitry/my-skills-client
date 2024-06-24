@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import OurTechnologiesPage from "@/pages/our-technologies/ui/OurTechnologiesPage";
+import { OurTechnologiesPage } from "@/pagesView/our-technologies";
 
 export const metadata: Metadata = {
     title: 'Наші технології',

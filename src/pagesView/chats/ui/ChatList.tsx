@@ -1,7 +1,7 @@
 import { Loader } from "@/shared/ui"
 import Image from "next/image"
 import { isPremiumUserPlan } from "@/shared/utils"
-import { useChatList } from "../api/useChatList"
+import { useChatList } from "../api"
 import { ChatListProps } from "../model/types"
 
 const ChatList = ({ user, activeChat, handleChatOpen }: ChatListProps) => {

@@ -1,7 +1,7 @@
 import { getFormattedDate, isPremiumUserPlan } from "@/shared/utils"
 import { forwardRef } from "react"
 import { Avatar } from "@mui/material"
-import { useMessage } from "../api/useMessage"
+import { useMessage } from "../api"
 import { MessageProps } from "../model/types"
 
 const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, message }, ref) => {

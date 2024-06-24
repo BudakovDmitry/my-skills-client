@@ -2,7 +2,7 @@
 
 import ChatList from "./ChatList"
 import MessagesBlock from "./MessagesBlock"
-import { useChatPage } from "../api/useChatPage"
+import { useChatPage } from "../api"
 import Loader from "@/shared/ui/Loader"
 
 const ChatsPage = () => {

@@ -1,4 +1,4 @@
-import PageContent from './PageContent/PageContent'
+import PageContent from './PageContent'
 
 export {
   PageContent

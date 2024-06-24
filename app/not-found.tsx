@@ -1,4 +1,4 @@
-import NotFoundPage from '@/pages/not-found/ui/NotFoundPage';
+import { NotFoundPage } from '@/pagesView/not-found';
 
 const NotFound = () => <NotFoundPage />
 

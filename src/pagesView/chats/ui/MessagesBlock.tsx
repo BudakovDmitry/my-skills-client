@@ -3,7 +3,7 @@ import Message from "./Message"
 import Image from "next/image"
 import arrow from '@/../public/arrow-down.png'
 import { MessagesBlockProps } from "../model/types"
-import { useMessagesBlock } from "../api/useMessagesBlock"
+import { useMessagesBlock } from "../api"
 
 const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
   const {

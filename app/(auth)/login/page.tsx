@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import LoginPage from "@/pages/login/ui/LoginPage";
+import { LoginPage } from "@/pagesView/login";
 
 export const metadata: Metadata = {
   title: 'Логін',
