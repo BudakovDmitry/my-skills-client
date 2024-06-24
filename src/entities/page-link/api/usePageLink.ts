@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { pageLinkService } from "@/entities/page-link";
+import { pageLinkService } from "./pageLink.service";
 import { QUERY_KEY } from "@/shared/config";
 
 export const usePageLink = () => {
