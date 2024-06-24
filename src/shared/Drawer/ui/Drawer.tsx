@@ -4,13 +4,13 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import MenuIcon from '@mui/icons-material/Menu';
-import { IPageLink } from '@/types/types';
+import { IPageLink } from '@/shared/model/types';
 import { PAGE } from '@/shared/config';
 import Link from 'next/link';
 import { MenuSimple } from '@/shared/ui';
 import EmailIcon from '@mui/icons-material/Email';
 import { SwipeableTemporaryDrawerProps } from '@/shared/model/types';
-import { useDrawer } from '@/shared/api';
+import { useDrawer } from '../api/useDrawer';
 
 const SwipeableTemporaryDrawer = ({ profileData, pageLinkData }: SwipeableTemporaryDrawerProps) => {
   const {

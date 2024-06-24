@@ -10,10 +10,10 @@ import Link from 'next/link';
 import { PAGE } from '@/shared/config';
 import { Badge } from '@mui/material';
 import { isPremiumUserPlan } from "@/shared/utils"
-import { useDropdownMenu } from '@/shared/api';
+import { useDropdownMenu } from '../api/useDropdownMenu';
 import { MenuSimplePropsType } from '@/shared/model/types';
 
-export default function MenuSimple({ user }: MenuSimplePropsType) {
+export default function DropdownMenu({ user }: MenuSimplePropsType) {
   const { logoutHandler } = useDropdownMenu()
 
   return (

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logoImage from '@/../public/logo.png'
 
-import { MenuSimple, ProfileSkeleton, Drawer, MenuItem } from "@/shared/ui";
+import { DropdownMenu, ProfileSkeleton, Drawer, MenuItem } from "@/shared/ui";
 import { IPageLink } from "@/shared/model/types"
 import { PAGE, PERMISSION } from "@/shared/config";
 import { IconButton } from "@mui/material";
@@ -44,7 +44,7 @@ const Header = () => {
                 {isProfileLoading ?
                     <ProfileSkeleton />
                     : profileData
-                        ? <MenuSimple user={profileData?.data} />
+                        ? <DropdownMenu user={profileData?.data} />
                         : <Link className='mx-2 font-medium text-gray-500 px-4' href={PAGE.LOGIN}>Увійти</Link>
                 }
             </div>

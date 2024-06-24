@@ -7,8 +7,8 @@ import {
   saveTokenStorage,
   removeFromStorage
 } from './services/authToken.service'
-import { useDrawer } from './useDrawer'
-import { useDropdownMenu } from './useDropdownMenu'
+import { useDrawer } from '../Drawer/api/useDrawer'
+import { useDropdownMenu } from '../DropdownMenu/api/useDropdownMenu'
 
 export {
   errorCatch,
