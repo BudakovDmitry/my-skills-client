@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { HomePage } from "@/pagesView/home";
+import { HomePage } from "@/pages/home";
 
 export const metadata: Metadata = {
     title: 'Головна',

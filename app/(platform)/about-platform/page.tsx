@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { AboutPlatformPage } from "@/pagesView/about-platform";
+import { AboutPlatformPage } from "@/pages/about-platform";
 
 export const metadata: Metadata = {
     title: 'Про платформу',
