@@ -6,7 +6,7 @@ import { toast } from "sonner"
 import { useRouter } from "next/navigation";
 import { PAGE, QUERY_KEY } from "@/shared/config"
 
-export const useTariffsPage = () => {
+export const useChangeTariffButton = () => {
   const queryClient = useQueryClient()
   const { data: profileData, isLoading } = useMyProfile()
   const router = useRouter();
