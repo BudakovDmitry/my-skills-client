@@ -7,7 +7,7 @@ import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 import { IUser } from "@/shared/model/types"
 import { PAGE } from "@/shared/config";
-import { SocialLinks } from "@/widgets/SocialLinks";
+import { SocialLinks } from "@/features/SocialLinks";
 
 const ProfilesCard = ({ user }: { user: IUser }) => {
 

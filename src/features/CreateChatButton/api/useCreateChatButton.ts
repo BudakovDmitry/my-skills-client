@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { PAGE } from "@/shared/config";
 import { IUser } from "@/shared/model/types"
 
-export const useProfileCard = (user: IUser) => {
+export const useCreateChatButton = (user: IUser) => {
   const { data, isLoading } = useMyProfile()
   const { push } = useRouter()
 

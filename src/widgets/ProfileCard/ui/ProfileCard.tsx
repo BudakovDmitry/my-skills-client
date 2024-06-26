@@ -7,20 +7,18 @@ import work from '@/../public/work_icon.png'
 import world from '@/../public/world.png'
 
 import { ITodo } from "@/entities/todo/model/types";
-import { TodoItem, CreateTodoForm } from "@/entities/todo";
+import { TodoItem } from "@/entities/todo";
+import { CreateTodoForm } from '@/features/CreateTodoForm'
 // import Comments from "../../components/blocks/Comments/Comments";
 import { Button } from "@mui/material";
 import { PERMISSION } from "@/shared/config";
-import { SocialLinks } from "@/widgets/SocialLinks";
+import { SocialLinks } from "@/features/SocialLinks";
 import { checkingPermission } from "@/shared/utils"
-import { useProfileCard } from "../api/useProfileCard";
 import { ProfileCardPropsType } from "../model/types";
+import { CreateChatButton } from "@/features/CreateChatButton";
 
 
 const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
-  const {
-    handleCreateChat
-  } = useProfileCard(user)
 
   return (
     <>
@@ -65,7 +63,8 @@ const ProfileCard = ({ user, isOnlyView = false }: ProfileCardPropsType) => {
         </div>
         <div className="w-full lg:w-1/3">
           <Image className="rounded-md mb-4 block w-full" src={user && user.photo ? user.photo : profilePhoto} alt="Profile Image" width={300} height={500} />
-          <Button onClick={handleCreateChat} variant="contained" sx={{ width: '100%', mb: 2 }}>Написати</Button>
+          {user?.id && isOnlyView ? <CreateChatButton user={user} /> : null}
+
           {
             user.links
               ? (
