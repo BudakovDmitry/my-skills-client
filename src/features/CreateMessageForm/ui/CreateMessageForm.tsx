@@ -1,12 +1,12 @@
 'use client'
 
-import { EmojiPicker } from '@/features/EmojiPicker';
+import { EmojiPicker } from '@/shared/ui';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { AddMessageFormProps } from "../model/types";
-import { useAddMessageForm } from "../api";
+import { CreateMessageFormProps } from "../model/types";
+import { useCreateMessageForm } from "../api/useCreateMessageForm";
 
-const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProps) => {
+const CreateMessageForm = ({ chatId, handleScrollToNewMessage }: CreateMessageFormProps) => {
   const {
     register,
     handleSubmit,
@@ -14,7 +14,7 @@ const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProp
     handleChangeText,
     addEmojiToMessage,
     message
-  } = useAddMessageForm(chatId, handleScrollToNewMessage)
+  } = useCreateMessageForm(chatId, handleScrollToNewMessage)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -43,4 +43,4 @@ const AddMessageForm = ({ chatId, handleScrollToNewMessage }: AddMessageFormProp
   )
 }
 
-export default AddMessageForm
+export default CreateMessageForm

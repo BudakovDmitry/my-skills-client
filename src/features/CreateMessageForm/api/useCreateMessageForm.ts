@@ -13,7 +13,7 @@ const socket = io('http://localhost:8000', {
   transports: ['websocket'],
 });
 
-export const useAddMessageForm = (chatId: string, handleScrollToNewMessage: () => void) => {
+export const useCreateMessageForm = (chatId: string, handleScrollToNewMessage: () => void) => {
   const queryClient = useQueryClient()
   const { data: currentProfile } = useMyProfile()
   const [message, setMessage] = useState<string>('');

@@ -1,8 +1,8 @@
 'use client'
 
-import ChatList from "./ChatList"
+import { ChatList } from "@/widgets/ChatList"
 import MessagesBlock from "./MessagesBlock"
-import { useChatPage } from "../api"
+import { useChatPage } from "../api/useChatPage"
 import { Loader } from "@/shared/ui"
 
 const ChatsPage = () => {

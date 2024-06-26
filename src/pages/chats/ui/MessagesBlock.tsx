@@ -1,9 +1,9 @@
-import AddMessageForm from "./AddMessageForm"
+import { CreateMessageForm } from "@/features/CreateMessageForm"
 import Message from "./Message"
 import Image from "next/image"
 import arrow from '@/../public/arrow-down.png'
 import { MessagesBlockProps } from "../model/types"
-import { useMessagesBlock } from "../api"
+import { useMessagesBlock } from "../api/useMessagesBlock"
 
 const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
   const {
@@ -38,7 +38,7 @@ const MessagesBlock = ({ activeChat }: MessagesBlockProps) => {
 
 
           </div>
-          <AddMessageForm chatId={activeChat} handleScrollToNewMessage={handleScrollToNewMessage} />
+          <CreateMessageForm chatId={activeChat} handleScrollToNewMessage={handleScrollToNewMessage} />
         </div>
         : <div className="hidden lg:block relative mt-2 -ml-6 w-32">
           <Image src={arrow} alt="Arrow" className="rotate-90 w-32" />
