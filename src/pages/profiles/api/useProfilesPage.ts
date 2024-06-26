@@ -1,31 +1,25 @@
 import { useAllUsers, useMyProfile } from "@/shared/api";
-import { useState } from "react"
+import { IUser } from "@/shared/model/types";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PERMISSION, PAGE } from "@/shared/config"
 import { checkingPermission } from "@/shared/utils"
-import { IUser } from "@/shared/model/types"
 
-export const useProfileCardList = () => {
+export const useProfilesPage = () => {
   const [page, setPage] = useState<number>(1);
   const { data, isLoading } = useAllUsers({ pageNumber: page })
   const { data: profileData, isLoading: isLoadingProfile } = useMyProfile()
   const router = useRouter();
-
-  const handleChangePage = (event: any, value: number) => {
-    setPage(value);
-  };
 
   if (profileData && !checkingPermission(profileData.data.plan.permissions, PERMISSION.VIEW_ALL_PROFILES)) {
     router.push(PAGE.HOME)
   }
   
   return {
-    users: data?.data.users || [] as IUser[],
-    totalPages: data?.data.totalPages,
-    profileData,
-    handleChangePage,
+    page, 
+    setPage,
     isLoading,
-    isLoadingProfile,
-    page
+    users: data?.data.users || [] as IUser[],
+    totalPages: data?.data.totalPages || 1,
   }
 }
