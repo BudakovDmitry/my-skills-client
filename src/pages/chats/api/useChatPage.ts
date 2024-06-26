@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { chatService } from "@/entities/chat"
-import { useMyProfile } from "@/entities/user"
+import { useMyProfile } from "@/shared/api";
 import { useSearchParams } from 'next/navigation';
 import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config"
 import { checkingPermission } from "@/shared/utils"

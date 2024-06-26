@@ -1,5 +1,5 @@
 import { usePageLink } from "@/entities/page-link";
-import { useMyProfile } from "@/entities/user";
+import { useMyProfile } from "@/shared/api";
 
 export const useHeader = () => {
   const { data: profileData, isLoading: isProfileLoading } = useMyProfile()

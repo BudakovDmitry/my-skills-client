@@ -1,6 +1,10 @@
 import { errorCatch } from './error'
 import { axiosClassic, axiosWithAuth } from './interceptors'
 import { authService } from './services/auth.service'
+import { userService } from './services/user.service'
+import { useUser } from './hooks/useUser'
+import { useMyProfile } from './hooks/useMyProfile'
+import { useAllUsers } from './hooks/useAllUsers'
 import {
   EnumTokens,
   getAccessToken,
@@ -16,5 +20,9 @@ export {
   EnumTokens,
   getAccessToken,
   saveTokenStorage,
-  removeFromStorage
+  removeFromStorage,
+  userService,
+  useUser,
+  useMyProfile,
+  useAllUsers
 }

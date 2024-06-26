@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { IUser } from "@/shared/model/types"
 import { toast } from "sonner";
-import { userService } from "@/entities/user";
+import { userService } from "@/shared/api";
 import { PAGE, QUERY_KEY } from "@/shared/config";
 import { FilePondErrorDescription, FilePondFile } from "filepond";
 import { IUserEdit } from "../model/types";

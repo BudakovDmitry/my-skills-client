@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import validationSchema from "../model/validationSchema";
 import { useEffect, useState } from "react";
 import { chatService } from "@/entities/chat";
-import { useMyProfile } from "@/entities/user";
+import { useMyProfile } from "@/shared/api";
 import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000', {

@@ -11,7 +11,7 @@ import { EmojiPicker } from '@/features/EmojiPicker';
 import { IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import { commentService } from "@/entities/comment";
-import { useMyProfile } from "@/entities/user";
+import { useMyProfile } from "@/shared/api";
 import { useState } from "react";
 import { usePathname } from 'next/navigation';
 

@@ -1,5 +1,5 @@
 import { chatService } from "@/entities/chat";
-import { useMyProfile } from "@/entities/user";
+import { useMyProfile } from "@/shared/api";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/shared/config";
 import { IUser } from "@/shared/model/types"
