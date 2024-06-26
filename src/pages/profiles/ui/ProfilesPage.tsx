@@ -1,3 +1,5 @@
+'use client'
+
 import { Pagination } from '@/features/Pagination';
 import ProfileCardList from './ProfileCardList';
 import { useProfilesPage } from '../api/useProfilesPage';
