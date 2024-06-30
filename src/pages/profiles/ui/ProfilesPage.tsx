@@ -19,7 +19,7 @@ const ProfilesPage = () => {
   }
 
   return (
-    <div className='flex-1 flex flex-col items-center justify-between'>
+    <div className='flex flex-col items-center justify-between'>
       <ProfileCardList users={users} />
       {totalPages > 1 ? <Pagination page={page} setPage={setPage} totalPages={totalPages} /> : null}
 

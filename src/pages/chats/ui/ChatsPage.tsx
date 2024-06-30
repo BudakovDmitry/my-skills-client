@@ -20,12 +20,10 @@ const ChatsPage = () => {
   }
 
   return (
-    <div className='flex-1 flex'>
-      <div className="flex flex-1 antialiased text-gray-800">
-        <div className="flex flex-row h-full w-full overflow-x-hidden">
-          <ChatList user={myProfile} activeChat={activeChat} handleChatOpen={handleChatOpen} />
-          <MessagesBlock activeChat={activeChat} />
-        </div>
+    <div className='flex'>
+      <div className="flex flex-row h-full w-full overflow-x-hidden">
+        <ChatList user={myProfile} activeChat={activeChat} handleChatOpen={handleChatOpen} />
+        <MessagesBlock activeChat={activeChat} />
       </div>
     </div>
   )

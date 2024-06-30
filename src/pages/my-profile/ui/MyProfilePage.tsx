@@ -12,7 +12,7 @@ const MyProfilePage = () => {
   }
 
   return (
-    <div className='flex-1 flex flex-col items-center mt-2 mb-14'>
+    <div className='flex flex-col items-center mt-2 mb-14'>
       <ProfileCard user={user} isOnlyView={false} />
     </div>
   )

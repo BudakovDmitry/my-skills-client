@@ -17,7 +17,7 @@ export default function PlatformLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen grid grid-rows-[100px_auto_70px]">
       <Header />
       {children}
       <Footer />

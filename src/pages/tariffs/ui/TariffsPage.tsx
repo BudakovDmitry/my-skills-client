@@ -4,7 +4,7 @@ import { TariffCard } from "@/widgets/TariffCard"
 
 const TarrifsPage = () => {
   return (
-    <div className='flex-1 flex flex-col items-center mt-2 mb-14'>
+    <div className='flex flex-col items-center mt-2 mb-14'>
       <section className="relative z-50 w-4/5 mx-auto">
         <div className="container">
           <div className="mx-auto max-w-2xl sm:text-center">

@@ -4,7 +4,7 @@ import { TechnologyItem } from '../model/types'
 
 const OurTechnologiesPage = () => {
   return (
-    <div className='flex-1 flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center justify-center'>
       <div className='grid grid-col-1 lg:grid-cols-3 gap-4 w-full container px-4 lg:p-0'>
         {technologies.map((item: TechnologyItem) => {
           return (

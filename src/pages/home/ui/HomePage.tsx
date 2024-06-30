@@ -7,9 +7,9 @@ import logoImage from '@/../public/logo.png';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className='flex-1 flex flex-col items-center justify-center'>
+    <div className="min-h-screen grid grid-rows-[100px_auto_70px]">
+      < Header />
+      <main className='flex flex-col justify-center items-center'>
 
         <Image className='mb-3 size-26' src={logoImage} alt='Logo' />
         <h1 className='text-6xl font-bold mb-6 js--title'>My skills</h1>
@@ -21,7 +21,7 @@ const HomePage = () => {
         </div>
       </main>
       <Footer />
-    </div>
+    </div >
   );
 }
 

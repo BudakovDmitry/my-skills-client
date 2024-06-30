@@ -5,7 +5,7 @@ import doneIcon from '@/../public/done.png'
 
 const AboutPlatformPage = () => {
   return (
-    <div className='flex-1 flex flex-col items-center py-6 container px-4 lg:px-0 mx-auto'>
+    <div className='flex flex-col items-center py-6 container px-4 lg:px-0 mx-auto'>
       <div className='flex items-center mb-10'>
         <Image className='mr-4' src={logoImage} alt='Logo' />
         <h2 className='font-bold text-4xl'>My skills</h2>
