@@ -4,16 +4,20 @@ import { ChatList } from "@/widgets/ChatList"
 import MessagesBlock from "./MessagesBlock"
 import { useChatPage } from "../api/useChatPage"
 import { Loader } from "@/shared/ui"
+import Image from "next/image"
+import arrow from '@/../public/arrow-down.png'
 
 const ChatsPage = () => {
   const {
-    myProfile,
+    currentProfile,
     handleChatOpen,
+    isLoading,
     activeChat,
-    isLoading
+    chats,
+    isLoadingChat
   } = useChatPage()
 
-  if (isLoading) {
+  if (isLoading || isLoadingChat) {
     return (
       <Loader />
     )
@@ -22,8 +26,19 @@ const ChatsPage = () => {
   return (
     <div className='flex'>
       <div className="flex flex-row h-full w-full overflow-x-hidden">
-        <ChatList user={myProfile} activeChat={activeChat} handleChatOpen={handleChatOpen} />
-        <MessagesBlock activeChat={activeChat} />
+        <ChatList user={currentProfile} chats={chats} activeChat={activeChat} handleChatOpen={handleChatOpen} />
+        {
+          activeChat
+            ? <MessagesBlock currentProfile={currentProfile} activeChat={activeChat} />
+            : (
+              <div className="flex flex-col flex-auto h-full px-6 pt-6">
+                <div className="hidden lg:block relative mt-2 -ml-6 w-32">
+                  <Image src={arrow} alt="Arrow" className="rotate-90 w-32" />
+                  <p className="absolute top-0 -right-20 font-bold italic">Оберіть чат</p>
+                </div>
+              </div>
+            )
+        }
       </div>
     </div>
   )

@@ -1,22 +1,15 @@
+'use client'
+
 import { Loader } from "@/shared/ui"
 import Image from "next/image"
 import { isPremiumUserPlan } from "@/shared/utils"
 import { useChatList } from "../api/useChatList"
 import { ChatListProps } from "../model/types"
 
-const ChatList = ({ user, activeChat, handleChatOpen }: ChatListProps) => {
+const ChatList = ({ user, chats, activeChat, handleChatOpen }: ChatListProps) => {
   const {
-    chats,
-    isLoading,
     countUnreadMessagesFromOtherUsers
-  } = useChatList(user.id)
-
-
-  if (isLoading || !chats) {
-    return (
-      <Loader />
-    )
-  }
+  } = useChatList()
 
   return (
     <div className="flex flex-col mt-6 pb-8 pl-6 pr-4 w-80 bg-white flex-shrink-0 shadow-xl">
@@ -49,7 +42,7 @@ const ChatList = ({ user, activeChat, handleChatOpen }: ChatListProps) => {
           >{chats.length}</p>
         </div>
         <div className="flex flex-col space-y-1 mt-4 -mx-2 h-full overflow-y-auto">
-          {chats.map((chatItem: any) => <button
+          {chats && chats.map((chatItem: any) => <button
             key={chatItem.id}
             onClick={() => handleChatOpen(chatItem.id)}
             className={`flex flex-row items-center hover:bg-gray-200 rounded-xl p-2 ${chatItem.id === activeChat ? 'bg-gray-100' : ''}`}

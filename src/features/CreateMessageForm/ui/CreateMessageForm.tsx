@@ -6,7 +6,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { CreateMessageFormProps } from "../model/types";
 import { useCreateMessageForm } from "../api/useCreateMessageForm";
 
-const CreateMessageForm = ({ chatId, handleScrollToNewMessage }: CreateMessageFormProps) => {
+const CreateMessageForm = ({ chatId }: CreateMessageFormProps) => {
   const {
     register,
     handleSubmit,
@@ -14,7 +14,7 @@ const CreateMessageForm = ({ chatId, handleScrollToNewMessage }: CreateMessageFo
     handleChangeText,
     addEmojiToMessage,
     message
-  } = useCreateMessageForm(chatId, handleScrollToNewMessage)
+  } = useCreateMessageForm(chatId)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

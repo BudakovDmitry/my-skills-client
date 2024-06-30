@@ -1,7 +1,5 @@
-'use client'
-
 import { useState } from "react"
-import { chatService } from "@/entities/chat"
+import { chatService, useChat } from "@/entities/chat"
 import { useMyProfile } from "@/shared/api";
 import { useSearchParams } from 'next/navigation';
 import { PAGE, QUERY_KEY, PERMISSION } from "@/shared/config"
@@ -16,13 +14,15 @@ const socket = io('http://localhost:8000', {
   transports: ['websocket'],
 });
 
+
 export const useChatPage = () => {
+  const { data, isLoading } = useMyProfile()
   const searchParams = useSearchParams();
   const chatId = searchParams?.get('chatId') || '';
-  const { data, isLoading } = useMyProfile()
   const [activeChat, setActiveChat] = useState<string>(chatId)
   const router = useRouter();
   const queryClient = useQueryClient()
+  const { data: chatData, isLoading: isLoadingChat } = useChat(data?.data.id || '')
 
   useEffect(() => {
     if (isLoading || !data) return;
@@ -52,14 +52,18 @@ export const useChatPage = () => {
   }, []);
 
   const handleChatOpen = (chatId: string) => {
-    mutate({ userId: data?.data.id || '', chatId })
     setActiveChat(chatId)
+    mutate({ userId: data?.data.id || '', chatId })
+    
+    router.push(`${PAGE.CHATS}?chatId=${chatId}`)
   };
 
   return {
-    myProfile: data?.data || {} as IUser,
+    currentProfile: data?.data || {} as IUser,
     handleChatOpen,
     activeChat,
-    isLoading
+    isLoading,
+    chats: chatData?.data || {} as any,
+    isLoadingChat
   }
 }

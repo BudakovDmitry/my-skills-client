@@ -1,14 +1,15 @@
+'use client'
+
 import { getFormattedDate, isPremiumUserPlan } from "@/shared/utils"
-import { forwardRef } from "react"
 import { Avatar } from "@mui/material"
 import { useMessage } from "../api/useMessage"
 import { MessageProps } from "../model/types"
 
-const Message = forwardRef<HTMLDivElement, MessageProps>(({ isCurrentProfile, message }, ref) => {
+const Message = (({ isCurrentProfile, message }: MessageProps) => {
   const { handleOpenUserProfile } = useMessage()
 
   return (
-    <div ref={ref} className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
+    <div className={`${isCurrentProfile ? 'col-start-6 col-end-13' : 'col-start-1 col-end-8'} p-3 rounded-lg`}>
       <div className={`flex items-start ${isCurrentProfile ? 'justify-start flex-row-reverse' : ''}`}>
         <Avatar
           onClick={isCurrentProfile ? undefined : () => handleOpenUserProfile(message.userId)}

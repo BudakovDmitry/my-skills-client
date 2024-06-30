@@ -12,6 +12,10 @@ export const useChat = (userId: string) => {
 }
 
 export const useChatById = (chatId: string) => {
+  if (!chatId) {
+    return { data: null, isLoading: false }
+  }
+
   const { data, isLoading } = useQuery({
     queryKey: [`${QUERY_KEY.GET_CHAT_BY_ID}_${chatId}`],
     queryFn: () => chatService.getChatById(chatId),

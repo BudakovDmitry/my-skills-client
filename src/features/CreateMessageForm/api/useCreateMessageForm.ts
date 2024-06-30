@@ -13,7 +13,7 @@ const socket = io('http://localhost:8000', {
   transports: ['websocket'],
 });
 
-export const useCreateMessageForm = (chatId: string, handleScrollToNewMessage: () => void) => {
+export const useCreateMessageForm = (chatId: string) => {
   const queryClient = useQueryClient()
   const { data: currentProfile } = useMyProfile()
   const [message, setMessage] = useState<string>('');
@@ -41,7 +41,6 @@ export const useCreateMessageForm = (chatId: string, handleScrollToNewMessage: (
     onSuccess() {
       setMessage('')
       queryClient.invalidateQueries({ queryKey: [`${QUERY_KEY.GET_CHAT_BY_ID}_${chatId}`] })
-      handleScrollToNewMessage()
     }
   })
 
